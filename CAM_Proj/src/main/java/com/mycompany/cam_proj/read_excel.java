@@ -81,10 +81,6 @@ public class read_excel {
             }
             file.close();
             
-            for(int i=0; i< ws.getPhysicalNumberOfRows()-1; i++){
-                System.out.println(i);
-                System.out.println(user_list[i].userID);
-            }
             return user_list;
         } 
         catch (Exception ex) 

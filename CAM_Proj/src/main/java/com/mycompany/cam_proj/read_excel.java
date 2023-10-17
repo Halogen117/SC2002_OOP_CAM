@@ -29,7 +29,6 @@ public class read_excel {
             if(initalizer == "Student"){
                 user_list = new Student[ws.getPhysicalNumberOfRows()-1];
             }else if(initalizer == "Staff"){
-                System.out.println("Staff");
                 user_list = new Staff[ws.getPhysicalNumberOfRows()-1];
             }
             
@@ -69,12 +68,11 @@ public class read_excel {
                     }
                     inner_int += 1;
                 }
-                System.out.println("Reading Row Completed.");
                 if(iterator != 0){
                     if(initalizer == "Student"){
-                        user_list[iterator-1] = new Student(userID_exc, email_exc, facul_exc);
+                        user_list[iterator-1] = new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
                     }else if(initalizer == "Staff"){
-                        user_list[iterator-1] = new Staff(userID_exc, email_exc, facul_exc);
+                        user_list[iterator-1] = new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
                     }
                 }
                 iterator +=1;

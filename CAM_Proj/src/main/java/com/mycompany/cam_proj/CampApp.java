@@ -10,23 +10,24 @@ package com.mycompany.cam_proj;
  */
 import java.util.ArrayList;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 public class CampApp {
     private ArrayList<Camp> camp_array;
-    private Scanner scan_obj = new Scanner(System.in);
+    private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");;
     private User cookie;
+    private date_formatter date_format = new date_formatter();
     public CampApp(ArrayList<Camp> camp_array, User cookie){
         this.camp_array = camp_array;
         this.cookie = cookie;
-        System.out.println("Welcome to the camp subsection");
-        System.out.println("1. Create Camp");
-        System.out.println("2. Modify Camp");
-        System.out.println("3. Remove Camp");
-        System.out.println("4. Exit Camp Interface");
-        int choose_camp = scan_obj.nextInt();
         boolean loop_camp = true;
         while(loop_camp){
+            System.out.println("Welcome to the camp subsection");
+            System.out.println("1. Create Camp");
+            System.out.println("2. Modify Camp");
+            System.out.println("3. View Camps");
+            System.out.println("4. Remove Camp");
+            System.out.println("5. Exit Camp Interface");
+            int choose_camp = scan_obj.nextInt();
             switch(choose_camp){
                 case 1:
                     create_camp();
@@ -35,9 +36,12 @@ public class CampApp {
                     modify_camp();
                     break;
                 case 3:
-                    remove_camp();
+                    view_camp();
                     break;
                 case 4:
+                    remove_camp();
+                    break;
+                case 5:
                     loop_camp = false;
                     break;
             }
@@ -51,9 +55,9 @@ public class CampApp {
             System.out.println("What is the camp name? ");
             String camp_name = scan_obj.next();
             System.out.println("Date of Camp Initalization");
-            LocalDateTime date = generate_date();
+            LocalDateTime date = this.date_format.generate_date();
             System.out.println("Closing registration of Camp Initalization");
-            LocalDateTime registration_closing_date = generate_date();
+            LocalDateTime reg_closing_date = this.date_format.generate_date();
             System.out.println("Where is the camp located? ");
             String location = scan_obj.next();
             System.out.println("How many students are to participate in the camp? ");
@@ -63,7 +67,7 @@ public class CampApp {
             System.out.println("Please type the description of the camp ");
             String description = scan_obj.next();
             String staff_in_charge = cookie.get_userID();
-            Camp new_camp = new Camp(camp_name, date, registration_closing_date, location, total_slot, camp_committee_slots, description, staff_in_charge);
+            Camp new_camp = new Camp(camp_name, date, reg_closing_date, location, total_slot, camp_committee_slots, description, staff_in_charge);
             this.camp_array.add(new_camp);
             return true;
         }else{
@@ -71,22 +75,8 @@ public class CampApp {
             return false;
         }
     }
+
     
-    public LocalDateTime generate_date(){
-        System.out.println("What is the Year?: ");
-        int year = scan_obj.nextInt();
-        System.out.println("What is the Month?: ");
-        int month = scan_obj.nextInt();
-        System.out.println("What is the Day?: ");
-        int day = scan_obj.nextInt();
-        System.out.println("What is the Hour?: ");
-        int hour = scan_obj.nextInt();
-        System.out.println("What is the Minutes?: ");
-        int minutes = scan_obj.nextInt();
-        String date_formation = Integer.toString(year)+"-"+Integer.toString(month)+"-"+Integer.toString(day)+" "+Integer.toString(hour)+":"+Integer.toString(minutes)+"";
-        DateTimeFormatter formatter= DateTimeFormatter.ofPattern("dd-mm-yy HH:mm");
-        return LocalDateTime.parse(date_formation, formatter);
-    }
     public boolean modify_camp(){
         // Modify Existing Camp
         return true;
@@ -94,6 +84,30 @@ public class CampApp {
     
     public boolean remove_camp(){
         return true;
+    }
+    
+    public void view_camp(){
+        for(int i=1; i< this.camp_array.size()+1; i++){
+            System.out.println("Camp Number "+i+" on display!");
+            // Check what is the role of the user!
+            System.out.println("The camp name is "+this.camp_array.get(i-1).get_camp_name());
+            System.out.println("The date the camp starts is on "+this.camp_array.get(i-1).get_date_string());
+            System.out.println("The registration date the camp ends is on "+this.camp_array.get(i-1).get_reg_closing_date_string());
+            System.out.println("The location of the camp is "+this.camp_array.get(i-1).get_location());
+            System.out.println("The total slots available in the camp are "+this.camp_array.get(i-1).get_total_slot());
+            System.out.println("The total camp committee slots available in the camp are "+this.camp_array.get(i-1).get_camp_committee_slots());
+            System.out.println("The staff in charge of the camp is "+this.camp_array.get(i-1).get_staff_in_charge());
+            // Find a way to check if student_list is empty
+            if(this.camp_array.get(i-1).get_student_list().isEmpty()){
+                System.out.println("There are no students who signed up for the camp at the moment!");
+            }else{
+                System.out.println("The students in the camp so far are ");
+                for(Student stud: this.camp_array.get(i-1).get_student_list()){
+                    System.out.println(stud.get_userID());
+                }
+            }
+
+        }
     }
     
     public boolean exit_camp(){

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.cam_proj;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
@@ -10,7 +11,7 @@ import java.util.Scanner;
  */
 public class Authenticate {
     private User user_cookie;
-    public boolean return_authenticate(User[] user_list){
+    public boolean return_authenticate(ArrayList<User> user_list){
         Scanner scan_obj = new Scanner(System.in);
         System.out.println("What is your Username? ");
         String username = scan_obj.next();

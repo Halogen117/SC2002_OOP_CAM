@@ -4,6 +4,7 @@
  */
 package com.mycompany.cam_proj;
 
+import java.util.ArrayList;
 import java.io.FileInputStream;
 import java.util.Iterator;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,8 +17,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author Halogen
  */
 public class read_excel {
-    public User [] return_list(String initalizer, String filepath){
-        User[] user_list = null;
+    public ArrayList<User> return_list(String initalizer, String filepath){
+        ArrayList<User> user_list = new ArrayList();
         try
         {
             FileInputStream file = new FileInputStream(filepath);
@@ -26,11 +27,14 @@ public class read_excel {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             //Get first/desired sheet from the workbook
             XSSFSheet ws = wb.getSheetAt(0);
+            
+            /*
             if(initalizer == "Student"){
                 user_list = new Student[ws.getPhysicalNumberOfRows()-1];
             }else if(initalizer == "Staff"){
                 user_list = new Staff[ws.getPhysicalNumberOfRows()-1];
             }
+            */
             
             int iterator=0;
             //Iterate through each rows one by one
@@ -69,16 +73,18 @@ public class read_excel {
                     inner_int += 1;
                 }
                 if(iterator != 0){
-                    if(initalizer == "Student"){
-                        user_list[iterator-1] = new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
-                    }else if(initalizer == "Staff"){
-                        user_list[iterator-1] = new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
+                    if(initalizer == "Student"){ 
+                        user_list.add(new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
+                        //user_list[iterator-1] = new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
+                    }else if(initalizer == "Staff"){ 
+                        user_list.add(new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
+                        //user_list[iterator-1] = new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
                     }
+                    
                 }
                 iterator +=1;
             }
             file.close();
-            
             return user_list;
         } 
         catch (Exception ex) 

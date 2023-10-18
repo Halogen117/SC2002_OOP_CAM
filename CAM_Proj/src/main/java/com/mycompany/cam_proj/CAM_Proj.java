@@ -17,11 +17,16 @@ public class CAM_Proj {
         // Function to take in xlsx file and return the list array
         String file_location = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2006 - Software Engineering\\CAM_Proj\\src\\main\\resources\\student list.xlsx";
         read_excel re_ex = new read_excel();
-        Student[] student_list = (Student[]) re_ex.return_list("Student", file_location);
+        ArrayList<User> student_list = re_ex.return_list("Student", file_location);
+
         file_location = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2006 - Software Engineering\\CAM_Proj\\src\\main\\resources\\staff_list.xlsx";
-        Staff[] staff_list = (Staff[]) re_ex.return_list("Staff", file_location);
-        
-        
+        ArrayList<User> staff_list = re_ex.return_list("Staff", file_location);
+        /*
+        for(User use : student_list){
+            Student stud = (Student) use;
+            System.out.println(stud.get_campCommittee());
+        }
+        */
         Authenticate auth = new Authenticate();
         int what_to_do;
         ArrayList<Camp> camp_array = new ArrayList<Camp>();

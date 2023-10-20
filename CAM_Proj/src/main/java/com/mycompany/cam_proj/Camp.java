@@ -18,9 +18,10 @@ public class Camp {
     private int camp_committee_slots;
     private String description;
     private String staff_in_charge;
+    private boolean visiblility;
     private ArrayList<Student> student_list = new ArrayList();
     private date_formatter date_form = new date_formatter();
-    public Camp(String camp_name, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, int camp_committee_slots, String description, String staff_in_charge){
+    public Camp(String camp_name, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, int camp_committee_slots, String description, String staff_in_charge, boolean visiblility){
         this.camp_name = camp_name;
         this.date = date;
         this.reg_closing_date = reg_closing_date;
@@ -29,6 +30,7 @@ public class Camp {
         this.camp_committee_slots = camp_committee_slots;
         this.description = description;
         this.staff_in_charge = staff_in_charge;
+        this.visiblility = visiblility;
     }
     
     
@@ -74,6 +76,9 @@ public class Camp {
         return this.student_list;
     }
     
+    public boolean get_visiblility(){
+        return this.visiblility;
+    }
     public void set_camp_name(String camp_name){
         this.camp_name = camp_name;
     }
@@ -126,5 +131,9 @@ public class Camp {
 
     public void set_staff_in_charge(String staff_in_charge){
         this.staff_in_charge = staff_in_charge;
+    }
+    
+    public void set_visiblility(boolean visiblility){
+        this.visiblility = visiblility;
     }
 }

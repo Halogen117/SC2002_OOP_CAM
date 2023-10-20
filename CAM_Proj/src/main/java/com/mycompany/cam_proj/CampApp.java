@@ -67,7 +67,20 @@ public class CampApp {
             System.out.println("Please type the description of the camp ");
             String description = scan_obj.next();
             String staff_in_charge = cookie.get_userID();
-            Camp new_camp = new Camp(camp_name, date, reg_closing_date, location, total_slot, camp_committee_slots, description, staff_in_charge);
+            System.out.println("Do you want this camp to be visible to students Y/N");
+            String true_false = scan_obj.next();
+            boolean visibility;
+            if(true_false == "Y"){
+                System.out.println("Setting visibility to be viewed for all students!");
+                visibility = true;
+            }else if(true_false == "N"){
+                System.out.println("Setting visibility to be viewed only to staff!");
+                visibility = false;
+            }else{
+                System.out.println("Unknown Input!. Setting visibility to be viewed only to staff!");
+                visibility = false;
+            }
+            Camp new_camp = new Camp(camp_name, date, reg_closing_date, location, total_slot, camp_committee_slots, description, staff_in_charge, visibility);
             this.camp_array.add(new_camp);
             return true;
         }else{
@@ -79,34 +92,66 @@ public class CampApp {
     
     public boolean modify_camp(){
         // Modify Existing Camp
+        // Show options to change
         return true;
     }
     
     public boolean remove_camp(){
-        return true;
+        System.out.println("Which camp do you want to remove?");
+        // Print all camps
+        if(this.camp_array.isEmpty()){
+            System.out.println("No camps exist at the moment!");
+        }else{
+            System.out.println("These are the camps that exist!");
+            for(int i=1; i< this.camp_array.size()+1; i++){
+                System.out.println(i+". "+this.camp_array.get(i-1).get_camp_name());
+            }
+            System.out.println("0. Exit decision to remove camp!");
+            int decision = scan_obj.nextInt();
+            if(decision == 0){
+                return false;
+            }else if(decision > this.camp_array.size()+1){
+                System.out.println("This camp does not exist!");
+            }else if((0 < decision)&&(decision <= this.camp_array.size()+1)){
+                System.out.println("Deleting Camp "+ this.camp_array.get(decision-1).get_camp_name());
+                this.camp_array.remove(this.camp_array.get(decision-1));
+                System.out.println("Deletion was successful!");
+                return true;
+            }else{
+                System.out.println("Deletion was not successful!");
+                return false;
+            }
+        }
+        System.out.println("Deletion was not successful!");
+        return false;
     }
     
     public void view_camp(){
-        for(int i=1; i< this.camp_array.size()+1; i++){
-            System.out.println("Camp Number "+i+" on display!");
-            // Check what is the role of the user!
-            System.out.println("The camp name is "+this.camp_array.get(i-1).get_camp_name());
-            System.out.println("The date the camp starts is on "+this.camp_array.get(i-1).get_date_string());
-            System.out.println("The registration date the camp ends is on "+this.camp_array.get(i-1).get_reg_closing_date_string());
-            System.out.println("The location of the camp is "+this.camp_array.get(i-1).get_location());
-            System.out.println("The total slots available in the camp are "+this.camp_array.get(i-1).get_total_slot());
-            System.out.println("The total camp committee slots available in the camp are "+this.camp_array.get(i-1).get_camp_committee_slots());
-            System.out.println("The staff in charge of the camp is "+this.camp_array.get(i-1).get_staff_in_charge());
-            // Find a way to check if student_list is empty
-            if(this.camp_array.get(i-1).get_student_list().isEmpty()){
-                System.out.println("There are no students who signed up for the camp at the moment!");
-            }else{
-                System.out.println("The students in the camp so far are ");
-                for(Student stud: this.camp_array.get(i-1).get_student_list()){
-                    System.out.println(stud.get_userID());
+        if(this.camp_array.isEmpty()){
+            System.out.println("No camps exist at the moment!");
+        }else{
+            for(int i=1; i< this.camp_array.size()+1; i++){
+                if((this.camp_array.get(i-1).get_visiblility() == true && this.cookie instanceof Student) || this.cookie instanceof Staff){
+                    System.out.println("Camp Number "+i+" on display!");
+                    // Check what is the role of the user!
+                    System.out.println("The camp name is "+this.camp_array.get(i-1).get_camp_name());
+                    System.out.println("The date the camp starts is on "+this.camp_array.get(i-1).get_date_string());
+                    System.out.println("The registration date the camp ends is on "+this.camp_array.get(i-1).get_reg_closing_date_string());
+                    System.out.println("The location of the camp is "+this.camp_array.get(i-1).get_location());
+                    System.out.println("The total slots available in the camp are "+this.camp_array.get(i-1).get_total_slot());
+                    System.out.println("The total camp committee slots available in the camp are "+this.camp_array.get(i-1).get_camp_committee_slots());
+                    System.out.println("The staff in charge of the camp is "+this.camp_array.get(i-1).get_staff_in_charge());
+                    // Find a way to check if student_list is empty
+                    if(this.camp_array.get(i-1).get_student_list().isEmpty()){
+                        System.out.println("There are no students who signed up for the camp at the moment!");
+                    }else{
+                        System.out.println("The students in the camp so far are ");
+                        for(Student stud: this.camp_array.get(i-1).get_student_list()){
+                            System.out.println(stud.get_userID());
+                        }
+                    }
                 }
             }
-
         }
     }
     

@@ -48,6 +48,9 @@ public class CAM_Proj {
                     Student student_cookie = (Student) auth.get_user_cookie();
                     System.out.println("WELCOME STUDENT "+student_cookie.get_userID()+":");
                     System.out.println("1. Camp Subsection");
+                    // Enquiry
+                    // Suggestion
+                    // Generate report
                     System.out.println("2. Change Password");
                     System.out.println("3. Log out!");
                     what_to_do = scan_obj.nextInt();

@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class date_formatter {
     private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
-    private static final String date_pattern = "dd-mm-yyyy HH:mm";
+    private static final String date_pattern = "dd-MM-yyyy HH:mm";
     private static final DateTimeFormatter date_formatter= DateTimeFormatter.ofPattern(date_pattern);
     public date_formatter(){
         System.out.println("Initalizing date formatter!");
@@ -50,5 +50,26 @@ public class date_formatter {
         }catch(Exception e){
             return false;
         }
+    }
+    
+    public int compare_dates(LocalDateTime date_left, LocalDateTime date_right){
+        
+    // Initalize both dates
+    
+    // Check if the date is earlier
+    // 0 is earlier
+    // 1 is later
+    // 2 is equal
+    if(date_left.compareTo(date_right)>0){
+        
+        System.out.println("Date left is earlier");
+        return 0;
+    }else if(date_left.compareTo(date_right)<0){
+        System.out.println("Date left is later");
+        return 1;
+    }else{
+        System.out.println("Same date!");
+        return 2;
+    }
     }
 }

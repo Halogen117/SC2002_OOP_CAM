@@ -29,10 +29,7 @@ public class CAM_Proj {
             Student stud = (Student) use;
             System.out.println(stud.get_campCommittee());
         }
-        */
-        
-        Authenticate auth = new Authenticate();
-        int what_to_do;
+        */ 
         ArrayList<Camp> campArray = new ArrayList<Camp>();
         StaffLogin staffLogger  =new StaffLogin();
         StudentLogin studentLogger  =new StudentLogin();
@@ -53,8 +50,7 @@ public class CAM_Proj {
                         studentLogger.studentLogOut();
                     }
                     break;
-                    
-                    
+
                 case 2:
                     System.out.println("Running Staff!");
                     if(staffLogger.runLogin(staffFileLocation, staffList)){

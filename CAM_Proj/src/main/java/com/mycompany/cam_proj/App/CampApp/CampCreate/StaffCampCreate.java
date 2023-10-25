@@ -9,6 +9,7 @@ import com.mycompany.cam_proj.DateFormatter;
 import com.mycompany.cam_proj.Staff;
 import com.mycompany.cam_proj.User;
 import com.mycompany.cam_proj.Login.Verification;
+import com.mycompany.cam_proj.Student;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class StaffCampCreate implements CreateCamp{
     String location = null;
     int total_slot = -1;
     int camp_committee_slots = -1;
+    ArrayList<Student> campCommitteeList;
     String description = null;
     String true_false = null;
     boolean visibility = false;
@@ -38,6 +40,7 @@ public class StaffCampCreate implements CreateCamp{
             // Check how many camps already inside
             question_to_ask ="What is the camp name? ";
             camp_name = this.verify.verifyCampName(camp_name, question_to_ask);
+            System.out.println(camp_name);
             if(camp_name == null){
                 System.out.println("Camp Name cannot be null!");
                 return false;
@@ -71,6 +74,8 @@ public class StaffCampCreate implements CreateCamp{
             camp_committee_slots = this.verify.verifyCampCommittee(camp_committee_slots, question_to_ask);
             if(camp_committee_slots==-1){
                 return false;
+            }else{
+                campCommitteeList = new ArrayList<Student>(camp_committee_slots);
             }
             
             question_to_ask = "Please type the description of the camp ";
@@ -83,7 +88,9 @@ public class StaffCampCreate implements CreateCamp{
             question_to_ask = "Do you want this camp to be visible to students Y/N";
             visibility = this.verify.verifyToggleVisiblity(true_false, question_to_ask);
             
-            Camp new_camp = new Camp(camp_name, date, reg_closing_date, location, total_slot, camp_committee_slots, description, staff_in_charge, visibility);
+            String faculty = cookie.getFacultyInfo();
+            
+            Camp new_camp = new Camp(camp_name, date, reg_closing_date, location, total_slot, campCommitteeList, description, staff_in_charge, visibility, faculty);
             campArray.add(new_camp);
             return true;
         }else{

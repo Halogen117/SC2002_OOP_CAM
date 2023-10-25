@@ -20,7 +20,7 @@ public class StudentCampView implements ViewCamp{
             System.out.println("No camps exist at the moment!");
         }else{
             for(int i=1; i< campArray.size()+1; i++){
-                if((campArray.get(i-1).getVisiblility() == true && cookie instanceof Student)){
+                if((campArray.get(i-1).getVisiblility() == true && campArray.get(i-1).getFaculty() == cookie.getFacultyInfo())){
                     System.out.println("Camp Number "+i+" on display!");
                     // Check what is the role of the user!
                     System.out.println("The camp name is "+campArray.get(i-1).getCampName());
@@ -30,6 +30,7 @@ public class StudentCampView implements ViewCamp{
                     System.out.println("The total slots available in the camp are "+campArray.get(i-1).getTotalSlot());
                     System.out.println("The total camp committee slots available in the camp are "+campArray.get(i-1).getCampCommitteeSlots());
                     System.out.println("The Description of the camp is "+campArray.get(i-1).getDescription());
+                    System.out.println("The faculty of the camp it is under is "+campArray.get(i-1).getFaculty());
                     System.out.println("The staff in charge of the camp is "+campArray.get(i-1).getStaffInCharge());
                     // Find a way to check if student_list is empty
                     if(campArray.get(i-1).getStudentList().isEmpty()){

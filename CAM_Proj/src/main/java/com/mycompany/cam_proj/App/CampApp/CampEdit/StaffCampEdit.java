@@ -7,6 +7,7 @@ package com.mycompany.cam_proj.App.CampApp.CampEdit;
 import com.mycompany.cam_proj.Camp;
 import com.mycompany.cam_proj.DateFormatter;
 import com.mycompany.cam_proj.User;
+import com.mycompany.cam_proj.Student;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -38,15 +39,17 @@ public class StaffCampEdit implements EditCamp{
                 System.out.println("This camp does not exist!");
             }else if((0 < decision)&&(decision <= campArray.size()+1)){
                 System.out.println("Modifying Camp "+ campArray.get(decision-1).getCampName());
+                System.out.println("0. Exit Camp Modifier");
                 System.out.println("1. Camp Name");
                 System.out.println("2. Camp Date");
                 System.out.println("3. Registration Closing Date");
                 System.out.println("4. Camp Location");
                 System.out.println("5. Camp Total Slots");
-                System.out.println("6. Camp Committee Slots");
-                System.out.println("7. Description");
-                System.out.println("8. Camp in charge");
-                System.out.println("0. Exit Camp Modifier");
+                System.out.println("6. Camp Committee Slot number");
+                System.out.println("7. Add Camp Committee Student");
+                System.out.println("8. Remove Camp Committee Student");
+                System.out.println("9. Description");
+                System.out.println("10. Camp in charge");
                 System.out.println("Select which element you want to modify!");
                 int choice_modi = this.scanObj.nextInt();
                 switch(choice_modi){
@@ -91,15 +94,19 @@ public class StaffCampEdit implements EditCamp{
                         System.out.println("The new total slot number is "+campArray.get(decision-1).getTotalSlot());
                         break;
                     case 6:
-                        System.out.println("Insert the new camp committee slots");
+                        System.out.println("Insert the new camp committee member");
                         int toal_camp_com = this.scanObj.nextInt();
                         if(toal_camp_com >10 || toal_camp_com <0 ){
                             System.out.println("The camp committee slots must be in between 0 to 10!");
                             System.out.println("Camp was not successfully modified!");
                             return false;
                         }
-                        campArray.get(decision-1).setCampCommitteeSlots(toal_camp_com);
-                        System.out.println("The new camp committee slots is "+campArray.get(decision-1).getCampCommitteeSlots());
+                        campArray.get(decision-1).addCampCommitteeMemberToList((Student) cookie);
+                        System.out.println("The new Camp Committee Members in the Camp are:");
+                        for(int i=1; i<campArray.size(); i++){
+                            System.out.println(i+". "+campArray.get(decision-1).getCampCommitteeSlots().get(i-1).getUserID());
+                        
+                        }
                         // Don't forget to check if 10 or less
                         break;
                     case 7:
@@ -108,9 +115,6 @@ public class StaffCampEdit implements EditCamp{
                         campArray.get(decision-1).setDescription(descp);
                         System.out.println("The new description is "+campArray.get(decision-1).getDescription());
                         break;
-                    case 8: 
-                        System.out.println("Insert the new camp in charge!");
-                        
                         // Need to retrieve the xlsx file
                             }
                 System.out.println("Camp modification was successful!");

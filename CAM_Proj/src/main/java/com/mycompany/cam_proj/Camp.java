@@ -15,13 +15,14 @@ public class Camp {
     private LocalDateTime regClosingDate;
     private String location;
     private int totalSlot;
-    private int campCommitteeSlots;
+    private ArrayList<Student> campCommitteeSlots;
     private String description;
     private String staffInCharge;
     private boolean visiblility;
-    private ArrayList<Student> studentList = new ArrayList();
+    private ArrayList<Student> studentList;
+    private String faculty;
     private DateFormatter dateForm = new DateFormatter();
-    public Camp(String camp_name, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, int camp_committee_slots, String description, String staff_in_charge, boolean visiblility){
+    public Camp(String camp_name, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, ArrayList<Student> camp_committee_slots, String description, String staff_in_charge, boolean visiblility, String faculty){
         this.campName = campName;
         this.date = date;
         this.regClosingDate = reg_closing_date;
@@ -31,6 +32,7 @@ public class Camp {
         this.description = description;
         this.staffInCharge = staff_in_charge;
         this.visiblility = visiblility;
+        this.faculty = faculty;
     }
     
     
@@ -43,6 +45,10 @@ public class Camp {
     }
     public String getDateString(){
         return dateForm.convert_datetime_to_string(this.date);
+    }
+    
+    public String getFaculty(){
+        return this.faculty;
     }
     
     public LocalDateTime getRegClosingDate(){
@@ -60,7 +66,7 @@ public class Camp {
         return this.totalSlot;
     }
 
-    public int getCampCommitteeSlots(){
+    public ArrayList<Student> getCampCommitteeSlots(){
         return this.campCommitteeSlots;
     }
 
@@ -98,6 +104,10 @@ public class Camp {
     }
     */
     
+    public void setFaculty(String faculty){
+        this.faculty = faculty;
+    }
+    
     public void setRegClosingDate(LocalDateTime regClosingDate){
         if(dateForm.check_datetime_format(dateForm.convert_datetime_to_string(regClosingDate))){
             this.regClosingDate = regClosingDate;
@@ -121,7 +131,7 @@ public class Camp {
         this.totalSlot = totalSlot;
     }
 
-    public void setCampCommitteeSlots(int campCommitteeSlots){
+    public void setCampCommitteeSlots(ArrayList<Student> campCommitteeSlots){
         this.campCommitteeSlots = campCommitteeSlots;
     }
 
@@ -135,5 +145,21 @@ public class Camp {
     
     public void setVisiblility(boolean visiblility){
         this.visiblility = visiblility;
+    }
+    
+    public void addStudentToList(Student stud){
+        this.studentList.add(stud);
+    }
+
+    public void removeStudentToList(Student stud){
+        this.studentList.remove(stud);
+    }
+    
+    public void addCampCommitteeMemberToList(Student stud){
+        this.campCommitteeSlots.add(stud);
+    }
+
+    public void removeCampCommitteeMemberToList(Student stud){
+        this.campCommitteeSlots.remove(stud);
     }
 }

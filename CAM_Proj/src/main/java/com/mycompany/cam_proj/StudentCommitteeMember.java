@@ -8,9 +8,8 @@ package com.mycompany.cam_proj;
  *
  * @author Halogen
  */
-public class Staff extends User{
+public class StudentCommitteeMember{
+    public StudentCommitteeMember(){
     
-    public Staff(String userID, String email,String facultyInfo){
-        super(userID, email, facultyInfo);
     }
 }

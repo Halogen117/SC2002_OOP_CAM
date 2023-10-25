@@ -2,15 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.cam_proj;
+package com.mycompany.cam_proj.App;
+
+import com.mycompany.cam_proj.Camp;
+import com.mycompany.cam_proj.User;
+import java.util.ArrayList;
 
 /**
  *
  * @author Halogen
  */
-public class Staff extends User{
-    
-    public Staff(String userID, String email,String facultyInfo){
-        super(userID, email, facultyInfo);
-    }
+
+interface App {
+    boolean runApp(ArrayList<Camp> camp_array, User cookie);
 }

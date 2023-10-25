@@ -8,7 +8,7 @@ package com.mycompany.cam_proj;
  *
  * @author Halogen
  */
-public class User {
+public abstract class User {
     private String userID;
     private String password = "password";
     private String email;
@@ -20,30 +20,27 @@ public class User {
         this.facultyInfo = facultyInfo;
     }
 
-    
-
-    
-    public String get_email(){
+    public String getEmail(){
         return this.email;
     }
 
-    public String get_facultyInfo(){
+    public String getFacultyInfo(){
         return this.facultyInfo;
     }
 
-    public String get_password(){
+    public String getPassword(){
         return this.password;
     }
-    public String get_userID(){
+    public String getUserID(){
         return this.userID;
     }
 
     
-    public void set_email(String email){
+    public void setEmail(String email){
         this.email = email;
     }
 
-    public void set_facultyInfo(String facultyInfo){
+    public void setFacultyInfo(String facultyInfo){
         this.facultyInfo = facultyInfo;
     }
 
@@ -51,7 +48,7 @@ public class User {
         this.password = password;
     }
     
-    public void set_userID(String userID){
+    public void setUserID(String userID){
         this.userID = userID;
     }
 }

@@ -16,19 +16,19 @@ public class Student extends User{
         super(userId, email, facultyInfo);
     }
     
-    public boolean get_campCommittee(){
+    public boolean getCampCommittee(){
         return this.campCommittee;
     }
     
-    public int get_points(){
+    public int getPoints(){
         return this.points;
     }
     
-    public void set_campCommittee(boolean campCommittee){
+    public void setCampCommittee(boolean campCommittee){
         this.campCommittee = campCommittee;
     }
     
-    public void set_points(int points){
+    public void setPoints(int points){
         this.points = points;
     } 
     

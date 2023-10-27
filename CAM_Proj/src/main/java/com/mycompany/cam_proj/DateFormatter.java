@@ -52,7 +52,7 @@ public class DateFormatter {
         }
     }
     
-    public int compare_dates(LocalDateTime date_left, LocalDateTime date_right){
+    public int compareDateAndTime(LocalDateTime dateLeft, LocalDateTime dateRight){
         
     // Initalize both dates
     
@@ -60,16 +60,24 @@ public class DateFormatter {
     // 0 is earlier
     // 1 is later
     // 2 is equal
-    if(date_left.compareTo(date_right)>0){
+    if(dateLeft.compareTo(dateRight)>0){
         
         System.out.println("Date left is earlier");
         return 0;
-    }else if(date_left.compareTo(date_right)<0){
+    }else if(dateLeft.compareTo(dateRight)<0){
         System.out.println("Date left is later");
         return 1;
     }else{
         System.out.println("Same date!");
         return 2;
     }
+    }
+    
+    public boolean clashDates(LocalDateTime dateLeft, LocalDateTime dateRight){
+        if(compareDateAndTime(dateLeft, dateRight) == 2){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

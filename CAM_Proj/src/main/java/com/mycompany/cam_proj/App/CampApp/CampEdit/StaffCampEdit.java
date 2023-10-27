@@ -62,7 +62,7 @@ public class StaffCampEdit implements EditCamp{
                     case 2:
                         System.out.println("Insert the new Camp Date");
                         LocalDateTime date = this.dateFormat.generate_date();
-                        if(this.dateFormat.compare_dates(date, this.today)== 1){
+                        if(this.dateFormat.compareDateAndTime(date, this.today)== 1){
                             System.out.println("The date of the camp cannot be earlier than the predefined timing of today!");
                             System.out.println("Camp was not successfully modified!");
                             return false;
@@ -73,7 +73,7 @@ public class StaffCampEdit implements EditCamp{
                     case 3:
                         System.out.println("Insert the new Closing registration of Camp");
                         LocalDateTime reg_closing_date = this.dateFormat.generate_date();
-                        if(this.dateFormat.compare_dates(campArray.get(decision-1).getDate(), reg_closing_date) == 1){
+                        if(this.dateFormat.compareDateAndTime(campArray.get(decision-1).getDate(), reg_closing_date) == 1){
                             System.out.println("The date of the camp cannot be later than the registration closing date!");
                             System.out.println("Camp was not successfully modified!");
                             return false;

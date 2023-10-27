@@ -48,13 +48,13 @@ public class StaffCampCreate implements CreateCamp{
             
             System.out.println("Date of Camp Initalization");
             date = this.dateFormat.generate_date();
-            if(this.dateFormat.compare_dates(date, this.today)== 1){
+            if(this.dateFormat.compareDateAndTime(date, this.today)== 1){
                 System.out.println("The date of the camp cannot be earlier than the predefined timing of today!");
                 return false;
             }
             System.out.println("Closing registration of Camp Initalization");
             reg_closing_date = this.dateFormat.generate_date();
-            if(this.dateFormat.compare_dates(date, reg_closing_date) == 1){
+            if(this.dateFormat.compareDateAndTime(date, reg_closing_date) == 1){
                 System.out.println("The date of the camp cannot be later than the registration closing date!");
                 return false;
             }

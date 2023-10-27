@@ -7,6 +7,7 @@ package com.mycompany.cam_proj;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import com.mycompany.cam_proj.Login.Verification;
 
 /**
  *
@@ -16,21 +17,14 @@ public class DateFormatter {
     private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
     private static final String date_pattern = "dd-MM-yyyy HH:mm";
     private static final DateTimeFormatter date_formatter= DateTimeFormatter.ofPattern(date_pattern);
-    public DateFormatter(){
-        System.out.println("Initalizing date formatter!");
-    }
-        public LocalDateTime generate_date(){
-        System.out.println("What is the Year? ");
-        int year = scan_obj.nextInt();
-        System.out.println("What is the Month? ");
-        int month = scan_obj.nextInt();
-        System.out.println("What is the Day? ");
-        int day = scan_obj.nextInt();
-        System.out.println("What is the Hour? ");
-        int hour = scan_obj.nextInt();
-        System.out.println("What is the Minutes? ");
-        int minutes = scan_obj.nextInt();
-        LocalDateTime parse_date  =LocalDateTime.of(year, month, day, hour, minutes);
+    private Verification veriClass = new Verification();
+
+    public LocalDateTime generate_date(){
+        int timeArray[] = this.veriClass.verifyDate();
+        if(timeArray == null){
+            return null;
+        }
+        LocalDateTime parse_date  =LocalDateTime.of(timeArray[0], timeArray[1], timeArray[2], timeArray[3], timeArray[4]);
         return parse_date;
     }
     
@@ -53,7 +47,6 @@ public class DateFormatter {
     }
     
     public int compareDateAndTime(LocalDateTime dateLeft, LocalDateTime dateRight){
-        
     // Initalize both dates
     
     // Check if the date is earlier
@@ -61,7 +54,6 @@ public class DateFormatter {
     // 1 is later
     // 2 is equal
     if(dateLeft.compareTo(dateRight)>0){
-        
         System.out.println("Date left is earlier");
         return 0;
     }else if(dateLeft.compareTo(dateRight)<0){

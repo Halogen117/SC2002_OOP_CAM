@@ -19,7 +19,7 @@ public class Camp {
     private String description;
     private String staffInCharge;
     private boolean visiblility;
-    private ArrayList<Student> studentList;
+    private ArrayList<Student> studentList = new ArrayList<Student>();
     private String faculty;
     private DateFormatter dateForm = new DateFormatter();
     public Camp(String camp_name, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, ArrayList<Student> camp_committee_slots, String description, String staff_in_charge, boolean visiblility, String faculty){

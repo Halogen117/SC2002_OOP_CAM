@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author Halogen
  */
 public class StaffCampEdit implements EditCamp{
-    private Scanner scanObj = new Scanner(System.in);
+    private Scanner scanObj = new Scanner(System.in).useDelimiter("\n");
     private DateFormatter dateFormat = new DateFormatter();
     private LocalDateTime today = this.dateFormat.convert_string_to_datetime(this.dateFormat.convert_datetime_to_string(LocalDateTime.now()));
     

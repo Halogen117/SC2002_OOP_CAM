@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Verification {
     private int loopTolerance = 5;
     private int loopLooper;
-    private Scanner scan_obj = new Scanner(System.in);
+    private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
 
     //private date_formatter date_format = new date_formatter();
     //private final LocalDateTime today  = date_format.convert_string_to_datetime(date_format.convert_datetime_to_string(LocalDateTime.now()));
@@ -61,15 +61,72 @@ public class Verification {
         return null;
     }
     
-    /*
-    public boolean verifyDate(LocalDateTime date_left, LocalDateTime date_right){
+    
+    public int[] verifyDate(){
+        int[] timeArray = new int[5];
+        while(this.loopTolerance != this.loopLooper){
+            while(true){
+                System.out.println("What is the Year? ");
+                int year = scan_obj.nextInt();
+                if(!verifyNumber(year)){
+                    System.out.println("Year value is invalid! Please retype.");
+                    this.loopLooper += 1;
+                    break;
+                }
+                timeArray[0] = year;
+                System.out.println("What is the Month? (1 for January - 12 for December)");
+                int month = scan_obj.nextInt();
+                if(!verifyNumber(month) || (1 > month || month  >13)){
+                    System.out.println("Month value is invalid! Please retype.");
+                    this.loopLooper += 1;
+                    break;
+                }
+                timeArray[1] = month;
 
+                System.out.println("What is the Day? (1-31) ");
+                int day = scan_obj.nextInt();
+                if(!verifyNumber(day) || (1 > day || day > 32)){
+                    System.out.println("Day value is invalid! Please retype.");
+                    this.loopLooper += 1;
+                    break;
+                }
+                timeArray[2] = day;
+
+                System.out.println("What is the Hour? (1-12)");
+                int hour = scan_obj.nextInt();
+                if(!verifyNumber(hour) || (0 > hour || hour  > 13)){
+                    System.out.println("Hour value is invalid! Please retype.");
+                    this.loopLooper += 1;
+                    break;
+                }
+                timeArray[3] = hour;
+                
+                System.out.println("What is the Minutes? (0-59)");
+                int minutes = scan_obj.nextInt();
+                if(!verifyNumber(minutes) || (-1 > hour || hour > 60)){
+                    System.out.println("Minute value is invalid! Please retype.");
+                    this.loopLooper += 1;
+                    break;
+                }
+                timeArray[4] = minutes;
+                try{
+                    LocalDateTime parse_date  =LocalDateTime.of(timeArray[0], timeArray[1], timeArray[2], timeArray[3], timeArray[4]);
+                }catch(java.time.DateTimeException de){
+                    System.out.println("Invalid Date!");
+                    this.loopLooper += 1;
+                    break;    
+                }
+                return timeArray;
+            }
+        }
+        this.loopLooper = 0;
+        return null;
     }
     
     public boolean verifyRegistrationClosingDate(){
         return true;
     }
-    */
+    
     
     public String verifyCampLocation(String location, String questionAsked){
         while(this.loopTolerance != this.loopLooper){

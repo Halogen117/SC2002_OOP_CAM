@@ -45,6 +45,15 @@ public class StudentCampRegister {
                 // Check if student registered for other camps
                 // Check if camp is full
                 // Check if camp Committee
+                if(checkCampCommittee((Student) cookie)){
+                    System.out.println("You are already a camp committee in Camp");
+                    // Insert camp which the student is in
+                    System.out.println("");
+                    return false;
+                }
+                
+
+
                 if(choiceAttend == 1){
                 
                 }else if(choiceAttend == 2){
@@ -66,6 +75,11 @@ public class StudentCampRegister {
     
     public boolean checkCampCommittee(Student Stud){
         return Stud.getCampCommittee();
+    }
+    
+    public boolean checkCampFull(){
+        // Check if the camp is full
+        return true;
     }
 
     public void setCampCommittee(Student Stud){

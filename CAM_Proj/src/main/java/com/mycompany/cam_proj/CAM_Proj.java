@@ -18,6 +18,7 @@ public class CAM_Proj {
     public static void main(String[] args) {
         // Retrieve xlsx  file
         // Function to take in xlsx file and return the list array
+        
         ReadExcel re_ex = new ReadExcel();
         String studentFileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2006 - Software Engineering\\CAM_Proj\\src\\main\\resources\\student list.xlsx";
         ArrayList<User> studentList = re_ex.return_list("Student", studentFileLocation);
@@ -70,8 +71,6 @@ public class CAM_Proj {
             }
         }
 
-    
-            
     }
     
 }

@@ -10,6 +10,7 @@ package com.mycompany.cam_proj;
  */
 public class Student extends User{
     private boolean campCommittee = false;
+    private String campCommitteeName = null;
     private int points = 0;
     
     public Student(String userId, String email,String facultyInfo){
@@ -19,13 +20,20 @@ public class Student extends User{
     public boolean getCampCommittee(){
         return this.campCommittee;
     }
-    
+
+    public String getCampCommitteeName(){
+        return this.campCommitteeName;
+    }
     public int getPoints(){
         return this.points;
     }
     
     public void setCampCommittee(boolean campCommittee){
         this.campCommittee = campCommittee;
+    }
+
+    public void setCampCommitteeName(String campCommitteeName){
+        this.campCommitteeName = campCommitteeName;
     }
     
     public void setPoints(int points){

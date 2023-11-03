@@ -4,6 +4,7 @@
  */
 package com.mycompany.cam_proj.Login;
 import com.mycompany.cam_proj.User;
+import com.mycompany.cam_proj.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -28,7 +29,7 @@ public class Authenticate {
         }
         return false;
     }
-    
+
     public User getUserCookie(){
         return this.userCookie;
     }

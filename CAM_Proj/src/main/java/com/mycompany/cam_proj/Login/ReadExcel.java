@@ -7,6 +7,7 @@ package com.mycompany.cam_proj.Login;
 import com.mycompany.cam_proj.Staff;
 import com.mycompany.cam_proj.Student;
 import com.mycompany.cam_proj.User;
+import com.mycompany.cam_proj.compiledLists.*;
 import java.util.ArrayList;
 import java.io.FileInputStream;
 import java.util.Iterator;
@@ -20,8 +21,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author Halogen
  */
 public class ReadExcel {
-    public ArrayList<User> return_list(String initalizer, String filepath){
+    public void  return_list(String initalizer, String filepath){
         ArrayList<User> user_list = new ArrayList();
+        StaffList staffListInt = new StaffList();
+        StudentList studentListInt = new StudentList();
         try
         {
             FileInputStream file = new FileInputStream(filepath);
@@ -77,10 +80,10 @@ public class ReadExcel {
                 }
                 if(iterator != 0){
                     if(initalizer == "Student"){ 
-                        user_list.add(new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
+                        studentListInt.addStudentToList(new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
                         //user_list[iterator-1] = new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
                     }else if(initalizer == "Staff"){ 
-                        user_list.add(new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
+                        staffListInt.addStaffToList(new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
                         //user_list[iterator-1] = new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
                     }
                     
@@ -88,12 +91,10 @@ public class ReadExcel {
                 iterator +=1;
             }
             file.close();
-            return user_list;
         } 
         catch (Exception ex) 
         {
             ex.printStackTrace();
         }
-        return user_list;
     }
 }

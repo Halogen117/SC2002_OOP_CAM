@@ -32,14 +32,6 @@ public class Verification {
         if(stringer.isEmpty()){
             return false;
         }
-        if(!Character.isJavaIdentifierPart(stringer.charAt(0))){
-            return false;
-        }
-        for(int i=1; i<stringer.length(); i++){
-            if(!Character.isJavaIdentifierPart(stringer.charAt(i))){
-                return false;
-            }
-        }
         return true;
     }
     

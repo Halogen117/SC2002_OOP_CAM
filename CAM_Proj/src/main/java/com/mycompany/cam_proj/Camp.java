@@ -22,7 +22,7 @@ public class Camp {
     private ArrayList<Student> studentList = new ArrayList<Student>();
     private String faculty;
     private DateFormatter dateForm = new DateFormatter();
-    public Camp(String camp_name, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, ArrayList<Student> camp_committee_slots, String description, String staff_in_charge, boolean visiblility, String faculty){
+    public Camp(String campName, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, ArrayList<Student> camp_committee_slots, String description, String staff_in_charge, boolean visiblility, String faculty){
         this.campName = campName;
         this.date = date;
         this.regClosingDate = reg_closing_date;
@@ -78,7 +78,7 @@ public class Camp {
         return this.staffInCharge;
     }
 
-    public ArrayList<Student> getStudentList(){
+    public ArrayList<Student> getCampStudentList(){
         return this.studentList;
     }
     

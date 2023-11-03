@@ -32,7 +32,7 @@ public class StaffApp implements App {
             // Suggestion
             // Generate report
             System.out.println("2. Change Password");
-            System.out.println("3. Log out!");
+            System.out.println("0. Log out!");
             int what_to_do = scan_obj.nextInt();
             switch(what_to_do){
                 case 1:
@@ -45,7 +45,7 @@ public class StaffApp implements App {
                     cookie.setPassword(change_password);
                     System.out.println("Password has been changed!");
                     break;
-                case 3:
+                case 0:
                     loopCont = false;
                     break;
                 }

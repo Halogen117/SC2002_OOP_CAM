@@ -37,11 +37,11 @@ public boolean runViewCamp(ArrayList<Camp> campArray, User cookie){
                 System.out.println("The faculty of the camp it is under is "+campArray.get(i-1).getFaculty());
                 System.out.println("The staff in charge of the camp is "+campArray.get(i-1).getStaffInCharge());
                 // Find a way to check if student_list is empty
-                if(campArray.get(i-1).getStudentList().isEmpty()){
+                if(campArray.get(i-1).getCampStudentList().isEmpty()){
                     System.out.println("There are no students who signed up for the camp at the moment!");
                 }else{
                     System.out.println("The students in the camp so far are ");
-                    for(Student stud: campArray.get(i-1).getStudentList()){
+                    for(Student stud: campArray.get(i-1).getCampStudentList()){
                         System.out.println(stud.getUserID());
                     }
                 }

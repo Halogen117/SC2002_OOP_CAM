@@ -32,8 +32,8 @@ public class StudentCampRegister {
             }
             System.out.println("Which camp would you like to register?");
             StudentCampView studView = new StudentCampView();
-            studView.runViewCamp(campArray, cookie);
-            int choice = this.scanObj.nextInt();
+            
+            int choice = studView.runViewCampListOut(campArray, cookie);
             if(choice < 0 || choice > campArray.size()){
                 System.out.println("Choice outside of input! Exiting Registration!");
                 return false;
@@ -44,19 +44,16 @@ public class StudentCampRegister {
             if(yes_no.equals("Y") || yes_no.equals("YES")){
                 // Check if student registered for other camps
                 // Check if camp is full
-                // Check if camp Committee
-                if(checkCampCommittee((Student) cookie)){
-                    System.out.println("You are already a camp committee in Camp");
-                    // Insert camp which the student is in
-                    System.out.println("");
-                    return false;
+                if(checkCampFull()){
+                    System.out.println("Camp is already full!");
+                
                 }
                 
 
-
                 if(choiceAttend == 1){
-                
+                    
                 }else if(choiceAttend == 2){
+                    // Check if camp Committee
                     if(checkCampCommittee((Student) cookie)){
                         System.out.println("Students are capped at 1 camp committee member at the max!");
                     }else{

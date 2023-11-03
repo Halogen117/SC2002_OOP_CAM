@@ -23,7 +23,7 @@ public class StaffCampCreate implements CreateCamp{
     private LocalDateTime today = this.dateFormat.convert_string_to_datetime(this.dateFormat.convert_datetime_to_string(LocalDateTime.now()));
     public boolean runCreateCamp(ArrayList<Camp> campArray, User cookie){
     String question_to_ask = null;
-    String camp_name = null;
+    String campName = null;
     LocalDateTime date = null;
     LocalDateTime reg_closing_date = null;
     String location = null;
@@ -39,9 +39,8 @@ public class StaffCampCreate implements CreateCamp{
             System.out.println("Creating camp!");
             // Check how many camps already inside
             question_to_ask ="What is the camp name? ";
-            camp_name = this.verify.verifyCampName(camp_name, question_to_ask);
-            System.out.println(camp_name);
-            if(camp_name == null){
+            campName = this.verify.verifyCampName(campName, question_to_ask);
+            if(campName == null){
                 System.out.println("Camp Name cannot be null!");
                 return false;
             }
@@ -96,8 +95,7 @@ public class StaffCampCreate implements CreateCamp{
             visibility = this.verify.verifyToggleVisiblity(true_false, question_to_ask);
             
             String faculty = cookie.getFacultyInfo();
-            
-            Camp new_camp = new Camp(camp_name, date, reg_closing_date, location, total_slot, campCommitteeList, description, staff_in_charge, visibility, faculty);
+            Camp new_camp = new Camp(campName, date, reg_closing_date, location, total_slot, campCommitteeList, description, staff_in_charge, visibility, faculty);
             campArray.add(new_camp);
             return true;
         }else{

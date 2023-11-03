@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import com.mycompany.cam_proj.Login.*;
 import com.mycompany.cam_proj.App.*;
+import com.mycompany.cam_proj.compiledLists.*;
 public class CAM_Proj {
 
     public static void main(String[] args) {
@@ -20,11 +21,13 @@ public class CAM_Proj {
         // Function to take in xlsx file and return the list array
         
         ReadExcel re_ex = new ReadExcel();
+        
         String studentFileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2006 - Software Engineering\\CAM_Proj\\src\\main\\resources\\student list.xlsx";
-        ArrayList<User> studentList = re_ex.return_list("Student", studentFileLocation);
+        re_ex.return_list("Student", studentFileLocation);
 
         String staffFileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2006 - Software Engineering\\CAM_Proj\\src\\main\\resources\\staff_list.xlsx";
-        ArrayList<User> staffList = re_ex.return_list("Staff", staffFileLocation);
+        re_ex.return_list("Staff", staffFileLocation);
+
         /*
         for(User use : student_list){
             Student stud = (Student) use;
@@ -37,15 +40,16 @@ public class CAM_Proj {
         boolean run_loop = true;
         while(run_loop){
             System.out.println("==========WELCOME TO THE CAMP MANAGEMENT & APPLICATION SYSTEM==========");
+            System.out.println("0. Exit the program!");
             System.out.println("1. Login as a Student");
             System.out.println("2. Login as a Staff");
-            System.out.println("3. Exit the program!");
+            
             Scanner scan_obj = new Scanner(System.in);
             int take_input = scan_obj.nextInt();
             switch(take_input){
                 case 1:
                     System.out.println("Running Student!");
-                    if(studentLogger.runLogin(studentFileLocation, studentList)){
+                    if(studentLogger.runLogin(studentFileLocation)){
                         StudentApp stuApper = new StudentApp();
                         stuApper.runApp(campArray, studentLogger.getUserCookie());
                         studentLogger.studentLogOut();
@@ -54,14 +58,14 @@ public class CAM_Proj {
 
                 case 2:
                     System.out.println("Running Staff!");
-                    if(staffLogger.runLogin(staffFileLocation, staffList)){
+                    if(staffLogger.runLogin(staffFileLocation)){
                         StaffApp staffApper = new StaffApp();
                         staffApper.runApp(campArray, staffLogger.getUserCookie());
                         staffLogger.staffLogOut();
                     }
                     break;
 
-                case 3:
+                case 0:
                     run_loop = false;
                     break;
                 default:

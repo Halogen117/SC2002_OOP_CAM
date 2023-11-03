@@ -13,6 +13,6 @@ import java.util.ArrayList;
  */
 interface Login {
     User getUserCookie();
-    boolean runLogin(String fileLocation, ArrayList<User> userList);
+    boolean runLogin(String fileLocation);
     
 }

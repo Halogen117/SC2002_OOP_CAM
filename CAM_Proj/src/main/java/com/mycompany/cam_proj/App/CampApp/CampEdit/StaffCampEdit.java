@@ -115,6 +115,7 @@ public class StaffCampEdit implements EditCamp{
                         }
                         */
                         // Retrieve Student List
+                        // And checks inside StudentList
                         System.out.println("Type in the name of the student you want to be a Camp Committee Member for");
                         String studentToName = this.scanObj.next();
                         // If the student is in th e

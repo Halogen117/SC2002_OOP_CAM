@@ -35,13 +35,16 @@ public class StaffCampCreate implements CreateCamp{
     boolean visibility = false;
         
         if(cookie instanceof Staff){
-            
             System.out.println("Creating camp!");
             // Check how many camps already inside
             question_to_ask ="What is the camp name? ";
             campName = this.verify.verifyCampName(campName, question_to_ask);
             if(campName == null){
                 System.out.println("Camp Name cannot be null!");
+                return false;
+                
+            }else if(checkDuplicateCamp(campArray, campName)){
+                System.out.println("Duplicated Camp Name!");
                 return false;
             }
             
@@ -102,5 +105,16 @@ public class StaffCampCreate implements CreateCamp{
             System.out.println("As a student you are not allowed to create a camp!");
             return false;
         }
+    }
+    
+    public boolean checkDuplicateCamp(ArrayList<Camp> campArray, String campName){
+        
+        for(int i=0; i<campArray.size(); i++){
+            if(campArray.get(i).getCampName().equals(campName)){
+                return true;
+            }
+        
+        }
+        return false;
     }
 }

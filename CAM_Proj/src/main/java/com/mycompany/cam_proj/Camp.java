@@ -15,7 +15,7 @@ public class Camp {
     private LocalDateTime regClosingDate;
     private String location;
     private int totalSlot;
-    private ArrayList<Student> campCommitteeSlots;
+    private ArrayList<Student> campCommitteeSlots  = new ArrayList<Student>();
     private String description;
     private String staffInCharge;
     private boolean visiblility;

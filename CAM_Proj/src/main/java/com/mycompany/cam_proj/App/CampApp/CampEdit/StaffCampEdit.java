@@ -60,7 +60,6 @@ public class StaffCampEdit implements EditCamp{
                 System.out.println("7. Add Camp Committee Student");
                 System.out.println("8. Remove Camp Committee Student");
                 System.out.println("9. Description");
-                System.out.println("10. Camp in charge");
                 System.out.println("Select which element you want to modify!");
                 int choice_modi = this.scanObj.nextInt();
                 switch(choice_modi){

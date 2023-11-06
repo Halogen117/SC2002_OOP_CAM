@@ -43,6 +43,8 @@ public class StudentApp implements App {
                     String change_password = scan_obj.next();
                     cookie.setPassword(change_password);
                     System.out.println("Password has been changed!");
+                    System.out.println("Logging out due to password change!");
+                    loopCont = false;
                     break;
                 case 0:
                     loopCont = false;

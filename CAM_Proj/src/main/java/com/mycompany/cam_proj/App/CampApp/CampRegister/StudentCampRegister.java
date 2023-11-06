@@ -16,8 +16,8 @@ import com.mycompany.cam_proj.DateFormatter;
  * @author Halogen
  */
 public class StudentCampRegister {
-    private Scanner scanObj = new Scanner(System.in);
-    public boolean runRegister(ArrayList<Camp> campArray, User cookie){
+    //private Scanner scanObj = new Scanner(System.in);
+    public boolean runRegister(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         if(campArray.isEmpty()){
             System.out.println("No camps to register for!");
             return false;
@@ -34,7 +34,7 @@ public class StudentCampRegister {
             StudentCampView studView = new StudentCampView();
             
             ArrayList<Integer> choice = studView.runViewCampListOut(campArray, cookie);
-            int chooseChoice = this.scanObj.nextInt();
+            int chooseChoice = scanObj.nextInt();
             if(choice == null){
                 System.out.print("No Camps exist at the moment!");
                 return true;
@@ -47,11 +47,14 @@ public class StudentCampRegister {
             
             if(yes_no.equals("Y") || yes_no.equals("YES")){
                 // Check if student registered for other camps
+                if(checkDateClash(choice, campArray,chooseChoice, (Student) cookie)){
+                    return false;
+                }
                 // Check if camp is full
                 if(checkCampFull(campArray, chooseChoice)){
                     System.out.println("Camp is already full!");
                     return false;
-                }else if(checkAttendeeList(campArray, (Student) cookie) && choiceAttend == 1){
+                }else if(checkAttendeeList(choice, campArray, (Student) cookie, chooseChoice) && choiceAttend == 1){
                     System.out.println("You are already an attendee in the camp!");
                 }
 
@@ -62,7 +65,7 @@ public class StudentCampRegister {
                     if(checkCampCommittee((Student) cookie)){
                         System.out.println("Students are capped at 1 camp committee member at the max!");
                     }else{
-                        if(!checkAttendeeList(campArray, (Student) cookie)){
+                        if(!checkAttendeeList(choice, campArray, (Student) cookie, chooseChoice)){
                             campArray.get(chooseChoice-1).addStudentToList((Student) cookie);
                         }
                             setCampCommittee((Student) cookie, campArray.get(chooseChoice -1).getCampName());
@@ -97,12 +100,29 @@ public class StudentCampRegister {
         System.out.println("Successfully set as Camp Committee Member!");
     }
     
-    public boolean checkAttendeeList(ArrayList<Camp> campArray, Student Stud){
-        for(int i=1; i<campArray.size(); i++){
-            if(campArray.get(i-1).getCampStudentList().contains(Stud)){
+    public boolean checkAttendeeList(ArrayList<Integer> choice, ArrayList<Camp> campArray, Student Stud, int chooseChoice){
+
+            if(campArray.get(choice.indexOf(chooseChoice)).getCampStudentList().contains(Stud)){
+                return true;
+            
+        }
+        return false;
+    }
+    
+    public boolean checkDateClash(ArrayList<Integer> choice, ArrayList<Camp> campArray , int chooseChoice, Student Stud){
+        // Check for the camps the student is in, if got date clash (Same day)
+        DateFormatter formaDat  =new DateFormatter();
+        /*
+        for(int i =0; i< choice.size(); i++){
+            if(formaDat.clashDates(campArray.get(i).getDate(), campArray.get(choice.get(chooseChoice-1)).getDate())){
                 return true;
             }
         }
+        
+        return false;
+        
+        
+        */  
         return false;
     }
 }

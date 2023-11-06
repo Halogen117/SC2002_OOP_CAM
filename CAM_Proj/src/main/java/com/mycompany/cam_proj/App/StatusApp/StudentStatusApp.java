@@ -32,8 +32,11 @@ public class StudentStatusApp implements StatusApp{
 
             for(int i=1; i< campArray.size()+1; i++){
                 //if((campArray.get(i-1).getFaculty().equals(cookieStud.getFacultyInfo()))&& campArray.get(i-1).getCampStudentList().get(cookieStud)){
-                if(campArray.get(i-1).getCampStudentList().contains(cookieStud) || campArray.get(i-1).getCampCommitteeSlots().contains(cookieStud)){
-                    System.out.println(i+". "+campArray.get(i-1).getCampName());
+                if(campArray.get(i-1).getCampCommitteeSlots().contains(cookieStud)){
+                    
+                    System.out.println(i+". "+campArray.get(i-1).getCampName()+" (Committee Member)");
+                }else if(campArray.get(i-1).getCampStudentList().contains(cookieStud)){
+                    System.out.println(i+". "+campArray.get(i-1).getCampName()+" (Attendee)");
                 }
                 
             }

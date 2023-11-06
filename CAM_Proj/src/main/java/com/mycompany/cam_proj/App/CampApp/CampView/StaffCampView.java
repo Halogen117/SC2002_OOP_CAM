@@ -26,6 +26,8 @@ public boolean runViewCamp(ArrayList<Camp> campArray, User cookie, Scanner scanO
                 System.out.println("The registration date the camp ends is on "+campArray.get(i-1).getRegClosingDateString());
                 System.out.println("The location of the camp is "+campArray.get(i-1).getLocation());
                 System.out.println("The total slots available in the camp are "+campArray.get(i-1).getTotalSlot());
+                int remainingSlots = campArray.get(i-1).getTotalSlot()-campArray.get(i-1).getCampStudentList().size();
+                System.out.println("The total remaining slots available in the camp are "+remainingSlots);
                 if(campArray.get(i-1).getCampCommitteeSlots().isEmpty()){
                     System.out.println("There are no camp committee members that exist at the moment.");
                 }else{

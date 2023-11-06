@@ -40,7 +40,7 @@ public class StudentCampApp implements CampApp{
                 
                 case 2:
                     StudentCampRegister studReg = new StudentCampRegister();
-                    studReg.runRegister(campArray, cookie);
+                    studReg.runRegister(campArray, cookie, scanObj);
                     break;
 
                 case 3:

@@ -80,7 +80,8 @@ public class StudentCampView implements ViewCamp{
                 for(int i=1; i< campArray.size()+1; i++){
                     if((campArray.get(i-1).getVisiblility().equals(visibilityStatus.FACULTY)&& campArray.get(i-1).getFaculty().matches(cookie.getFacultyInfo()))|| campArray.get(i-1).getVisiblility().equals(visibilityStatus.ENTIRESCHOOL)){
                         countKeep.add(i);
-                        System.out.println(countKeep.indexOf(i)+1+". Camp "+campArray.get(countKeep.indexOf(i)).getCampName()+" on display!");
+                        int remainigSlot = campArray.get(countKeep.indexOf(i)).getTotalSlot() - campArray.get(countKeep.indexOf(i)).getCampStudentList().size();
+                        System.out.println(countKeep.indexOf(i)+1+". Camp "+campArray.get(countKeep.indexOf(i)).getCampName()+" on display! (Remaining Slots: "+remainigSlot+")");
                     }
                 }
                 System.out.println("0. Exit Camp View");

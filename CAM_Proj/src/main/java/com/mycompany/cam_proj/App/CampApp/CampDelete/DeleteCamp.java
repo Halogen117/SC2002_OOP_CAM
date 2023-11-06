@@ -33,9 +33,18 @@ public class DeleteCamp {
                 System.out.println("This camp does not exist!");
             }else if((0 < decision)&&(decision <= campArray.size()+1)){
                 System.out.println("Deleting Camp "+ campArray.get(decision-1).getCampName());
-                campArray.remove(campArray.get(decision-1));
-                System.out.println("Deletion was successful!");
-                return true;
+                // Check if the camp any student registered/ campcommittee
+                if(campArray.get(decision-1).getCampStudentList().size() >0 || campArray.get(decision-1).getCampCommitteeSlots().size()>0)
+                {
+
+                    System.out.println("Deletion was not successful as there are still students in the camp!");
+                    return false;
+                }else{
+                    campArray.remove(campArray.get(decision-1));
+                    System.out.println("Deletion was successful!");
+                    return true;
+                }
+
             }else{
                 System.out.println("Deletion was not successful!");
                 return false;

@@ -5,6 +5,7 @@
 package com.mycompany.cam_proj.App;
 
 import com.mycompany.cam_proj.App.CampApp.StaffCampApp;
+import com.mycompany.cam_proj.App.StatusApp.StaffStatusApp;
 import com.mycompany.cam_proj.Camp;
 import com.mycompany.cam_proj.DateFormatter;
 import com.mycompany.cam_proj.Staff;
@@ -28,10 +29,15 @@ public class StaffApp implements App {
         while(loopCont){
             System.out.println("WELCOME STAFF "+cookie.getUserID()+":");
             System.out.println("1. Camp Subsection");
-            // Enquiry
+            System.out.println("2. Enquiry Subsection");
             // Suggestion
-            // Generate report
-            System.out.println("2. Change Password");
+            System.out.println("3. Suggestion Subsection");
+
+            System.out.println("4. Access Status Subsection");
+            
+            System.out.println("5. Access Student Committee Menu Sublist");
+            
+            System.out.println("6. Change Password");
             System.out.println("0. Log out!");
             int what_to_do = scanObj.nextInt();
             switch(what_to_do){
@@ -39,7 +45,12 @@ public class StaffApp implements App {
                     StaffCampApp staffCamper = new StaffCampApp();
                     staffCamper.runCampApp(campArray, cookie, scanObj);
                     break;
-                case 2:
+                    
+                case 4:
+                    System.out.println("Accessing Student Status Subsection!");
+                    StaffStatusApp statStaff = new StaffStatusApp();
+                    statStaff.runStatusApp(campArray, cookie,scanObj);
+                case 6:
                     System.out.println("Please change your password!");
                     String change_password = scanObj.next();
                     cookie.setPassword(change_password);

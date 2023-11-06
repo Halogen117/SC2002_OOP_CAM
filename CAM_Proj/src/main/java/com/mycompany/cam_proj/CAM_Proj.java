@@ -40,8 +40,8 @@ public class CAM_Proj {
         */ 
             //Scanner scan_obj = new Scanner(System.in);
         final String fileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2006 - Software Engineering\\CAM_Proj\\input.txt";
-        final Scanner scanObj = new Scanner(new FileReader(fileLocation));
-        //final Scanner scanObj = new Scanner(System.in);
+        //final Scanner scanObj = new Scanner(new FileReader(fileLocation));
+        final Scanner scanObj = new Scanner(System.in);
         ArrayList<Camp> campArray = new ArrayList<Camp>();
         StaffLogin staffLogger  =new StaffLogin();
         StudentLogin studentLogger  =new StudentLogin();

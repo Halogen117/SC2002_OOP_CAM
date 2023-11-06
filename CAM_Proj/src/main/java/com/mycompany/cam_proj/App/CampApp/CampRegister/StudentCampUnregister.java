@@ -16,8 +16,12 @@ import java.util.Scanner;
  * @author Halogen
  */
 public class StudentCampUnregister {
-    private Scanner scanObj = new Scanner(System.in);
-    public boolean runUnregister(ArrayList<Camp> campArray, User cookie){
+    //private Scanner scanObj = new Scanner(System.in);
+    public boolean runUnregister(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+        if(checkCommitteeMember((Student) cookie)){
+            System.out.println("As you are a Committee Member, you cannot quit the camp!");
+            return false;
+        }
         if(campArray.isEmpty()){
             System.out.println("No camps to register for!");
             return false;
@@ -26,7 +30,6 @@ public class StudentCampUnregister {
             System.out.println("Unregister as a");
             System.out.println("0. Exit Unregister Main Menu");
             System.out.println("1. Camp Attendee");
-            System.out.println("2. Camp Committee Member");
             int choiceUnAttend = scanObj.nextInt();
             if(choiceUnAttend == 0){
                 return false;
@@ -35,7 +38,7 @@ public class StudentCampUnregister {
             StudentCampView studView = new StudentCampView();
             
             ArrayList<Integer> choice = studView.runViewCampListOut(campArray, cookie);
-            int chooseChoice = this.scanObj.nextInt();
+            int chooseChoice = scanObj.nextInt();
             if(choice == null){
                 System.out.print("No Camps exist at the moment!");
                 return true;
@@ -59,21 +62,22 @@ public class StudentCampUnregister {
                 // This should be repurposed to remove the student if the request is successful
                 if(choiceUnAttend == 1){
                     campArray.get(chooseChoice-1).removeStudentToList((Student) cookie);
-                }else if(choiceUnAttend == 2){
+                }
+                /*
+                else if(choiceUnAttend == 2){
                     // Check if camp Committee
                     if(!checkCampCommitteeRemove((Student) cookie, campArray, chooseChoice)){
                         System.out.println("You are not a camp committee member in this camp!");
                         return false;
                     }else{
                         if(!checkAttendeeList(campArray, (Student) cookie)){
-                            campArray.get(chooseChoice-1).addStudentToList((Student) cookie);
+                            campArray.get(chooseChoice-1).removeStudentToList((Student) cookie);
                         }
                             removeCampCommittee((Student) cookie);
-                            campArray.get(chooseChoice-1).addCampCommitteeMemberToList((Student) cookie); 
+                            campArray.get(chooseChoice-1).removeCampCommitteeMemberToList((Student) cookie); 
                     }
                 }
-
-                
+                */
             }else if(yes_no.equals("N") || yes_no.equals("NO")){
                 System.out.println("Exiting Register option!");
                 return false;
@@ -82,6 +86,9 @@ public class StudentCampUnregister {
         }
     }
     
+    public boolean checkCommitteeMember(Student Stud){
+        return Stud.getCampCommittee();
+    }
     public boolean checkCampEmpty(ArrayList<Camp> campArray, int chooseChoice){
         // Check if the camp is full
         if(campArray.get(chooseChoice-1).getCampStudentList().size() == 0 && campArray.get(chooseChoice-1).getCampCommitteeSlots().size() == 0){
@@ -114,3 +121,4 @@ public class StudentCampUnregister {
         
     }
 }
+

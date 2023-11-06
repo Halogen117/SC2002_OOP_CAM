@@ -10,6 +10,7 @@ import com.mycompany.cam_proj.User;
 import com.mycompany.cam_proj.Student;
 import com.mycompany.cam_proj.Login.Verification;
 import com.mycompany.cam_proj.App.CampApp.*;
+import com.mycompany.cam_proj.App.StatusApp.StudentStatusApp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,11 +33,12 @@ public class StudentApp implements App {
             System.out.println("2. Enquiry Subsection");
             // Suggestion
             System.out.println("3. Suggestion Subsection");
-            // Generate report
-            System.out.println("4. Change Password");
+
+            System.out.println("4. Access Status Subsection");
             
             System.out.println("5. Access Student Committee Menu Sublist");
             
+            System.out.println("6. Change Password");
             System.out.println("0. Log out!");
             int what_to_do = scanObj.nextInt();
             switch(what_to_do){
@@ -51,14 +53,11 @@ public class StudentApp implements App {
                     break;
                     
                 case 4:
-                    System.out.println("Please change your password!");
-                    String change_password = scanObj.next();
-                    cookie.setPassword(change_password);
-                    System.out.println("Password has been changed!");
-                    System.out.println("Logging out due to password change!");
-                    loopCont = false;
+                    System.out.println("Accessing Student Status Subsection!");
+                    StudentStatusApp statStud = new StudentStatusApp();
+                    statStud.runStatusApp(campArray, cookie,scanObj);
                     break;
-                
+                    
                 case 5:
                     System.out.println("Attempting to access Student Committee Main Menu");
                     if(checkCommitteeMember((Student) cookie)){
@@ -69,6 +68,14 @@ public class StudentApp implements App {
                     }
                     break;
 
+                case 6:
+                    System.out.println("Please change your password!");
+                    String change_password = scanObj.next();
+                    cookie.setPassword(change_password);
+                    System.out.println("Password has been changed!");
+                    System.out.println("Logging out due to password change!");
+                    loopCont = false;
+                    break;
                 case 0:
                     loopCont = false;
                     break;

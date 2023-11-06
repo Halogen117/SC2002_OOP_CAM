@@ -7,6 +7,7 @@ package com.mycompany.cam_proj.App.CampApp;
 import com.mycompany.cam_proj.Camp;
 import com.mycompany.cam_proj.App.CampApp.CampView.StudentCampView;
 import com.mycompany.cam_proj.App.CampApp.CampRegister.StudentCampRegister;
+import com.mycompany.cam_proj.App.CampApp.CampRegister.StudentCampUnregister;
 import com.mycompany.cam_proj.User;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -40,6 +41,12 @@ public class StudentCampApp implements CampApp{
                 case 2:
                     StudentCampRegister studReg = new StudentCampRegister();
                     studReg.runRegister(campArray, cookie);
+                    break;
+
+                case 3:
+                    StudentCampUnregister studUnReg = new StudentCampUnregister();
+                    studUnReg.runUnregister(campArray, cookie, scanObj);
+                    break;
             }
         }
         return true;

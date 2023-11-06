@@ -51,6 +51,7 @@ public class Verification {
             while(true){
                 System.out.println(questionAsked);
                 try{
+                    scanObj.nextLine();
                     campName = scanObj.nextLine();
                     if(verifyString(campName) == true){
                         return campName;
@@ -60,10 +61,10 @@ public class Verification {
                         break;
                     }
                 }catch(Exception e){
+                    scanObj.nextLine();
                     System.out.println("Invalid String Input! Please Try Again!");
                     System.out.println("");
                     this.loopLooper += 1;
-                    scanObj.next();
                     break;
                 }
             }
@@ -148,12 +149,12 @@ public class Verification {
         return true;
     }
     
-    
     public String verifyCampLocation(String location, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);
             while(true){
                 try{
+                    scanObj.nextLine();
                     location = scanObj.nextLine();
                         if(verifyString(location) == true){
                             return location;
@@ -162,7 +163,7 @@ public class Verification {
                             break;
                         }
                 }catch(Exception e){
-                    scanObj.next();
+                    
                     System.out.println("Invalid String Input! Please Try Again!");
                     System.out.println("");
                     this.loopLooper += 1;
@@ -224,8 +225,9 @@ public class Verification {
     public String verifyDescription(String description, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             while(true){
+                System.out.println(questionAsked);
                 try{
-                    System.out.println(questionAsked);
+                    scanObj.nextLine();
                     description = scanObj.nextLine();
                     if(verifyString(description) == true){
                         return description;

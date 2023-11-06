@@ -12,6 +12,6 @@ import java.util.ArrayList;
  *
  * @author Halogen
  */
-interface Reply {
-    boolean runReply(ArrayList<Camp> camp_array, User cookie);
+interface Submit {
+    boolean runSubmit(ArrayList<Camp> camp_array, User cookie);
 }

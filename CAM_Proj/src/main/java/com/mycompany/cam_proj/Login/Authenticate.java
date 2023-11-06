@@ -13,8 +13,8 @@ import java.util.Scanner;
  */
 public class Authenticate {
     private User userCookie;
-    public boolean return_authenticate(ArrayList<User> user_list){
-        Scanner scanObj = new Scanner(System.in);
+    public boolean return_authenticate(ArrayList<User> user_list, Scanner scanObj){
+        //Scanner scanObj = new Scanner(System.in);
         System.out.println("What is your Username? ");
         String username = scanObj.next();
         System.out.println("What is your Password? ");

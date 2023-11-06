@@ -5,14 +5,13 @@
 package com.mycompany.cam_proj.Login;
 
 import com.mycompany.cam_proj.User;
-import java.util.ArrayList;
-
+import java.util.Scanner;
 /**
  *
  * @author Halogen
  */
 interface Login {
     User getUserCookie();
-    boolean runLogin(String fileLocation);
+    boolean runLogin(String fileLocation, Scanner scanObj);
     
 }

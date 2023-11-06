@@ -4,10 +4,14 @@
  */
 package com.mycompany.cam_proj.implementActions;
 
+import com.mycompany.cam_proj.Camp;
+import com.mycompany.cam_proj.User;
+import java.util.ArrayList;
+
 /**
  *
  * @author Halogen
  */
-public class Edit {
-    
+interface Edit {
+    boolean runEdit(ArrayList<Camp> camp_array, User cookie);
 }

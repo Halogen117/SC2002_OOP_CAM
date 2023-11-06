@@ -4,10 +4,14 @@
  */
 package com.mycompany.cam_proj.implementActions;
 
+import com.mycompany.cam_proj.Camp;
+import com.mycompany.cam_proj.User;
+import java.util.ArrayList;
+
 /**
  *
  * @author Halogen
  */
-public class View {
-    
+interface View {
+    boolean runView(ArrayList<Camp> camp_array, User cookie);
 }

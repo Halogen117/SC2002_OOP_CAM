@@ -3,34 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.cam_proj.App.CampApp.CampRegister;
+
 import com.mycompany.cam_proj.App.CampApp.CampView.StudentCampView;
 import com.mycompany.cam_proj.Camp;
-import com.mycompany.cam_proj.User;
 import com.mycompany.cam_proj.Student;
+import com.mycompany.cam_proj.User;
 import java.util.ArrayList;
 import java.util.Scanner;
-import com.mycompany.cam_proj.DateFormatter;
 
 /**
  *
  * @author Halogen
  */
-public class StudentCampRegister {
+public class StudentCampUnregister {
     private Scanner scanObj = new Scanner(System.in);
-    public boolean runRegister(ArrayList<Camp> campArray, User cookie){
+    public boolean runUnregister(ArrayList<Camp> campArray, User cookie){
         if(campArray.isEmpty()){
             System.out.println("No camps to register for!");
             return false;
         }else{
-            System.out.println("Register as a");
-            System.out.println("0. Exit Register Main Menu");
+            System.out.println("We are sorry to see you go :( .");
+            System.out.println("Unregister as a");
+            System.out.println("0. Exit Unregister Main Menu");
             System.out.println("1. Camp Attendee");
             System.out.println("2. Camp Committee Member");
-            int choiceAttend = scanObj.nextInt();
-            if(choiceAttend == 0){
+            int choiceUnAttend = scanObj.nextInt();
+            if(choiceUnAttend == 0){
                 return false;
             }
-            System.out.println("Which camp would you like to register?");
+            System.out.println("Which camp would you like to unregister?");
             StudentCampView studView = new StudentCampView();
             
             ArrayList<Integer> choice = studView.runViewCampListOut(campArray, cookie);
@@ -39,7 +40,7 @@ public class StudentCampRegister {
                 System.out.print("No Camps exist at the moment!");
                 return true;
             }else if(!choice.contains(chooseChoice)){
-                System.out.println("Choice outside of input! Exiting Register Main Menu");
+                System.out.println("Choice outside of input! Exiting Unregister Main Menu!");
                 return false;
             }
             System.out.println("Are you sure you want to register for Camp "+campArray.get(chooseChoice-1).getCampName()+"? (Y/N)");
@@ -48,24 +49,26 @@ public class StudentCampRegister {
             if(yes_no.equals("Y") || yes_no.equals("YES")){
                 // Check if student registered for other camps
                 // Check if camp is full
-                if(checkCampFull(campArray, chooseChoice)){
-                    System.out.println("Camp is already full!");
+                if(checkCampEmpty(campArray, chooseChoice)){
+                    System.out.println("Camp is already empty!");
                     return false;
-                }else if(checkAttendeeList(campArray, (Student) cookie) && choiceAttend == 1){
-                    System.out.println("You are already an attendee in the camp!");
+                }else if(checkAttendeeList(campArray, (Student) cookie) && choiceUnAttend == 1){
+                    System.out.println("You are not an attendee in the camp!");
+                    return false;
                 }
-
-                if(choiceAttend == 1){
-                    campArray.get(chooseChoice-1).addStudentToList((Student) cookie);
-                }else if(choiceAttend == 2){
+                // This should be repurposed to remove the student if the request is successful
+                if(choiceUnAttend == 1){
+                    campArray.get(chooseChoice-1).removeStudentToList((Student) cookie);
+                }else if(choiceUnAttend == 2){
                     // Check if camp Committee
-                    if(checkCampCommittee((Student) cookie)){
-                        System.out.println("Students are capped at 1 camp committee member at the max!");
+                    if(!checkCampCommitteeRemove((Student) cookie, campArray, chooseChoice)){
+                        System.out.println("You are not a camp committee member in this camp!");
+                        return false;
                     }else{
                         if(!checkAttendeeList(campArray, (Student) cookie)){
                             campArray.get(chooseChoice-1).addStudentToList((Student) cookie);
                         }
-                            setCampCommittee((Student) cookie, campArray.get(chooseChoice -1).getCampName());
+                            removeCampCommittee((Student) cookie);
                             campArray.get(chooseChoice-1).addCampCommitteeMemberToList((Student) cookie); 
                     }
                 }
@@ -79,30 +82,35 @@ public class StudentCampRegister {
         }
     }
     
-    public boolean checkCampCommittee(Student Stud){
-        return Stud.getCampCommittee();
-    }
-    
-    public boolean checkCampFull(ArrayList<Camp> campArray, int chooseChoice){
+    public boolean checkCampEmpty(ArrayList<Camp> campArray, int chooseChoice){
         // Check if the camp is full
-        if(campArray.get(chooseChoice-1).getTotalSlot() >= campArray.get(chooseChoice-1).getCampStudentList().size()){
-            return false;
+        if(campArray.get(chooseChoice-1).getCampStudentList().size() == 0 && campArray.get(chooseChoice-1).getCampCommitteeSlots().size() == 0){
+            return true;
         }
-        return true;
-    }
+        return false;
 
-    public void setCampCommittee(Student Stud, String campName){
-        Stud.setCampCommittee(true);
-        Stud.setCampCommitteeName(campName);
-        System.out.println("Successfully set as Camp Committee Member!");
     }
     
     public boolean checkAttendeeList(ArrayList<Camp> campArray, Student Stud){
         for(int i=1; i<campArray.size(); i++){
             if(campArray.get(i-1).getCampStudentList().contains(Stud)){
-                return true;
+                return false;
             }
         }
+        return true;
+    }
+    
+    public void removeCampCommittee(Student Stud){
+        Stud.setCampCommittee(false);
+        System.out.println("Successfully removed as Camp Committee Member!");
+    }
+    
+    public boolean checkCampCommitteeRemove(Student Stud, ArrayList<Camp> campArray, int chooseChoice){
+        // If camp Committee matches name of 
+        if(Stud.getCampCommitteeName() == campArray.get(chooseChoice-1).getCampName()){
+            return true;
+        }
         return false;
+        
     }
 }

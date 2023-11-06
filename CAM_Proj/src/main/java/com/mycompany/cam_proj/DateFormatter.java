@@ -14,13 +14,13 @@ import com.mycompany.cam_proj.Login.Verification;
  * @author Halogen
  */
 public class DateFormatter {
-    private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
+    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
     private static final String date_pattern = "dd-MM-yyyy HH:mm";
     private static final DateTimeFormatter date_formatter= DateTimeFormatter.ofPattern(date_pattern);
     private Verification veriClass = new Verification();
 
-    public LocalDateTime generate_date(){
-        int timeArray[] = this.veriClass.verifyDate();
+    public LocalDateTime generate_date(Scanner scanObj){
+        int timeArray[] = this.veriClass.verifyDate(scanObj);
         if(timeArray == null){
             return null;
         }

@@ -7,6 +7,7 @@ package com.mycompany.cam_proj.App;
 import com.mycompany.cam_proj.Camp;
 import com.mycompany.cam_proj.User;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -14,5 +15,5 @@ import java.util.ArrayList;
  */
 
 interface App {
-    boolean runApp(ArrayList<Camp> camp_array, User cookie);
+    boolean runApp(ArrayList<Camp> camp_array, User cookie, Scanner scanObj);
 }

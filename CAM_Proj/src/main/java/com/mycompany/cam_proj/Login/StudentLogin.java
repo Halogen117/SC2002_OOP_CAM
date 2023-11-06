@@ -5,9 +5,8 @@
 package com.mycompany.cam_proj.Login;
 
 import com.mycompany.cam_proj.User;
-import com.mycompany.cam_proj.Student;
 import com.mycompany.cam_proj.compiledLists.StudentList;
-import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -15,8 +14,8 @@ import java.util.ArrayList;
  */
 public class StudentLogin implements Login{
     private Authenticate auth = new Authenticate();
-    public boolean runLogin(String fileLocation){
-        if(!this.auth.return_authenticate((ArrayList<User>) StudentList.studList)){
+    public boolean runLogin(String fileLocation, Scanner scanObj){
+        if(!this.auth.return_authenticate(StudentList.studList, scanObj)){
             System.out.println("Unverified Student! Try logging in again!");
             return false;
         }

@@ -6,6 +6,7 @@ package com.mycompany.cam_proj.App.CampApp;
 
 import com.mycompany.cam_proj.Camp;
 import com.mycompany.cam_proj.App.CampApp.CampView.StudentCampView;
+import com.mycompany.cam_proj.App.CampApp.CampRegister.StudentCampRegister;
 import com.mycompany.cam_proj.User;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,15 +16,17 @@ import java.util.Scanner;
  * @author Halogen
  */
 public class StudentCampApp implements CampApp{
-    private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
-    public boolean runCampApp(ArrayList<Camp> campArray, User cookie){
+    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
+    public boolean runCampApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loop_camp = true;
         while(loop_camp){
             System.out.println("Welcome to the camp subsection");
                 System.out.println("0. Exit Camp Interface");
                 System.out.println("1. View Camps");
+                System.out.println("2. Register Camp");
+                System.out.println("3. Unregister Camp");
 
-            int choose_camp = this.scan_obj.nextInt();
+            int choose_camp = scanObj.nextInt();
             switch(choose_camp){
                 case 0:
                     loop_camp = false;
@@ -31,8 +34,12 @@ public class StudentCampApp implements CampApp{
 
                 case 1:
                     StudentCampView studView = new StudentCampView();
-                    studView.runViewCamp(campArray, cookie);
+                    studView.runViewCamp(campArray, cookie, scanObj);
                     break;
+                
+                case 2:
+                    StudentCampRegister studReg = new StudentCampRegister();
+                    studReg.runRegister(campArray, cookie);
             }
         }
         return true;

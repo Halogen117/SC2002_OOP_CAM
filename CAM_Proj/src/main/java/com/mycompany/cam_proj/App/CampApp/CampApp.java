@@ -7,11 +7,12 @@ package com.mycompany.cam_proj.App.CampApp;
 import com.mycompany.cam_proj.Camp;
 import com.mycompany.cam_proj.User;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author Halogen
  */
 interface CampApp {
-    boolean runCampApp(ArrayList<Camp> camp_array, User cookie);
+    boolean runCampApp(ArrayList<Camp> camp_array, User cookie, Scanner scanObj);
 }

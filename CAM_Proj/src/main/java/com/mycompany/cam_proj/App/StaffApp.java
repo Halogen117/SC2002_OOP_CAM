@@ -19,11 +19,11 @@ import java.util.Scanner;
  * @author Halogen
  */
 public class StaffApp implements App {
-    private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
+    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
     private DateFormatter date_format = new DateFormatter();
     private final LocalDateTime today  = date_format.convert_string_to_datetime(date_format.convert_datetime_to_string(LocalDateTime.now()));
     
-    public boolean runApp(ArrayList<Camp> campArray, User cookie){
+    public boolean runApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loopCont = true;
         while(loopCont){
             System.out.println("WELCOME STAFF "+cookie.getUserID()+":");
@@ -33,15 +33,15 @@ public class StaffApp implements App {
             // Generate report
             System.out.println("2. Change Password");
             System.out.println("0. Log out!");
-            int what_to_do = scan_obj.nextInt();
+            int what_to_do = scanObj.nextInt();
             switch(what_to_do){
                 case 1:
                     StaffCampApp staffCamper = new StaffCampApp();
-                    staffCamper.runCampApp(campArray, cookie);
+                    staffCamper.runCampApp(campArray, cookie, scanObj);
                     break;
                 case 2:
                     System.out.println("Please change your password!");
-                    String change_password = scan_obj.next();
+                    String change_password = scanObj.next();
                     cookie.setPassword(change_password);
                     System.out.println("Password has been changed!");
                     System.out.println("Logging out due to password change!");

@@ -19,8 +19,8 @@ import java.util.Scanner;
  * @author Halogen
  */
 public class StaffCampApp implements CampApp{
-    private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
-    public boolean runCampApp(ArrayList<Camp> campArray, User cookie){
+    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
+    public boolean runCampApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loop_camp = true;
         while(loop_camp){
             System.out.println("Welcome to the camp subsection");
@@ -30,7 +30,7 @@ public class StaffCampApp implements CampApp{
                 System.out.println("3. Remove Camp");
                 System.out.println("4. Create Camp");
 
-            int choose_camp = scan_obj.nextInt();
+            int choose_camp = scanObj.nextInt();
             switch(choose_camp){
                 case 0:
                     loop_camp = false;
@@ -43,17 +43,17 @@ public class StaffCampApp implements CampApp{
 
                 case 2:
                     StaffCampView staffView = new StaffCampView();
-                    staffView.runViewCamp(campArray, cookie);
+                    staffView.runViewCamp(campArray, cookie, scanObj);
                     break;
 
                 case 3:
                     DeleteCamp delCamp = new DeleteCamp();
-                    delCamp.runDeleteCamp(campArray);
+                    delCamp.runDeleteCamp(campArray, cookie);
                     break;
 
                 case 4:
                     StaffCampCreate staffCreate = new StaffCampCreate();
-                    if(staffCreate.runCreateCamp(campArray, cookie)== false){
+                    if(staffCreate.runCreateCamp(campArray, cookie, scanObj)== false){
                         System.out.println("Camp was not successfully created!");
                     };
                     break;

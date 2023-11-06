@@ -6,7 +6,7 @@ package com.mycompany.cam_proj.Login;
 
 import com.mycompany.cam_proj.User;
 import com.mycompany.cam_proj.compiledLists.StaffList;
-import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class StaffLogin implements Login{
     private Authenticate auth = new Authenticate();
-    public boolean runLogin(String fileLocation){
-        if(!auth.return_authenticate(StaffList.staffList)){
+    public boolean runLogin(String fileLocation, Scanner scanObj){
+        if(!auth.return_authenticate(StaffList.staffList, scanObj)){
             System.out.println("Unverified Staff! Try logging in again!");
             return false;
         }

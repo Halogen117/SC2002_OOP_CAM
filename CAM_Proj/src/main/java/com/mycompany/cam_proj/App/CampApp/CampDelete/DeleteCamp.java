@@ -14,13 +14,14 @@ import java.util.Scanner;
  */
 public class DeleteCamp {
     private Scanner scanObj = new Scanner(System.in);
-    public boolean runDeleteCamp(ArrayList<Camp> campArray){
+    public boolean runDeleteCamp(ArrayList<Camp> campArray, User cookie){
 // Print all camps
         if(campArray.isEmpty()){
             System.out.println("No camps exist at the moment!");
         }else{
             System.out.println("These are the camps that exist!");
             for(int i=1; i< campArray.size()+1; i++){
+                if(campArray.get(i-1).getStaffInCharge().equals(cookie.getUserID()))
                 System.out.println(i+". "+campArray.get(i-1).getCampName());
             }
             System.out.println("0. Exit decision to remove camp!");

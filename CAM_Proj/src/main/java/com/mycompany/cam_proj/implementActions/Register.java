@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author Halogen
  */
-interface Reply {
-    boolean runReply(ArrayList<Camp> camp_array, User cookie);
+interface Register {
+    boolean runRegister(ArrayList<Camp> camp_array, User cookie);
+    boolean runUnregister(ArrayList<Camp> camp_array, User cookie);
 }

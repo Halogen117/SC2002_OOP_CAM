@@ -9,7 +9,12 @@ import java.util.ArrayList;
  *
  * @author Halogen
  */
+
+
 public class Camp {
+    public enum visibilityStatus{
+        NOVISIBILE, FACULTY, ENTIRESCHOOL
+    }
     private String campName;
     private LocalDateTime date;
     private LocalDateTime regClosingDate;
@@ -18,11 +23,11 @@ public class Camp {
     private ArrayList<Student> campCommitteeSlots  = new ArrayList<Student>();
     private String description;
     private String staffInCharge;
-    private boolean visiblility;
+    private visibilityStatus visiblility;
     private ArrayList<Student> studentList = new ArrayList<Student>();
     private String faculty;
     private DateFormatter dateForm = new DateFormatter();
-    public Camp(String campName, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, ArrayList<Student> camp_committee_slots, String description, String staff_in_charge, boolean visiblility, String faculty){
+    public Camp(String campName, LocalDateTime date,LocalDateTime reg_closing_date, String location, int total_slot, ArrayList<Student> camp_committee_slots, String description, String staff_in_charge, visibilityStatus visiblility, String faculty){
         this.campName = campName;
         this.date = date;
         this.regClosingDate = reg_closing_date;
@@ -82,7 +87,7 @@ public class Camp {
         return this.studentList;
     }
     
-    public boolean getVisiblility(){
+    public visibilityStatus getVisiblility(){
         return this.visiblility;
     }
     public void setCampName(String campName){
@@ -143,7 +148,7 @@ public class Camp {
         this.staffInCharge = staffInCharge;
     }
     
-    public void setVisiblility(boolean visiblility){
+    public void setVisiblility(visibilityStatus visiblility){
         this.visiblility = visiblility;
     }
     

@@ -12,6 +12,10 @@ import java.util.ArrayList;
  *
  * @author Halogen
  */
-interface Reply {
+public interface GenerateReportReplyViewEditDelete extends GenerateReportAndReply, ViewEditDelete{
+    boolean runView(ArrayList<Camp> camp_array, User cookie);
+    boolean runEdit(ArrayList<Camp> camp_array, User cookie);
+    boolean runDelete(ArrayList<Camp> camp_array, User cookie);
+    boolean runGenerateReport(ArrayList<Camp> camp_array, User cookie);
     boolean runReply(ArrayList<Camp> camp_array, User cookie);
 }

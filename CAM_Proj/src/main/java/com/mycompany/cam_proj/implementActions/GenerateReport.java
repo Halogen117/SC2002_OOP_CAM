@@ -13,5 +13,5 @@ import java.util.ArrayList;
  * @author Halogen
  */
 interface GenerateReport {
-    boolean generateReport(ArrayList<Camp> camp_array, User cookie);
+    boolean runGenerateReport(ArrayList<Camp> camp_array, User cookie);
 }

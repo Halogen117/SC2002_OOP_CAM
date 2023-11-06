@@ -4,10 +4,16 @@
  */
 package com.mycompany.cam_proj.implementActions;
 
+import com.mycompany.cam_proj.Camp;
+import com.mycompany.cam_proj.User;
+import java.util.ArrayList;
+
 /**
  *
  * @author Halogen
  */
-interface GenerateReportAndReply {
+public interface GenerateReportAndReply extends GenerateReport, Reply{
+    boolean runGenerateReport(ArrayList<Camp> camp_array, User cookie);
     
+    boolean runReply(ArrayList<Camp> camp_array, User cookie);
 }

@@ -8,13 +8,14 @@ import com.mycompany.cam_proj.Camp;
 import com.mycompany.cam_proj.User;
 import com.mycompany.cam_proj.Student;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author Halogen
  */
 public class StaffCampView implements ViewCamp{
-public boolean runViewCamp(ArrayList<Camp> campArray, User cookie){
+public boolean runViewCamp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         if(campArray.isEmpty()){
             System.out.println("No camps exist at the moment!");
         }else{
@@ -26,7 +27,7 @@ public boolean runViewCamp(ArrayList<Camp> campArray, User cookie){
                 System.out.println("The location of the camp is "+campArray.get(i-1).getLocation());
                 System.out.println("The total slots available in the camp are "+campArray.get(i-1).getTotalSlot());
                 if(campArray.get(i-1).getCampCommitteeSlots().isEmpty()){
-                    System.out.println("There are no camps that exist at the moment.");
+                    System.out.println("There are no camp committee members that exist at the moment.");
                 }else{
                     System.out.println("The camp committee members so far are ");
                     for(Student stud: campArray.get(i-1).getCampCommitteeSlots()){

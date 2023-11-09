@@ -91,7 +91,7 @@ public class Enquiry {
 
     public void replyToEnquiry(String reply) {          //reply to enquiry
         this.reply = reply;
-        // You might want to update the status here if needed
+        this.status = Status.APPROVED;
     }
 
 

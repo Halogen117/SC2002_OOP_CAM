@@ -1,0 +1,53 @@
+package com.mycompany.cam_proj.App.EnquiryApp;
+import java.time.LocalDateTime;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+//Enquiry App class : main class that contains main method that handles overall flow
+//Status Enumeration : rep status of enquiries
+//EnquiriesInterface interface : define methods for viewing, editing,deleting enquiries 
+//EnquiriesMenuOptions : displaying menu items, getting user input 
+//EnquiriesListClass : class to manage the list of enquiries - add, remove enquiries 
+//Enquiry class : to represent an individual enquiry 
+
+
+enum Status {
+    APPROVED, PENDING, REJECTED;
+}
+
+public class Enquiry {
+    private String camp_name;   //campID or campname
+    private int userID;
+    private int enquiryID; // auto increment the Suggestion ID
+    private static int nextid = 1;
+
+    private String description;
+    private Status status;
+    private String reply;
+    private String nameofStudent;  //do we need name or just userID?
+    //private Date timestamp - need?
+
+    public Enquiry(String camp_name, int userID, String description, Status status, String reply, String nameofStudent) {
+        this.camp_name = camp_name;
+        this.userID = userID;
+        this.enquiryID = nextid;
+        this.description = description;
+        this.status = status;  //Status.PENDING?
+        this.reply = reply;
+        this.nameofStudent = nameofStudent;
+        nextid++;
+    }
+
+    public Enquiry(Scanner scanner) {
+        System.out.print("Enter your name: ");
+        this.nameofStudent= scanner.nextLine();
+        this.enquiryID = getNextID();
+        System.out.print("Enter Camp Name: ");
+        this.camp_name = scanner.nextLine();
+        System.out.print("Enter Description of Enquiry: ");
+        this.description = scanner.nextLine();
+        this.status = Status.PENDING;
+        
+        this.timestamp = new Date();
+

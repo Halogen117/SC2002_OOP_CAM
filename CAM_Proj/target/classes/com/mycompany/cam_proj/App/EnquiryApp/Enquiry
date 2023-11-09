@@ -11,6 +11,7 @@ import java.util.List;
 //EnquiriesListClass : class to manage the list of enquiries - add, remove enquiries 
 //Enquiry class : to represent an individual enquiry 
 
+// ID OR NAME??
 
 enum Status {
     APPROVED, PENDING, REJECTED;
@@ -20,7 +21,7 @@ public class Enquiry {
     private String camp_name;   //campID or campname
     private int userID;
     private int enquiryID; // auto increment the Suggestion ID
-    private static int nextid = 1;
+    private static int nextid = 001;    
 
     private String description;
     private Status status;
@@ -31,7 +32,7 @@ public class Enquiry {
     public Enquiry(String camp_name, int userID, String description, Status status, String reply, String nameofStudent) {
         this.camp_name = camp_name;
         this.userID = userID;
-        this.enquiryID = nextid;
+        this.enquiryID = nextid;    
         this.description = description;
         this.status = status;  //Status.PENDING?
         this.reply = reply;
@@ -39,7 +40,7 @@ public class Enquiry {
         nextid++;
     }
 
-    public Enquiry(Scanner scanner) {
+    public Enquiry(Scanner scanner) {                   //submitting enquiry
         System.out.print("Enter your name: ");
         this.nameofStudent= scanner.nextLine();
         this.enquiryID = getNextID();
@@ -48,6 +49,50 @@ public class Enquiry {
         System.out.print("Enter Description of Enquiry: ");
         this.description = scanner.nextLine();
         this.status = Status.PENDING;
-        
-        this.timestamp = new Date();
+        //this.timestamp = new Date();
 
+    }
+
+    public void viewEnquiryDetails() {              //view enquiry
+        System.out.println("Enquiry details:");
+        System.out.println("CampID: " + getCampID());
+        //System.out.println("Camp Name: " + getCampName());
+        System.out.println("EnquiryID: " + getEnquiryID());
+        //System.out.println("Student Name: " + getStudentName());
+        System.out.println("Enquiry: " + getDescription());
+        System.out.println("Status: " + getStatus());
+    }
+
+    public void updateStatus(Status newStatus){
+        this.status = newStatus;
+    }
+
+    public void approveEnquiry() {
+        this.status = Status.APPROVED;      //approve means will reply
+    }
+
+    public void rejectEnquiry() {
+        this.status = Status.REJECTED;
+    }
+
+    public void editEnquiry(String newMessage) {                //edit enquiry
+        this.message = newMessage;
+    }
+
+    public void deleteEnquiry(){                            //delete enquiry
+
+    }
+
+    public void deleteEnquiry() {
+        // Logic to delete the current Enquiry instance or mark it as deleted
+        // You may remove it from the EnquiriesList or set a flag indicating deletion
+        // Example: EnquiriesList.removeEnquiry(this);
+    }
+
+    public void replyToEnquiry(String reply) {          //reply to enquiry
+        this.reply = reply;
+        // You might want to update the status here if needed
+    }
+
+
+    view reply -  getReply method

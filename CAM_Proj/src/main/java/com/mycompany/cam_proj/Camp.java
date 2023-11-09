@@ -168,3 +168,6 @@ public class Camp {
         this.campCommitteeSlots.remove(stud);
     }
 }
+
+
+hi hi hi hi #just checking if my vs works 

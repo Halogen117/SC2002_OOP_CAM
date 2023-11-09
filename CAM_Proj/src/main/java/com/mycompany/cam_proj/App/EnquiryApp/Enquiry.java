@@ -1,8 +1,5 @@
 package com.mycompany.cam_proj.App.EnquiryApp;
-import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
 //Enquiry App class : main class that contains main method that handles overall flow
 //Status Enumeration : rep status of enquiries
@@ -19,6 +16,7 @@ enum Status {
 
 public class Enquiry {
     private String camp_name;   //campID or campname
+    private int campID;
     private int userID;
     private int enquiryID; // auto increment the Suggestion ID
     private static int nextid = 001;    
@@ -29,8 +27,9 @@ public class Enquiry {
     private String nameofStudent;  //do we need name or just userID?
     //private Date timestamp - need?
 
-    public Enquiry(String camp_name, int userID, String description, Status status, String reply, String nameofStudent) {
+    public Enquiry(String camp_name, int campID,int userID, String description, Status status, String reply, String nameofStudent) {
         this.camp_name = camp_name;
+        this.campID = campID;
         this.userID = userID;
         this.enquiryID = nextid;    
         this.description = description;
@@ -41,7 +40,7 @@ public class Enquiry {
     }
 
     public Enquiry(Scanner scanner) {                   //submitting enquiry
-        System.out.print("Enter your name: ");
+        System.out.print("Enter your name: ");       // ID or name?
         this.nameofStudent= scanner.nextLine();
         this.enquiryID = getNextID();
         System.out.print("Enter Camp Name: ");
@@ -56,9 +55,9 @@ public class Enquiry {
     public void viewEnquiryDetails() {              //view enquiry
         System.out.println("Enquiry details:");
         System.out.println("CampID: " + getCampID());
-        //System.out.println("Camp Name: " + getCampName());
+        System.out.println("Camp Name: " + getCampName());
         System.out.println("EnquiryID: " + getEnquiryID());
-        //System.out.println("Student Name: " + getStudentName());
+        System.out.println("Student Name: " + getStudentName());
         System.out.println("Enquiry: " + getDescription());
         System.out.println("Status: " + getStatus());
     }
@@ -75,24 +74,85 @@ public class Enquiry {
         this.status = Status.REJECTED;
     }
 
-    public void editEnquiry(String newMessage) {                //edit enquiry
-        this.message = newMessage;
+    public void editEnquiry(String newDescription) {                //edit enquiry
+        this.description = newDescription;
     }
 
     public void deleteEnquiry(){                            //delete enquiry
-
+        //remove from enquiry list?
+        this.status = Status.DELETED;
+        //EnquiriesList.removeEnquiry(this);
+    
     }
-
-    public void deleteEnquiry() {
-        // Logic to delete the current Enquiry instance or mark it as deleted
-        // You may remove it from the EnquiriesList or set a flag indicating deletion
-        // Example: EnquiriesList.removeEnquiry(this);
-    }
-
     public void replyToEnquiry(String reply) {          //reply to enquiry
         this.reply = reply;
         this.status = Status.APPROVED;
     }
 
+    public String getCampName() {
+        return camp_name;
+    }
 
-    view reply -  getReply method
+    public void setCampName(String campName) {
+        this.camp_name = campName;
+    }
+
+    public int getCampID(){
+        return campID;
+    }
+
+    public void setCampID(int campID){
+        this.campID = campID;
+    }
+    
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public int getEnquiryID() {
+        return enquiryID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public String getReply() {                      //view reply
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
+    }
+
+    public String getStudentName() {
+        return nameofStudent;
+    }
+
+    public void setStudentName(String nameofStudent) {
+        this.nameofStudent = nameofStudent;
+    }
+
+   // public Date getTimestamp() {
+       // return timestamp;
+    //}
+
+    
+
+}

@@ -1,5 +1,11 @@
+/**
+Represents the StaffPerformanceReportApp Object and the following assistance methods.
+A StaffPerformanceReportApp can be run multiple times depending on the number of reports to be made.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-3
+*/
 package com.mycompany.anothercam.StaffApplicationManager;
-
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
 import com.mycompany.anothercam.User;
@@ -15,7 +21,14 @@ import java.util.Scanner;
 
 
 public class StaffPerformanceReport {
-	
+    
+    /**
+    * Runs the Staff Performance Report Application..
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return the boolean value whether the Staff Performance Report of camp object was successful.
+    */
     public boolean runStaffPerformanceReport(ArrayList<Camp> campArray, User cookie, Scanner scanObj) throws IOException{
         DateFormatter dateFor = new DateFormatter();
 	//check if staff 
@@ -62,7 +75,16 @@ public class StaffPerformanceReport {
 
 	return true;
     }
-    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor) throws IOException{
+    
+    /**
+    * Runs the Staff Performance Report which is to be formatted to TXT.
+    * @param tempCampArray the temporary CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param writer FileWriter object used to write information into the txt file.
+    * @param dateFor DateFormatter object used to format any dates required.
+    * @return the boolean value whether the TXT Report is saved or not.
+    */
+    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor){
             try{
                 ReportTXTDAO genReport = new ReportTXTDAO(writer);
                 genReport.reportBeginnerHeader();
@@ -93,8 +115,17 @@ public class StaffPerformanceReport {
         return true;
     }
     
-    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename) throws IOException{
-        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename, "Staff Report");
+    /**
+    * Runs the Staff Performance Report which is to be formatted to CSV.
+    * @param tempCampArray the temporary CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param streamOut FileOutputStream object used to write information into the csv file.
+    * @param dateFor DateFormatter object used to format any dates required.
+    * @param filename String object where csv information will be saved into.
+    * @return the boolean value whether the CSV Report is saved or not.
+    */
+    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename){
+        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename);
         genReport.writeStaffPerformanceInfo();
         return true;
     }

@@ -1,9 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StudentCampApp Object and the following assistance methods.
+A StudentCampApp is only run once.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-27
+*/
 package com.mycompany.anothercam.StudentApplicationManager;
-
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
 import java.util.ArrayList;
@@ -14,7 +16,13 @@ import java.util.Scanner;
  * @author Halogen
  */
 public class StudentCampApp{
-    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
+    /**
+    * Runs the Student Camp Application to access main menu subsections for the different camp functions.
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
+    */
     public boolean runStudentCampApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loopCamp = true;
         while(loopCamp){

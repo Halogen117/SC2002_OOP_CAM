@@ -1,9 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StaffCampEdit Object and the following assistor methods.
+A StaffCampEdit can be called multiple times depending on how many camps to be edited.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-28
+*/
 package com.mycompany.anothercam.StaffApplicationManager;
-
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
 import com.mycompany.anothercam.User;
@@ -13,19 +15,20 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Halogen
- */
 public class StaffCampEdit{
     private ArrayList<Integer> countKeep = new ArrayList<Integer>();
-    private Scanner scanObj = new Scanner(System.in).useDelimiter("\n");
     private DateFormatter dateFormat = new DateFormatter();
     private LocalDateTime today = this.dateFormat.convert_string_to_datetime(this.dateFormat.convert_datetime_to_string(LocalDateTime.now()));
-    
-    public boolean runStaffEditCamp(ArrayList<Camp> campArray, User cookie){
 
-// Modify Existing Camp
+    /**
+    * Runs the Staff Edit Application.
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return the boolean value whether the edit of camp object was successful.
+    */
+    public boolean runStaffEditCamp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+        // Modify Existing Camp
         // Show options to change
         if(campArray.isEmpty()){
             System.out.println("No camps exist at the moment!");
@@ -40,7 +43,7 @@ public class StaffCampEdit{
             }   
         }
             System.out.println("0. Exit Edit Camp Main Menu");
-            int decision = this.scanObj.nextInt();
+            int decision = scanObj.nextInt();
             if(decision == 0){
                 System.out.println("Exiting Edit Camp Main Menu");
                 return false;
@@ -61,11 +64,11 @@ public class StaffCampEdit{
                 System.out.println("8. Remove Camp Committee Student");
                 System.out.println("9. Description");
                 System.out.println("Select which element you want to modify!");
-                int choice_modi = this.scanObj.nextInt();
+                int choice_modi = scanObj.nextInt();
                 switch(choice_modi){
                     case 1:
                         System.out.println("Insert the new Camp Name");
-                        String new_camp_name = this.scanObj.next();
+                        String new_camp_name = scanObj.next();
                         campArray.get(countKeep.indexOf(decision)).setCampName(new_camp_name);
                         System.out.println("The new camp name is "+campArray.get(countKeep.indexOf(decision)).getCampName());
                         break;
@@ -93,13 +96,13 @@ public class StaffCampEdit{
                         break;
                     case 4:
                         System.out.println("Insert the new Camp Location");
-                        String location = this.scanObj.next();
+                        String location = scanObj.next();
                         campArray.get(countKeep.indexOf(decision)).setLocation(location);
                         System.out.println("The new camp location is "+campArray.get(countKeep.indexOf(decision)).getLocation());
                         break;
                     case 5:
                         System.out.println("Insert the new camp total slots");
-                        int toal_slots = this.scanObj.nextInt();
+                        int toal_slots = scanObj.nextInt();
                         campArray.get(countKeep.indexOf(decision)).setTotalSlot(toal_slots);
                         System.out.println("The new total slot number is "+campArray.get(countKeep.indexOf(decision)).getTotalSlot());
                         break;
@@ -116,7 +119,7 @@ public class StaffCampEdit{
                         // Retrieve Student List
                         // And checks inside StudentList
                         System.out.println("Type in the name of the student you want to be a Camp Committee Member for");
-                        String studentToName = this.scanObj.next();
+                        String studentToName = scanObj.next();
                         // If the student is in th e
                         if(!StudentList.checkStudentInList(studentToName)){
                             System.out.println("Student Not Found!");
@@ -133,7 +136,7 @@ public class StaffCampEdit{
                         break;
                     case 7:
                         System.out.println("Insert the new Description");
-                        String descp = this.scanObj.next();
+                        String descp = scanObj.next();
                         campArray.get(countKeep.indexOf(decision)).setDescription(descp);
                         System.out.println("The new description is "+campArray.get(countKeep.indexOf(decision)).getDescription());
                         break;

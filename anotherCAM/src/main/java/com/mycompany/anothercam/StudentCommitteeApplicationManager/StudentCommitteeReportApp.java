@@ -1,20 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StudentCommitteeReportApp Object and the following assistance methods.
+A StudentCommitteeReportApp is run multiple times depending on how many times the user access the application.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-11
+*/
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
-
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Scanner;;
 
-/**
- *
- * @author Halogen
- */
 public class StudentCommitteeReportApp {
-public boolean runStaffReportApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+    /**
+    * Runs the Staff Report Application to access main menu subsections.
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
+    */
+    public boolean runStudentCommitteeReportApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loop_camp = true;
         while(loop_camp){
             System.out.println("Welcome to the Report Subsection");
@@ -28,9 +33,13 @@ public boolean runStaffReportApp(ArrayList<Camp> campArray, User cookie, Scanner
                     break;
 
                 case 1:
-                    CampCommitteeReport campReport = new CampCommitteeReport();
-                    campReport.runStudentCommitteeReport(campArray, cookie, scanObj);
-                    break;
+                    try{
+                        CampCommitteeReport campReport = new CampCommitteeReport();
+                        campReport.runStudentCommitteeReport(campArray, cookie, scanObj);
+                        break;
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
             }
         }
         return false;

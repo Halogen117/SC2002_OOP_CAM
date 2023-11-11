@@ -1,17 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StaffLogin Object and the following assistance methods.
+A StaffLogin can be called only once.
+The method is used to login for a staff user.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-1
+*/
 package com.mycompany.anothercam.Login;
 
 import com.mycompany.anothercam.User;
 import com.mycompany.anothercam.StaffList;
 import java.util.Scanner;
 
-/**
- *
- * @author Halogen
- */
 public class StaffLogin implements Login{
     private Authenticate auth = new Authenticate();
     public boolean runLogin(String fileLocation, Scanner scanObj){
@@ -22,6 +22,10 @@ public class StaffLogin implements Login{
         return true;
     }
     
+    /**
+    * Gets the Staff cookie of the Student Object.
+    * @return Staff Object denoted as cookie.
+    */
     public User getUserCookie(){
         return this.auth.getUserCookie();
     }

@@ -1,23 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.anothercam.StudentApplicationManager;
+/**
+* Runs the StudentCampView Object.
+* @param campArray the CampArray which the new camp object is stored.
+* @param cookie the User Object (A Student) which the requested user creates the Camp
+* @param scanObj takes in the scanner Object for automated testing.
+* @return the boolean value whether the deletion of camp object was successful.
+*/
 
+package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Camp.visibilityStatus;
-import com.mycompany.anothercam.Staff;
-import com.mycompany.anothercam.Student;
 import com.mycompany.anothercam.User;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Halogen
- */
+
 public class StudentCampView{
-    //private Scanner scanObj = new Scanner(System.in);
+     /**
+    * Runs the Student View Application..
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Student) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return the boolean value whether the viewing of camp object was successful.
+    */
     public boolean runStudentViewCamp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         // Filtered array based on faculty info
         ArrayList<Integer> getCampChoice = runViewCampListOut(campArray, cookie);

@@ -1,7 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StaffReportApp Object and the following assistance methods.
+A StaffReportApp can be run multiple times depending on the number of reports to be made.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-8
+*/
 package com.mycompany.anothercam.StaffApplicationManager;
 
 import com.mycompany.anothercam.Camp;
@@ -10,12 +13,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
-/**
- *
- * @author Halogen
- */
+
 public class StaffReportApp {
-    public boolean runStaffReportApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj) throws IOException{
+    
+    /**
+    * Runs the Staff Report Application to access main menu subsections.
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
+    */
+    public boolean runStaffReportApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loop_camp = true;
         while(loop_camp){
             System.out.println("Welcome to the report subsection");
@@ -38,9 +46,11 @@ public class StaffReportApp {
 
                 case 2:
                     StaffPerformanceReport staffPerRep = new StaffPerformanceReport();
-                    
-                    staffPerRep.runStaffPerformanceReport(campArray, cookie, scanObj);
-                    //staffView.runStaffViewCamp(campArray, cookie, scanObj);
+                    try{
+                        staffPerRep.runStaffPerformanceReport(campArray, cookie, scanObj);
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }
                     break;
 
                 case 3:

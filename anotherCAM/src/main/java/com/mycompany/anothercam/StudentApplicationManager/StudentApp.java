@@ -1,28 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StudentCampApp Object and the following assistance methods.
+A StudentCampApp is only run once.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-1
+*/
 package com.mycompany.anothercam.StudentApplicationManager;
-
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
 import com.mycompany.anothercam.User;
 import com.mycompany.anothercam.Student;
-import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.StudentCommitteeApplicationManager.StudentCommitteeApp;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Halogen
- */
 public class StudentApp{
     //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
     private DateFormatter date_format = new DateFormatter();
     private final LocalDateTime today  = date_format.convert_string_to_datetime(date_format.convert_datetime_to_string(LocalDateTime.now()));
     
+    /**
+    * Runs the Student Application to access main menu subsections.
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
+    */
     public boolean runStudentApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loopCont = true;
         while(loopCont){
@@ -62,12 +67,16 @@ public class StudentApp{
                     break;
                     
                 case 5:
-                    System.out.println("Attempting to access Student Committee Main Menu");
-                    if(checkCommitteeMember((Student) cookie)){
-                        StudentCommitteeApp commiApp = new StudentCommitteeApp();
-                        commiApp.runApp(campArray, cookie, scanObj);
-                    }else{
-                        System.out.println("You are not a Student Committee Member!");
+                    try{
+                        System.out.println("Attempting to access Student Committee Main Menu");
+                        if(checkCommitteeMember((Student) cookie)){
+                            StudentCommitteeApp commiApp = new StudentCommitteeApp();
+                            commiApp.runStudentCommitteeApp(campArray, cookie, scanObj);
+                        }else{
+                            System.out.println("You are not a Student Committee Member!");
+                        }
+                    }catch(Exception e){
+                        System.out.println(e);
                     }
                     break;
 

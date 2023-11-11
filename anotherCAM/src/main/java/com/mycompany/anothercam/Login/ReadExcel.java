@@ -1,9 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the Read Excel Object and the following methods that assist in the venture.
+A Read Excel Object can only be declared once
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-3
+*/
 package com.mycompany.anothercam.Login;
-
 import com.mycompany.anothercam.StudentList;
 import com.mycompany.anothercam.StaffList;
 import com.mycompany.anothercam.Staff;
@@ -17,18 +19,19 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-/**
- *
- * @author Halogen
- */
 public class ReadExcel {
-    public void  return_list(String initalizer, String filepath){
-        ArrayList<User> user_list = new ArrayList();
+    /**
+    * Sets the ArrayList of the Staff and the Student when acquired from the respective excel sheets.
+    * @param initalizer This variable is either a Student or Staff list.
+    * @param filePath The variable contains the file path where the excel file is read at.
+    */
+    public void return_list(String initalizer, String filePath){
+        ArrayList<User> userList = new ArrayList();
         StaffList staffListInt = new StaffList();
         StudentList studentListInt = new StudentList();
         try
         {
-            FileInputStream file = new FileInputStream(filepath);
+            FileInputStream file = new FileInputStream(filePath);
             
             //Create Workbook instance holding reference to .xlsx file
             XSSFWorkbook wb = new XSSFWorkbook(file);

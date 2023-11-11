@@ -1,18 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StaffDeleteCamp Object and the following assistor methods.
+A StaffDeleteCamp can be called multiple times depending on how many camps to be deleted.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-28
+*/
 package com.mycompany.anothercam.StaffApplicationManager;
-
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
 import java.util.ArrayList;
 import java.util.Scanner;
-/**
- *
- * @author Halogen
- */
+
 public class StaffDeleteCamp {
+    /**
+    * Runs the Staff Delete Application.
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Staff) which the requested user creates the Camp
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return the boolean value whether the deletion of camp object was successful.
+    */
     public boolean runStaffDeleteCamp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
 // Print all camps
         if(campArray.isEmpty()){

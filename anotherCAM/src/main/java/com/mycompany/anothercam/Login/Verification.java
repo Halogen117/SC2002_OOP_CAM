@@ -1,36 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the Verification Object and the following assistance methods.
+A verification object can be called multiple times depending on the use cases
+* Overall used in the CreateCamp functions and where scanner object is used
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-28
+*/
 package com.mycompany.anothercam.Login;
-import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Camp.visibilityStatus;
 import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 
-/**
- *
- * @author Halogen
- */
 // To verify all inputs when accessed to be boolean to return true for correct input and false for incorrect input
 public class Verification {
     private int loopTolerance = 5;
     private int loopLooper;
-    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
 
-    //private date_formatter date_format = new date_formatter();
-    //private final LocalDateTime today  = date_format.convert_string_to_datetime(date_format.convert_datetime_to_string(LocalDateTime.now()));
     
-    
+    /**
+    * Changes the loop tolerance of the Verification Object
+    * @param loopTolerance This camp's new location should just be a regular string in general.
+    *                      The validation is already done before the method is called.
+    *                      This loopTolerance variable is used to loop an error validation until the user gets the values right.
+    *                      If the validation exceeds loopTolerance, exit the validation.
+    */
     public void setLoopTolerance(int loopTolerance){
         this.loopTolerance = loopTolerance;
     }
     
+    /**
+    * Gets the loopTolerance count from the Verification Object.
+    * @return the loopTolerance count.
+    */
     public int getLoopTolerance(){
         return this.loopTolerance;
     }
+    
+    /**
+    * Returns the verification status whether a string is empty or not
+    * @param stringer takes in the string variable to verify if empty.
+    * @return boolean value of True if the string is successfully verified. False if the string is empty.
+    */
     private boolean verifyString(String stringer){
         if(stringer.isEmpty()){
             return false;
@@ -38,6 +49,11 @@ public class Verification {
         return true;
     }
     
+    /**
+    * Returns the verification status whether a integer is validated number or not.
+    * @param stringer takes in the integer variable to verify if valid.
+    * @return boolean value of True if the Integer is successfully verified. False if the Integer is not valid.
+    */
     private boolean verifyNumber(int number){
         // Edit to verify this shit
         try{
@@ -46,6 +62,14 @@ public class Verification {
             return false;
         }
     }
+    
+    /**
+    * Returns the verification status whether the Camp Name is valid.
+    * @param campName takes in the campName of the camp to be added into the application
+    * @param questionAsked takes in the question to be asked when entering the Camp Name.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return boolean value of True if the Integer is successfully verified. False if the Integer is not valid.
+    */
     public String verifyCampName(String campName, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             while(true){
@@ -73,7 +97,11 @@ public class Verification {
         return null;
     }
     
-    
+    /**
+    * Returns the verification status whether the Camp Date is valid.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return integer array of the date values. Return null if invalid values.
+    */
     public int[] verifyDate(Scanner scanObj){
         int[] timeArray = new int[5];
         while(this.loopTolerance != this.loopLooper){
@@ -144,11 +172,20 @@ public class Verification {
         this.loopLooper = 0;
         return null;
     }
-    
+    /*
     public boolean verifyRegistrationClosingDate(){
+        //this.d
         return true;
     }
+    */
     
+    /**
+    * Returns the verification status whether the Camp Location is valid.
+    * @param location takes in the location of the camp to be added into the application.
+    * @param questionAsked takes in the question to be asked when entering the Camp Name.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return string of the location values. Return null if invalid values.
+    */
     public String verifyCampLocation(String location, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);
@@ -176,6 +213,13 @@ public class Verification {
         
     }
     
+    /**
+    * Returns the verification status whether the student attendee count is valid.
+    * @param totalStudent takes in the student attendee count of the camp to be added into the application.
+    * @param questionAsked takes in the question to be asked when entering the Camp Name.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return integer of the student attendee count. Return -1 if invalid values.
+    */
     public int verifyTotalStudents(int totalStudent, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);
@@ -197,6 +241,13 @@ public class Verification {
         return -1;
     }
     
+    /**
+    * Returns the verification status whether the camp committee count is valid.
+    * @param inputCampCom takes in the camp committee count of the camp to be added into the application.
+    * @param questionAsked takes in the question to be asked when entering the Camp Name.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return integer of the camp committee count. Return -1 if invalid values.
+    */
     public int verifyCampCommittee(int inputCampCom, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);
@@ -222,6 +273,14 @@ public class Verification {
         this.loopLooper = 0;
         return -1;
     }
+    
+    /**
+    * Returns the verification status whether the camp description is valid.
+    * @param description takes in the description of the camp to be added into the application.
+    * @param questionAsked takes in the question to be asked when entering the Camp Name.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return string of the description. Return null if invalid values.
+    */
     public String verifyDescription(String description, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             while(true){
@@ -246,7 +305,13 @@ public class Verification {
         return null;
     }    
 
-    
+    /**
+    * Returns the verification status whether the camp toggle visibility is valid.
+    * @param togVisible takes in the visibility status of the camp to be added into the application. The value is either 1,2,3 which corresponds to the visibility enum.
+    * @param questionAsked takes in the question to be asked when entering the Camp Name.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return visibility enumeration of the camp. Return No Visible enumeration if invalid values.
+    */
     public visibilityStatus verifyToggleVisiblity(int togVisible, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);

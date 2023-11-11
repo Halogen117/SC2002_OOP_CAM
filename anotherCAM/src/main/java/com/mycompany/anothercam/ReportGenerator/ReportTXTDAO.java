@@ -1,39 +1,58 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the ReportTXTDAO Object and the following assistance methods.
+A ReportTXTDAO object can be called multiple times
+The class here creates the report format for TXT based on the information given from the camp Array. 
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-5
+*/
+
 package com.mycompany.anothercam.ReportGenerator;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
 import java.io.FileWriter; 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
-/**
- *
- * @author Halogen
- */
 public class ReportTXTDAO {
     private FileWriter writer;
+    
+    /**
+    * The ReportTXTDAO Constructor.
+    * @param writer FileWriter Object to write into the txt report.
+    */
     public ReportTXTDAO(FileWriter writer){
         this.writer = writer;
     }
+    
+    /**
+    * Writes the TXT beginner header into the TXT Report.
+    */
     public void reportBeginnerHeader() throws IOException{
         this.writer.write("============================================\n");
         this.writer.write("REPORT TRANSCRIPT BEGIN \n");
         this.writer.write("============================================\n");
     }
 
+    /**
+    * Writes the TXT ending header into the TXT Report.
+    */
     public void reportEndingHeader() throws IOException{
         writer.write("\n============================================\n");
         writer.write("REPORT TRANSCRIPT END \n");
         writer.write("============================================\n");
     }
 
+    /**
+    * Writes the TXT date of report generated header into the TXT Report.
+    */
     public void reportGenerateTodayDateHeader(DateFormatter dateFor) throws IOException{
         writer.write("DATE OF REPORT GENERATED: "+ dateFor.convert_datetime_to_string(LocalDateTime.now())+" \n");
     }
+    
+    /**
+    * Writes the Camp Details of the report into the TXT Report.
+    */
     public void reportPrintCampDetails(Camp campPrint, int i) throws IOException{
         writer.write("\n============================================\n");
         writer.write("CAMP Number "+i+"\n");
@@ -46,6 +65,9 @@ public class ReportTXTDAO {
         writer.write("CAMP Staff-in-charge: "+campPrint.getStaffInCharge()+" \n");
     }
     
+    /**
+    * Writes the Camp Committee Details of the report into the TXT Report.
+    */
     public void reportPrintCommitteeDetails(Camp campPrint, int i) throws IOException{
         if(campPrint.getCampCommitteeList().size() <=0){
             writer.write("No Students signed up for Camp as Committee Members Yet! \n");
@@ -57,6 +79,9 @@ public class ReportTXTDAO {
         }
     }
 
+    /**
+    * Writes the Student Attendee Details of the report into the TXT Report.
+    */
     public void reportPrintAttendeeDetails(Camp campPrint, int i) throws IOException{
         if(campPrint.getCampStudentList().size() <=0){
             writer.write("No Students signed up for Camp as Attendees Yet! \n");

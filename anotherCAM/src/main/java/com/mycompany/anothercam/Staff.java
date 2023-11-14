@@ -7,6 +7,9 @@ A staff can create multiple camps.
 */
 package com.mycompany.anothercam;
 
+import java.util.ArrayList;
+import com.mycompany.anothercam.StaffList;
+
 
 public class Staff extends User{
     /**
@@ -19,4 +22,5 @@ public class Staff extends User{
     public Staff(String userID, String email, String facultyInfo){
         super(userID, email, facultyInfo);
     }
+    
 }

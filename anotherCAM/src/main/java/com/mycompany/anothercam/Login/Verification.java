@@ -65,6 +65,29 @@ public class Verification {
     
     /**
     * Returns the verification status whether the Camp Name is valid.
+    * @param scanObj takes in the scanner Object for automated testing.
+    * @return integer value if the Integer is successfully verified. -1 if the Integer is not valid.
+    */
+    public int verifyScannerNumber(Scanner scanObj){
+        while(this.loopTolerance != this.loopLooper){
+            while(true){
+                try{
+                    int number = scanObj.nextInt();
+                    return number;
+                }catch(Exception e){
+                    scanObj.nextLine();
+                    System.out.println("Invalid Integer Input! Please Try Again!");
+                    this.loopLooper += 1;
+                    break;
+                }
+            }
+        }
+        this.loopLooper = 0;
+        return -1;
+    }
+    
+    /**
+    * Returns the verification status whether the Camp Name is valid.
     * @param campName takes in the campName of the camp to be added into the application
     * @param questionAsked takes in the question to be asked when entering the Camp Name.
     * @param scanObj takes in the scanner Object for automated testing.

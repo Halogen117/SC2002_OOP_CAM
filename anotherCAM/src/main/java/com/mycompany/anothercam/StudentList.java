@@ -1,17 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/**
+Represents the StudentList Object and the following mutator methods.
+A studentList has multiple staff members in it.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-28
+*/
 package com.mycompany.anothercam;
-
-import com.mycompany.anothercam.Student;
-import com.mycompany.anothercam.User;
 import java.util.ArrayList;
 
-/**
- *
- * @author Halogen
- */
+
 public class StudentList {
     public static ArrayList<User> studList = new ArrayList<User>();
 
@@ -71,5 +68,19 @@ public class StudentList {
             }
         }
         return null;
+    }
+    
+    /**
+    * Returns faculty which the students are in as a String ArrayList. 
+    * @return the String ArrayList of the faculties the students are in.
+    */
+    public ArrayList<String> getFacultyStudentList(){
+        ArrayList<String> facultyList = new ArrayList<String>();
+        for(int i=0; i< studList.size(); i++){
+            if(!facultyList.contains(StudentList.studList.get(i).getFacultyInfo())){
+                facultyList.add(StudentList.studList.get(i).getFacultyInfo());
+            } 
+        }
+        return facultyList;
     }
 }

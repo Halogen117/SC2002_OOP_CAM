@@ -5,14 +5,15 @@
 
 package com.mycompany.anothercam;
 
-import java.util.Scanner;
-import java.util.ArrayList;
+
 import com.mycompany.anothercam.Login.*;
 import com.mycompany.anothercam.StudentApplicationManager.StudentApp;
 import com.mycompany.anothercam.StaffApplicationManager.StaffApp;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.FileReader;
 
 /**
  *
@@ -22,11 +23,11 @@ public class AnotherCAM {
 
     public static void main(String[] args) throws FileNotFoundException, IOException{
         System.out.println("Hello World!");
-// Retrieve xlsx  file
+        // Retrieve xlsx  file
         // Function to take in xlsx file and return the list array
 
         ReadExcel re_ex = new ReadExcel();
-        
+        Verification verifier = new Verification();
         String studentFileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2006 - Software Engineering\\CAM_Proj\\src\\main\\resources\\student list.xlsx";
         re_ex.return_list("Student", studentFileLocation);
 
@@ -41,8 +42,8 @@ public class AnotherCAM {
         */ 
             //Scanner scan_obj = new Scanner(System.in);
         final String fileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2002 - Object Oriented Des & Prog\\anotherCAM\\input.txt";
-        final Scanner scanObj = new Scanner(new FileReader(fileLocation));
-        //final Scanner scanObj = new Scanner(System.in);
+        //final Scanner scanObj = new Scanner(new FileReader(fileLocation));
+        final Scanner scanObj = new Scanner(System.in);
         ArrayList<Camp> campArray = new ArrayList<Camp>();
         StaffLogin staffLogger  =new StaffLogin();
         StudentLogin studentLogger  =new StudentLogin();
@@ -53,8 +54,8 @@ public class AnotherCAM {
             System.out.println("1. Login as a Student");
             System.out.println("2. Login as a Staff");
             
-            int take_input = scanObj.nextInt();
-            switch(take_input){
+            int takeInput = verifier.verifyScannerNumber(scanObj);
+            switch(takeInput){
                 case 1:
                     System.out.println("Running Student!");
                     if(studentLogger.runLogin(studentFileLocation, scanObj)){

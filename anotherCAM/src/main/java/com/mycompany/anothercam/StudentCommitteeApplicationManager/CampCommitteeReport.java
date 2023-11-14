@@ -9,6 +9,7 @@ A CampCommitteeReport can be run multiple times depending on the number of repor
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.ReportGenerator.ReportCSVDAO;
 import com.mycompany.anothercam.Student;
 import com.mycompany.anothercam.User;
@@ -31,7 +32,7 @@ public class CampCommitteeReport{
         */
 	public boolean runStudentCommitteeReport(ArrayList<Camp> campArray, User cookie, Scanner scanObj) throws IOException{
             DateFormatter dateFor = new DateFormatter();
-
+            Verification verifier = new Verification();
             //ask for filters
             System.out.println("What filters would you like?");
             System.out.println("1. Quit filter selection");
@@ -46,16 +47,31 @@ public class CampCommitteeReport{
                     tempCampArray.add(campArray.get(i));
                 } 
             }
+            
+            if(tempCampArray.size() <=0){
+                System.out.println("There are no camps to create Camp Committee Reports for!");
+                return false;
+            }
             //create string array
             //String[] studentlist_report =  new String[StudentList.studList.size()];   //Declaration of the String Array without specifying the size  
-            int filter = scanObj.nextInt();
+            int filter = verifier.verifyScannerNumber(scanObj);
+            boolean activateAlphabetical = false;
+            switch(filter){
+                case 0:
+                    return true;
+                case 1:
+                    break;
+                case 2:
+                    activateAlphabetical = true;
+                    System.out.println("Which faculty would");
+            }
 
             //choose format
             System.out.println("What format would you like the report to be?");
             System.out.println("1. txt");
             System.out.println("2. csv");
             System.out.println("0. Exit Report Format");
-            int format = scanObj.nextInt();
+            int format = verifier.verifyScannerNumber(scanObj);
             FileWriter writer;
             FileOutputStream  streamOut;
             //check validity of input
@@ -64,10 +80,10 @@ public class CampCommitteeReport{
 
             if(format == 1){
                 writer = new FileWriter(filename+".txt");
-                writeInText(tempCampArray, cookie, writer, dateFor);
+                writeInText(tempCampArray, cookie, writer, dateFor, activateAlphabetical);
             }else if(format == 2){
                 streamOut = new FileOutputStream(new File(filename+".csv"));
-                writeInCSV(tempCampArray, cookie, streamOut, dateFor, filename+".csv"); 
+                writeInCSV(tempCampArray, cookie, streamOut, dateFor, filename+".csv", activateAlphabetical); 
             }else if(format == 0){
                 return false;
             }else{
@@ -85,9 +101,9 @@ public class CampCommitteeReport{
     * @param dateFor DateFormatter object used to format any dates required.
     * @return the boolean value whether the TXT Report is saved or not.
     */
-    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor) throws IOException{
+    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor, boolean activateAlphabetical) throws IOException{
         try{
-            ReportTXTDAO genReport = new ReportTXTDAO(writer);
+            ReportTXTDAO genReport = new ReportTXTDAO(writer, activateAlphabetical);
         
         genReport.reportBeginnerHeader();
         writer.write("COMMITTEE REPORT FOR CAMP COMMITTEE "+cookie.getUserID()+" \n");
@@ -115,8 +131,8 @@ public class CampCommitteeReport{
     * @param filename String object where csv information will be saved into.
     * @return the boolean value whether the CSV Report is saved or not.
     */
-    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename) throws IOException{
-        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename);
+    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename, boolean activateAlphabetical) throws IOException{
+        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename, activateAlphabetical);
         genReport.writeCampCommitteeInfo();
         return true;
     }

@@ -13,7 +13,7 @@ import com.mycompany.anothercam.User;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.io.IOException;
+import com.mycompany.anothercam.Login.Verification;
 
 public class StaffApp{
     //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
@@ -29,6 +29,7 @@ public class StaffApp{
     */
     public boolean runApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         boolean loopCont = true;
+        Verification verifier = new Verification();
         while(loopCont){
             if(cookie == null){
                 loopCont = false;
@@ -47,15 +48,19 @@ public class StaffApp{
             
             System.out.println("6. Change Password");
             
-            int what_to_do = scanObj.nextInt();
+            int what_to_do = verifier.verifyScannerNumber(scanObj);
             switch(what_to_do){
                 case 1:
                     StaffCampApp staffCamper = new StaffCampApp();
                     staffCamper.runStaffCampApp(campArray, cookie, scanObj);
                     break;
                     
+                case 3:
+                    System.out.println("Accessing Suggestion Subsection!");
+                    SuggestionStaffApp sugstaff = new SuggestionStaffApp();
+                    sugstaff.runSuggestionStaffApp(campArray, cookie, scanObj);
                 case 4:
-                    System.out.println("Accessing Student Status Subsection!");
+                    System.out.println("Accessing Staff Status Subsection!");
                     StaffStatusApp statStaff = new StaffStatusApp();
                     statStaff.runStaffStatusApp(campArray, cookie,scanObj);
                 

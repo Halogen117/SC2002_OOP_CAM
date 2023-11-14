@@ -63,6 +63,7 @@ public class Camp {
         this.visiblility = visiblility;
         this.faculty = faculty;
     }
+    
     /**
     * Gets the campID of the Camp Object.
     * @return the campID of the camp.

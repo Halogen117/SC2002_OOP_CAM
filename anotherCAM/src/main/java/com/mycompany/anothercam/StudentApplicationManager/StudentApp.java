@@ -8,10 +8,10 @@ A StudentCampApp is only run once.
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.User;
 import com.mycompany.anothercam.Student;
 import com.mycompany.anothercam.StudentCommitteeApplicationManager.StudentCommitteeApp;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,6 +29,7 @@ public class StudentApp{
     * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
     */
     public boolean runStudentApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+        Verification verifier = new Verification();
         boolean loopCont = true;
         while(loopCont){
             if(cookie == null){
@@ -48,7 +49,7 @@ public class StudentApp{
             
             System.out.println("6. Change Password");
             System.out.println("0. Log out!");
-            int what_to_do = scanObj.nextInt();
+            int what_to_do = verifier.verifyScannerNumber(scanObj);
             switch(what_to_do){
                 case 1:
                     StudentCampApp studentCamper = new StudentCampApp();
@@ -58,6 +59,9 @@ public class StudentApp{
                     break;
                     
                 case 3:
+                    System.out.println("Accessing Suggestion Subsection!");
+                    SuggestionStudentApp sugstaff = new SuggestionStudentApp();
+                    sugstaff.runSuggestionStudentApp(campArray, cookie, scanObj);
                     break;
                     
                 case 4:

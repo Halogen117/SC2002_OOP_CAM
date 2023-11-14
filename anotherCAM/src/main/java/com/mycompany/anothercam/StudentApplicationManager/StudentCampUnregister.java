@@ -7,8 +7,11 @@ A StudentCampUnregister is ran dependent on how many users are going to unregist
 */
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.Student;
 import com.mycompany.anothercam.User;
+import static com.mycompany.anothercam.UnregisterList.unregisterListCamp;
+import static com.mycompany.anothercam.UnregisterList.unregisterListUser;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,10 +28,7 @@ public class StudentCampUnregister {
     * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
     */
     public boolean runUnregister(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
-        if(checkCommitteeMember((Student) cookie)){
-            System.out.println("As you are a Committee Member, you cannot quit the camp!");
-            return false;
-        }
+        Verification verifier = new Verification();
         if(campArray.isEmpty()){
             System.out.println("No camps to register for!");
             return false;
@@ -37,15 +37,22 @@ public class StudentCampUnregister {
             System.out.println("Unregister as a");
             System.out.println("0. Exit Unregister Main Menu");
             System.out.println("1. Camp Attendee");
-            int choiceUnAttend = scanObj.nextInt();
+            System.out.println("2. Camp Committee Member");
+            int choiceUnAttend = verifier.verifyScannerNumber(scanObj);
             if(choiceUnAttend == 0){
                 return false;
             }
             System.out.println("Which camp would you like to unregister?");
             StudentCampView studView = new StudentCampView();
+            ArrayList<Integer> choice =  null;
+            Student cookStud = (Student) cookie;
+            if(cookStud.getCampCommittee()){
+                choice  =studView.runViewCampListOutCampCommittee(campArray, cookie);
+            }else{
+                choice  =studView.runViewCampListOutAttendee(campArray, cookie);
+            }
             
-            ArrayList<Integer> choice = studView.runViewCampListOut(campArray, cookie);
-            int chooseChoice = scanObj.nextInt();
+            int chooseChoice = verifier.verifyScannerNumber(scanObj);
             if(choice == null){
                 System.out.print("No Camps exist at the moment!");
                 return true;
@@ -53,7 +60,7 @@ public class StudentCampUnregister {
                 System.out.println("Choice outside of input! Exiting Unregister Main Menu!");
                 return false;
             }
-            System.out.println("Are you sure you want to register for Camp "+campArray.get(chooseChoice-1).getCampName()+"? (Y/N)");
+            System.out.println("Are you sure you want to unregister for Camp "+campArray.get(chooseChoice-1).getCampName()+"? (Y/N)");
             String yes_no = scanObj.next();
             
             if(yes_no.equals("Y") || yes_no.equals("YES")){
@@ -66,10 +73,22 @@ public class StudentCampUnregister {
                     System.out.println("You are not an attendee in the camp!");
                     return false;
                 }
-                // This should be repurposed to remove the student if the request is successful
+                
                 if(choiceUnAttend == 1){
                     campArray.get(chooseChoice-1).removeStudentToList((Student) cookie);
+                    System.out.println("Removal of Student "+cookie.getUserID()+" from Camp "+campArray.get(chooseChoice-1)+" successful!");
+                }else if(choiceUnAttend == 2){
+                    if(!checkCommitteeMember((Student) cookie)){
+                        System.out.println("You are not a committee member of any camp!");
+                        return false;
+                    }else{
+                        System.out.println("As a student committee member of the camp, you are not allowed to remove yourself off from the camp");
+                        return false;
+                        
+                    }
+
                 }
+                // This should be repurposed to remove the student if the request is successful
                 /*
                 else if(choiceUnAttend == 2){
                     // Check if camp Committee

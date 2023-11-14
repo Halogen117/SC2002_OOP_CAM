@@ -8,6 +8,7 @@ A StaffPerformanceReportApp can be run multiple times depending on the number of
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.User;
 import com.mycompany.anothercam.ReportGenerator.ReportTXTDAO;
 import com.mycompany.anothercam.ReportGenerator.ReportCSVDAO;
@@ -31,13 +32,14 @@ public class StaffPerformanceReport {
     */
     public boolean runStaffPerformanceReport(ArrayList<Camp> campArray, User cookie, Scanner scanObj) throws IOException{
         DateFormatter dateFor = new DateFormatter();
+        Verification verifier = new Verification();
 	//check if staff 
 		
 		//ask for filters
 		System.out.println("What filters would you like?");
-		System.out.println("1. Quit filter selection");
-                System.out.println("2. No Filter");
-		System.out.println("3. Filter by Student's faculty");
+		System.out.println("0. Quit filter selection");
+                System.out.println("1. No Filter");
+		System.out.println("2. Filter by Student's faculty");
                 
                 // Find camp first
                 ArrayList<Camp> tempCampArray = new ArrayList<Camp>();
@@ -46,14 +48,31 @@ public class StaffPerformanceReport {
                         tempCampArray.add(campArray.get(i));
                     } 
                 }
+                
+                if(tempCampArray.size() <=0){
+                    System.out.println("There are no camps to create performance reports for!");
+                    return false;
+                }
 		//create string array
-                int filter = scanObj.nextInt();
+                int filter = verifier.verifyScannerNumber(scanObj);
+                
+            boolean activateAlphabetical = false;
+            switch(filter){
+                case 0:
+                    return true;
+                case 1:
+                    break;
+                case 2:
+                    activateAlphabetical = true;
+                    System.out.println("Which faculty would");
+            }
                 //choose format
 		System.out.println("What format would you like the report to be?");
+                System.out.println("0. Exit Report Format");
 		System.out.println("1. txt");
 		System.out.println("2. csv");
-                System.out.println("0. Exit Report Format");
-                int format = scanObj.nextInt();
+                
+                int format = verifier.verifyScannerNumber(scanObj);
                 FileWriter writer;
                 FileOutputStream  streamOut;
 		//check validity of input
@@ -62,10 +81,10 @@ public class StaffPerformanceReport {
                 
                 if(format == 1){
                     writer = new FileWriter(filename+".txt");
-                    writeInText(campArray, cookie, writer, dateFor);
+                    writeInText(campArray, cookie, writer, dateFor, activateAlphabetical);
                 }else if(format == 2){
                     streamOut = new FileOutputStream(new File(filename+".csv"));
-                    writeInCSV(campArray, cookie, streamOut, dateFor, filename+".csv"); 
+                    writeInCSV(campArray, cookie, streamOut, dateFor, filename+".csv", activateAlphabetical); 
                 }else if(format == 0){
                     return false;
                 }else{
@@ -84,9 +103,9 @@ public class StaffPerformanceReport {
     * @param dateFor DateFormatter object used to format any dates required.
     * @return the boolean value whether the TXT Report is saved or not.
     */
-    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor){
+    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor, boolean activateAlphabetical){
             try{
-                ReportTXTDAO genReport = new ReportTXTDAO(writer);
+                ReportTXTDAO genReport = new ReportTXTDAO(writer, activateAlphabetical);
                 genReport.reportBeginnerHeader();
                 writer.write("PERFORMANCE REPORT FOR STAFF "+cookie.getUserID()+" \n");
                 genReport.reportGenerateTodayDateHeader(dateFor);
@@ -124,8 +143,8 @@ public class StaffPerformanceReport {
     * @param filename String object where csv information will be saved into.
     * @return the boolean value whether the CSV Report is saved or not.
     */
-    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename){
-        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename);
+    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename, boolean activateAlphabetical){
+        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename, activateAlphabetical);
         genReport.writeStaffPerformanceInfo();
         return true;
     }

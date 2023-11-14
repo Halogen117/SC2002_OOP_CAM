@@ -7,6 +7,7 @@ A StudentCampApp is only run once.
 */
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.User;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,6 +25,7 @@ public class StudentCampApp{
     * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
     */
     public boolean runStudentCampApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+        Verification verifier = new Verification();
         boolean loopCamp = true;
         while(loopCamp){
             if(cookie == null){
@@ -36,7 +38,7 @@ public class StudentCampApp{
             System.out.println("2. Register Camp");
             System.out.println("3. Unregister Camp");
 
-            int chooseCamp = scanObj.nextInt();
+            int chooseCamp = verifier.verifyScannerNumber(scanObj);
             switch(chooseCamp){
                 case 0:
                     loopCamp = false;

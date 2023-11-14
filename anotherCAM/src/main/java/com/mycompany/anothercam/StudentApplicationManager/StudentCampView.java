@@ -9,7 +9,9 @@
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Camp.visibilityStatus;
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.User;
+import com.mycompany.anothercam.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,12 +25,19 @@ public class StudentCampView{
     * @return the boolean value whether the viewing of camp object was successful.
     */
     public boolean runStudentViewCamp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+        Verification verifier = new Verification();
         // Filtered array based on faculty info
-        ArrayList<Integer> getCampChoice = runViewCampListOut(campArray, cookie);
+        Student studCook = (Student) cookie;
+        ArrayList<Integer> getCampChoice = null;
+        if(studCook.getCampCommittee()){
+            getCampChoice = runViewCampListOutCampCommittee(campArray, cookie);
+        }else{
+            getCampChoice = runViewCampListOutAttendee(campArray, cookie);
+        }
         if(getCampChoice == null){
             return true;
         }
-        int chooseCampChoice = scanObj.nextInt();
+        int chooseCampChoice = verifier.verifyScannerNumber(scanObj);;
 
         if(chooseCampChoice == 0){
             System.out.println("Exiting Viewing Camp menu!");
@@ -72,7 +81,7 @@ public class StudentCampView{
         return true;
     }
     
-    public ArrayList<Integer> runViewCampListOut(ArrayList<Camp> campArray, User cookie){
+    public ArrayList<Integer> runViewCampListOutAttendee(ArrayList<Camp> campArray, User cookie){
         ArrayList<Integer> countKeep = new ArrayList<Integer>();
         // Filtered array based on faculty info
         if(!checkCampValid(campArray, cookie)){
@@ -80,12 +89,31 @@ public class StudentCampView{
             return null;
         }else{
             System.out.println("Which camp would you like to view? ");
-            //int campChoice = scanObj.nextInt();
                 for(int i=1; i< campArray.size()+1; i++){
                     if((campArray.get(i-1).getVisiblility().equals(visibilityStatus.FACULTY)&& campArray.get(i-1).getFaculty().matches(cookie.getFacultyInfo()))|| campArray.get(i-1).getVisiblility().equals(visibilityStatus.ENTIRESCHOOL)){
                         countKeep.add(i);
                         int remainigSlot = campArray.get(countKeep.indexOf(i)).getTotalSlot() - campArray.get(countKeep.indexOf(i)).getCampStudentList().size();
-                        System.out.println(countKeep.indexOf(i)+1+". Camp "+campArray.get(countKeep.indexOf(i)).getCampName()+" on display! (Remaining Slots: "+remainigSlot+")");
+                        System.out.println(countKeep.indexOf(i)+1+". Camp "+campArray.get(countKeep.indexOf(i)).getCampName()+" on display! (Remaining Attendee Slots: "+remainigSlot+")");
+                    }
+                }
+                System.out.println("0. Exit Camp View");
+                return countKeep;
+        }
+    }
+    
+    public ArrayList<Integer> runViewCampListOutCampCommittee(ArrayList<Camp> campArray, User cookie){
+        ArrayList<Integer> countKeep = new ArrayList<Integer>();
+        // Filtered array based on faculty info
+        if(!checkCampValid(campArray, cookie)){
+            System.out.println("No camps exist at the moment!");
+            return null;
+        }else{
+            System.out.println("Which camp would you like to view? ");
+                for(int i=1; i< campArray.size()+1; i++){
+                    if((campArray.get(i-1).getVisiblility().equals(visibilityStatus.FACULTY)&& campArray.get(i-1).getFaculty().matches(cookie.getFacultyInfo()))|| campArray.get(i-1).getVisiblility().equals(visibilityStatus.ENTIRESCHOOL)){
+                        countKeep.add(i);
+                        int remainigSlot = campArray.get(countKeep.indexOf(i)).getCampCommitteeSlots()- campArray.get(countKeep.indexOf(i)).getCampCommitteeList().size();
+                        System.out.println(countKeep.indexOf(i)+1+". Camp "+campArray.get(countKeep.indexOf(i)).getCampName()+" on display! (Remaining Camp Committee Slots: "+remainigSlot+")");
                     }
                 }
                 System.out.println("0. Exit Camp View");

@@ -29,6 +29,7 @@ public class ReportCSVDAO {
     private String sheetName;
     private CSVWriter csvFile;
     private ArrayList<Camp> tempCampArray;
+    private boolean activateAlphabetical;
     //private FileOutputStream streamOut;
     /*
     public ReportCSVDAO(FileOutputStream streamOut,String filename, String sheetName){
@@ -44,9 +45,10 @@ public class ReportCSVDAO {
     * @param tempCampArray The ArrayList containing the camp Array to be printed out
     * @param filename The filename to specify the creation of the report.
     */
-    public ReportCSVDAO(ArrayList<Camp> tempCampArray, String filename){
+    public ReportCSVDAO(ArrayList<Camp> tempCampArray, String filename, boolean activateAlphabetical){
         this.filename = filename;
         this.tempCampArray = tempCampArray;
+        this.activateAlphabetical = activateAlphabetical;
     }
     
     /**

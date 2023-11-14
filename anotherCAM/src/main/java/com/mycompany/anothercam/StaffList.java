@@ -45,4 +45,20 @@ public class StaffList {
     public void removeStaffToList(User staffie){
         this.staffList.remove(staffie);
     }
+    
+    
+    /**
+    * Returns faculty which the staff are in as a String ArrayList. 
+    * @return the String ArrayList of the faculties the staff are in.
+    */
+    public ArrayList<String> getFacultyStaffList(){
+        ArrayList<String> facultyList = new ArrayList<String>();
+        for(int i=0; i< StaffList.staffList.size(); i++){
+            if(!facultyList.contains(StaffList.staffList.get(i).getFacultyInfo())){
+                facultyList.add(StaffList.staffList.get(i).getFacultyInfo());
+            }
+        }
+
+        return facultyList;
+    }
 }

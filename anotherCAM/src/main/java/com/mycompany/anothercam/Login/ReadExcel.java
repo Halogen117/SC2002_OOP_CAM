@@ -94,6 +94,11 @@ public class ReadExcel {
                 }
                 iterator +=1;
             }
+            if(initalizer == "Student"){ 
+            studentListInt.getFacultyStudentList();
+            }else if(initalizer == "Staff"){ 
+            staffListInt.getFacultyStaffList();
+            }
             file.close();
         } 
         catch (Exception ex) 
@@ -101,4 +106,8 @@ public class ReadExcel {
             ex.printStackTrace();
         }
     }
+    
+
+    
+
 }

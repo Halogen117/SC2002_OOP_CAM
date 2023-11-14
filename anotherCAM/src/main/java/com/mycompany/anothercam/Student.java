@@ -7,6 +7,8 @@ A student can register for multiple camps.
 */
 package com.mycompany.anothercam;
 
+import java.util.ArrayList;
+
 
 public class Student extends User{
     private boolean campCommittee = false;
@@ -75,8 +77,6 @@ public class Student extends User{
     public void setPoints(int points){
         this.points = points;
     } 
-    
-    
-    
+
     
 }

@@ -32,7 +32,6 @@ public class StaffStatusApp{
             if(campArray.get(i-1).getStaffInCharge().equals(cookie.getUserID())){
                 System.out.println(i+". "+campArray.get(i-1).getCampName());
             }
-                
         }
         return true;
     }

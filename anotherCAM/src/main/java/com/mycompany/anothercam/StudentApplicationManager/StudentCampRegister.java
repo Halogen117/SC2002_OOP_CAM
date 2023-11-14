@@ -12,6 +12,8 @@ import com.mycompany.anothercam.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
 import com.mycompany.anothercam.DateFormatter;
+import com.mycompany.anothercam.Login.Verification;
+import java.time.LocalDateTime;
 
 public class StudentCampRegister {
     /**
@@ -23,6 +25,7 @@ public class StudentCampRegister {
     */
     
     public boolean runStudentRegister(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+        Verification verifier = new Verification();
         if(campArray.isEmpty()){
             System.out.println("No camps to register for!");
             return false;
@@ -31,15 +34,22 @@ public class StudentCampRegister {
             System.out.println("0. Exit Register Main Menu");
             System.out.println("1. Camp Attendee");
             System.out.println("2. Camp Committee Member");
-            int choiceAttend = scanObj.nextInt();
+            int choiceAttend = verifier.verifyScannerNumber(scanObj);
             if(choiceAttend == 0){
                 return false;
             }
             System.out.println("Which camp would you like to register?");
             StudentCampView studView = new StudentCampView();
             
-            ArrayList<Integer> choice = studView.runViewCampListOut(campArray, cookie);
-            int chooseChoice = scanObj.nextInt();
+            ArrayList<Integer> choice = null;
+            Student cookStud = (Student) cookie;
+            if(cookStud.getCampCommittee()){
+                choice = studView.runViewCampListOutAttendee(campArray, cookie);
+            }else{
+                choice = studView.runViewCampListOutCampCommittee(campArray, cookie);
+            }
+            
+            int chooseChoice = verifier.verifyScannerNumber(scanObj);
             if(choice == null){
                 System.out.print("No Camps exist at the moment!");
                 return true;
@@ -148,17 +158,15 @@ public class StudentCampRegister {
     public boolean checkDateClash(ArrayList<Integer> choice, ArrayList<Camp> campArray , int chooseChoice, Student Stud){
         // Check for the camps the student is in, if got date clash (Same day)
         DateFormatter formaDat  =new DateFormatter();
-        /*
-        for(int i =0; i< choice.size(); i++){
-            if(formaDat.clashDates(campArray.get(i).getDate(), campArray.get(choice.get(chooseChoice-1)).getDate())){
-                return true;
+        for(int i=0; i< campArray.size(); i++){
+            if(campArray.get(i).getCampStudentList().contains(Stud)){
+                if((formaDat.clashDates(campArray.get(i).getDate(), campArray.get(choice.get(chooseChoice-1)).getDate()))== true){
+                    System.out.println("Unable to register yourself into the camp as it clashes with another camp date");
+                    return true;
+                } 
             }
         }
-        
         return false;
-        
-        
-        */  
-        return false;
+
     }
 }

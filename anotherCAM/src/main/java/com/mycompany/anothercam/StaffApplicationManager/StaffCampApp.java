@@ -7,7 +7,7 @@ A StaffCampApp is only run once.
 */
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
-import com.mycompany.anothercam.Staff;
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.User;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,6 +23,7 @@ public class StaffCampApp{
     * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
     */
     public boolean runStaffCampApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
+        Verification verifier = new Verification();
         boolean loop_camp = true;
         while(loop_camp){
             System.out.println("Welcome to the camp subsection");
@@ -32,7 +33,7 @@ public class StaffCampApp{
                 System.out.println("3. Remove Camp");
                 System.out.println("4. Create Camp");
 
-            int choose_camp = scanObj.nextInt();
+            int choose_camp = verifier.verifyScannerNumber(scanObj);
             switch(choose_camp){
                 case 0:
                     loop_camp = false;

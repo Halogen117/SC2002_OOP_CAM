@@ -16,13 +16,15 @@ import java.time.LocalDateTime;
 
 public class ReportTXTDAO {
     private FileWriter writer;
+    private boolean activateAlphabetical;
     
     /**
     * The ReportTXTDAO Constructor.
     * @param writer FileWriter Object to write into the txt report.
     */
-    public ReportTXTDAO(FileWriter writer){
+    public ReportTXTDAO(FileWriter writer, boolean activateAlphabetical){
         this.writer = writer;
+        this.activateAlphabetical = activateAlphabetical;
     }
     
     /**

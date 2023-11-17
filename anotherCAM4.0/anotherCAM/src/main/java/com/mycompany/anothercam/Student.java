@@ -19,13 +19,12 @@ public class Student extends User{
     * The Student Constructor.
     * The User interface is extended to this class.
     * @param userID The unique userID of the Student.
-    * @param userName The unique userName of the Student.
     * @param email The email of the Student.
     * @param facultyInfo The faculty of the Student is in.
     */
     
-    public Student(String userID, String userName, String email,String facultyInfo){
-        super(userID, userName, email, facultyInfo);
+    public Student(String userID, String email,String facultyInfo){
+        super(userID, email, facultyInfo);
     }
     
     /**

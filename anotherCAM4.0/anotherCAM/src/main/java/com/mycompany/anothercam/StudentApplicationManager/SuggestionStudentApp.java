@@ -8,7 +8,22 @@ import com.mycompany.anothercam.Suggestions;
 import com.mycompany.anothercam.SuggestionList;
 import com.mycompany.anothercam.User;
 
+
+
+
+
 public class SuggestionStudentApp {
+
+
+    /**
+     * Runs the Student suggestion Application allowing student to choose which sumbit,view,delete,edit their suggestions
+     * @param campArray the CampArray which the camp object is stored at
+     * @param cookie the User Object (A Student) and their details
+     * @param scanObj takes in the scanner Object for automated testing.
+     * @return the boolean value whether the edit of camp object was successful.
+     */
+
+
     public boolean runSuggestionStudentApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj) {
         SuggestionList suggestionList = new SuggestionList();
         SuggestionStudentMenuOptions menu = new SuggestionStudentMenuOptions(suggestionList);

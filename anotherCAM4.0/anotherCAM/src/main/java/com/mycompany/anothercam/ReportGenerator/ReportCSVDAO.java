@@ -29,8 +29,7 @@ public class ReportCSVDAO {
     private String sheetName;
     private CSVWriter csvFile;
     private ArrayList<Camp> tempCampArray;
-    private boolean printCommittee;
-    private boolean printAttendee;
+    private boolean activateAlphabetical;
     //private FileOutputStream streamOut;
     /*
     public ReportCSVDAO(FileOutputStream streamOut,String filename, String sheetName){
@@ -46,11 +45,10 @@ public class ReportCSVDAO {
     * @param tempCampArray The ArrayList containing the camp Array to be printed out
     * @param filename The filename to specify the creation of the report.
     */
-    public ReportCSVDAO(ArrayList<Camp> tempCampArray, String filename, boolean printCommittee, boolean printAttendee){
+    public ReportCSVDAO(ArrayList<Camp> tempCampArray, String filename, boolean activateAlphabetical){
         this.filename = filename;
         this.tempCampArray = tempCampArray;
-        this.printCommittee = printCommittee;
-        this.printAttendee = printAttendee;
+        this.activateAlphabetical = activateAlphabetical;
     }
     
     /**
@@ -61,55 +59,26 @@ public class ReportCSVDAO {
         try{
             this.csvFile = new CSVWriter(new FileWriter(new File(this.filename)));
             String[] columnName = {"CAMP Number", "Name", "Date", "Registration Closing Date", "Total slots", "Committee Member Slots", "Staff-in-charge", "Committee Members", "Attendees"};
-            if (!this.printCommittee && !this.printAttendee) {
-                columnName[7] = "";
-                columnName[8] = "";
-            } else if (!this.printCommittee) {
-                columnName[7] = "";
-            } else if (!this.printAttendee) {
-                columnName[8] = "";
-            }
             this.csvFile.writeNext(columnName);
             for(int i=1; i< tempCampArray.size()+1; i++){
                 String slotString = String.valueOf(tempCampArray.get(i-1).getTotalSlot());
                 String committeeString = String.valueOf(tempCampArray.get(i-1).getCampCommitteeSlots());
                 String firstCommittee;
-                String firstAttendee;
                 // Print the first row of new Camp
-                if(this.printCommittee == true){
-                    if(tempCampArray.get(i-1).getCampCommitteeList().size() <=0){
-                        firstCommittee = "NIL";
-                    }else{
-                        firstCommittee = tempCampArray.get(i-1).getCampCommitteeList().get(0).getUserName();
-                    }
-                    String[] firstCol = {String.valueOf(i) ,tempCampArray.get(i-1).getCampName(), tempCampArray.get(i-1).getDateString(),tempCampArray.get(i-1).getRegClosingDateString(),slotString ,committeeString,tempCampArray.get(i-1).getStaffInCharge(), firstCommittee, ""};
-                    this.csvFile.writeNext(firstCol);
-                
-                
+                if(tempCampArray.get(i-1).getCampCommitteeList().size() <=0){
+                    firstCommittee = "NIL";
+                }else{
+                    firstCommittee = tempCampArray.get(i-1).getCampCommitteeList().get(0).getUserID();
+                }
+                String[] firstCol = {String.valueOf(i) ,tempCampArray.get(i-1).getCampName(), tempCampArray.get(i-1).getDateString(),tempCampArray.get(i-1).getRegClosingDateString(),slotString ,committeeString,tempCampArray.get(i-1).getStaffInCharge(), firstCommittee, ""};
+                this.csvFile.writeNext(firstCol);
                 // Print other camp committee members
                 for(int j=1; j< tempCampArray.get(i-1).getCampCommitteeList().size(); j++){
-                    String[] secondData = {"", "", "", "", "", "", "", tempCampArray.get(i-1).getCampCommitteeList().get(j).getUserName(), ""};
+                    String[] secondData = {"", "", "", "", "", "", "", tempCampArray.get(i-1).getCampCommitteeList().get(j).getUserID(), ""};
                     this.csvFile.writeNext(secondData);
                 }
-                }else{
-                    String[] firstCol = {String.valueOf(i) ,tempCampArray.get(i-1).getCampName(), tempCampArray.get(i-1).getDateString(),tempCampArray.get(i-1).getRegClosingDateString(),slotString ,committeeString,tempCampArray.get(i-1).getStaffInCharge(), "", ""};
-                    this.csvFile.writeNext(firstCol);
-                }
-                
-                if(this.printAttendee == true){
-                    if(tempCampArray.get(i-1).getCampStudentList().size() <=0){
-                        firstAttendee = "NIL";
-                    }else{
-                        firstAttendee = tempCampArray.get(i-1).getCampStudentList().get(0).getUserName();
-                    }
-                        String[] teriaryData = {"", "", "", "", "", "", "", "", firstAttendee};
-                        this.csvFile.writeNext(teriaryData);
-                    for(int k=1; k< tempCampArray.get(i-1).getCampStudentList().size(); k++){
-                        String[] secondaryTeriaryData = {"", "", "", "", "", "", "", "", tempCampArray.get(i-1).getCampStudentList().get(k).getUserName()};
-                        this.csvFile.writeNext(secondaryTeriaryData);
-                    }
-                }else{
-                    String[] teriaryData = {"", "", "", "", "", "", "", "", ""};
+                for(int k=0; k< tempCampArray.get(i-1).getCampStudentList().size(); k++){
+                    String[] teriaryData = {"", "", "", "", "", "", "", "", tempCampArray.get(i-1).getCampStudentList().get(k).getUserID()};
                     this.csvFile.writeNext(teriaryData);
                 }
             String[] blankCol = {"", "", "", "", "", "", "", "",""};
@@ -141,14 +110,14 @@ public class ReportCSVDAO {
                     firstCommittee = "NIL";
                     firstCommitteePoints = "NIL";
                 }else{
-                    firstCommittee = tempCampArray.get(i-1).getCampCommitteeList().get(0).getUserName();
+                    firstCommittee = tempCampArray.get(i-1).getCampCommitteeList().get(0).getUserID();
                     firstCommitteePoints = Integer.toString(tempCampArray.get(i-1).getCampCommitteeList().get(0).getPoints());
                 }
                 String[] firstCol = {String.valueOf(i) ,tempCampArray.get(i-1).getCampName(), tempCampArray.get(i-1).getDateString(),firstCommittee, firstCommitteePoints};
                 this.csvFile.writeNext(firstCol);
                 // Print other camp committee members
                 for(int j=1; j< tempCampArray.get(i-1).getCampCommitteeList().size(); j++){
-                    String[] secondData = {"", "", "", tempCampArray.get(i-1).getCampCommitteeList().get(j).getUserName(), Integer.toString(tempCampArray.get(i-1).getCampCommitteeList().get(j).getPoints())};
+                    String[] secondData = {"", "", "", tempCampArray.get(i-1).getCampCommitteeList().get(j).getUserID(), Integer.toString(tempCampArray.get(i-1).getCampCommitteeList().get(j).getPoints())};
                     this.csvFile.writeNext(secondData);
                 }
             String[] blankCol = {"", "", "", "", ""};
@@ -178,17 +147,17 @@ public class ReportCSVDAO {
                 if(tempCampArray.get(i-1).getCampCommitteeList().size() <=0){
                     firstCommittee = "NIL";
                 }else{
-                    firstCommittee = tempCampArray.get(i-1).getCampCommitteeList().get(0).getUserName();
+                    firstCommittee = tempCampArray.get(i-1).getCampCommitteeList().get(0).getUserID();
                 }
                 String[] firstCol = {String.valueOf(i) ,tempCampArray.get(i-1).getCampName(), tempCampArray.get(i-1).getDateString(),tempCampArray.get(i-1).getRegClosingDateString(),slotString ,committeeString,tempCampArray.get(i-1).getStaffInCharge(), firstCommittee, ""};
                 this.csvFile.writeNext(firstCol);
                 // Print other camp committee members
                 for(int j=1; j< tempCampArray.get(i-1).getCampCommitteeList().size(); j++){
-                    String[] secondData = {"", "", "", "", "", "", "", tempCampArray.get(i-1).getCampCommitteeList().get(j).getUserName(), ""};
+                    String[] secondData = {"", "", "", "", "", "", "", tempCampArray.get(i-1).getCampCommitteeList().get(j).getUserID(), ""};
                     this.csvFile.writeNext(secondData);
                 }
                 for(int k=0; k< tempCampArray.get(i-1).getCampStudentList().size(); k++){
-                    String[] teriaryData = {"", "", "", "", "", "", "", "", tempCampArray.get(i-1).getCampStudentList().get(k).getUserName()};
+                    String[] teriaryData = {"", "", "", "", "", "", "", "", tempCampArray.get(i-1).getCampStudentList().get(k).getUserID()};
                     this.csvFile.writeNext(teriaryData);
                 }
             String[] blankCol = {"", "", "", "", "", "", "", "",""};

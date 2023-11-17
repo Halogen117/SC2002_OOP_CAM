@@ -51,17 +51,13 @@ public class DateFormatter {
     // 1 is later
     // 2 is equal
     if(dateLeft.compareTo(dateRight)>0){
-        //System.out.println("Date left is earlier");
-        System.out.println("");
-        
+        System.out.println("Date left is earlier");
         return 0;
     }else if(dateLeft.compareTo(dateRight)<0){
-        //System.out.println("Date left is later");
-        System.out.println("");
+        System.out.println("Date left is later");
         return 1;
     }else{
-        //System.out.println("Same date!");
-        System.out.println("");
+        System.out.println("Same date!");
         return 2;
     }
     }

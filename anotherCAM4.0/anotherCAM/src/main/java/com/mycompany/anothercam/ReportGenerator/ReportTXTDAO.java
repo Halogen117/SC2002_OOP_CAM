@@ -16,15 +16,15 @@ import java.time.LocalDateTime;
 
 public class ReportTXTDAO {
     private FileWriter writer;
-    private boolean printAttendee;
-    private boolean printCommittee;
+    private boolean activateAlphabetical;
     
     /**
     * The ReportTXTDAO Constructor.
     * @param writer FileWriter Object to write into the txt report.
     */
-    public ReportTXTDAO(FileWriter writer){
+    public ReportTXTDAO(FileWriter writer, boolean activateAlphabetical){
         this.writer = writer;
+        this.activateAlphabetical = activateAlphabetical;
     }
     
     /**
@@ -76,7 +76,7 @@ public class ReportTXTDAO {
         }else{
             writer.write("CAMP Committee Members are: \n");
             for(int j=1; j<campPrint.getCampCommitteeList().size()+1; j++){
-                writer.write(j+". "+campPrint.getCampCommitteeList().get(j-1).getUserName()+"\n"); // Committee
+                writer.write(j+". "+campPrint.getCampCommitteeList().get(j-1).getUserID()+"\n"); // Committee
             }
         }
     }
@@ -90,7 +90,7 @@ public class ReportTXTDAO {
         }else{
             writer.write("CAMP Attendee Members are: \n");
             for(int k=1; k<campPrint.getCampStudentList().size()+1; k++ ){
-                writer.write(k+". "+campPrint.getCampStudentList().get(k-1).getUserName()+"\n"); // Attendee
+                writer.write(k+". "+campPrint.getCampStudentList().get(k-1).getUserID()+"\n"); // Attendee
             }
         }
     }

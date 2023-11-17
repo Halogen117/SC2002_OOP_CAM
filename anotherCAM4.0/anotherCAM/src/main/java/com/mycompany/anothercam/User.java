@@ -9,7 +9,6 @@ package com.mycompany.anothercam;
 
 public abstract class User {
     private String userID;
-    private String userName;
     private String password = "password";
     private String email;
     private String facultyInfo;
@@ -17,14 +16,12 @@ public abstract class User {
     /**
     * The User Constructor.
     * @param userID The unique userID generated
-    * @param userName The username of the user is generated
     * @param email The email which the user is associated to.
     * @param facultyInfo The faculty which the user is associated to.
     */
     
-    public User(String userID, String userName ,String email, String facultyInfo){
+    public User(String userID, String email, String facultyInfo){
         this.userID = userID;
-        this.userName = userName;
         this.email = email;
         this.facultyInfo = facultyInfo;
     }
@@ -59,14 +56,6 @@ public abstract class User {
     */
     public String getUserID(){
         return this.userID;
-    }
-    
-    /**
-    * Gets the username of the User Object.
-    * @return the userName of the User Object.
-    */
-    public String getUserName(){
-        return this.userName;
     }
 
     /**
@@ -103,15 +92,6 @@ public abstract class User {
     */
     public void setUserID(String userID){
         this.userID = userID;
-    }
-    
-    /**
-    * Changes the userName of the User Object
-    * @param userName This user new userName should just be a regular string in general.
-    *                The validation is already done before the method is called.
-    */
-    public void setUserName(String userName){
-        this.userName = userName;
     }
     
 }

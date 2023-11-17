@@ -8,8 +8,10 @@ A StaffDeleteCamp can be called multiple times depending on how many camps to be
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
+import com.mycompany.anothercam.Login.Verification;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class StaffDeleteCamp {
     /**
@@ -20,28 +22,34 @@ public class StaffDeleteCamp {
     * @return the boolean value whether the deletion of camp object was successful.
     */
     public boolean runStaffDeleteCamp(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
-// Print all camps
+        // Print all camps
+        Verification veri = new Verification();
         if(campArray.isEmpty()){
             System.out.println("No camps exist at the moment!");
         }else{
-            System.out.println("These are the camps that exist!");
+            System.out.println("These are the camps that exist that you are authorized to delete!");
+            
             for(int i=1; i< campArray.size()+1; i++){
                 if(campArray.get(i-1).getStaffInCharge().equals(cookie.getUserID()))
                 System.out.println(i+". "+campArray.get(i-1).getCampName());
             }
             System.out.println("0. Exit decision to remove camp!");
             System.out.println("Which camp do you want to remove? ");
-            int decision = scanObj.nextInt();
+            int decision = veri.verifyScannerNumber(scanObj);
             if(decision == 0){
                 return false;
             }else if(decision > campArray.size()+1){
                 System.out.println("This camp does not exist!");
+            }else if(!campArray.get(decision-1).getStaffInCharge().equals(cookie.getUserID())){
+                System.out.println("You do not have the authority to delete the camp!");
+                return false;
             }else if((0 < decision)&&(decision <= campArray.size()+1)){
+                System.out.println("Are you sure you want to delete the camp?");
+                
                 System.out.println("Deleting Camp "+ campArray.get(decision-1).getCampName());
                 // Check if the camp any student registered/ campcommittee
                 if(campArray.get(decision-1).getCampStudentList().size() >0 || campArray.get(decision-1).getCampCommitteeList().size()>0)
                 {
-
                     System.out.println("Deletion was not successful as there are still students in the camp!");
                     return false;
                 }else{

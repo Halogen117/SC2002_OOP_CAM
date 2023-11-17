@@ -55,15 +55,11 @@ public class CampCommitteeReport{
             //create string array
             //String[] studentlist_report =  new String[StudentList.studList.size()];   //Declaration of the String Array without specifying the size  
             int filter = verifier.verifyScannerNumber(scanObj);
-            boolean activateAlphabetical = false;
             switch(filter){
                 case 0:
                     return true;
                 case 1:
                     break;
-                case 2:
-                    activateAlphabetical = true;
-                    System.out.println("Which faculty would");
             }
 
             //choose format
@@ -80,10 +76,10 @@ public class CampCommitteeReport{
 
             if(format == 1){
                 writer = new FileWriter(filename+".txt");
-                writeInText(tempCampArray, cookie, writer, dateFor, activateAlphabetical);
+                writeInText(tempCampArray, cookie, writer, dateFor);
             }else if(format == 2){
                 streamOut = new FileOutputStream(new File(filename+".csv"));
-                writeInCSV(tempCampArray, cookie, streamOut, dateFor, filename+".csv", activateAlphabetical); 
+                writeInCSV(tempCampArray, cookie, streamOut, dateFor, filename+".csv"); 
             }else if(format == 0){
                 return false;
             }else{
@@ -101,9 +97,9 @@ public class CampCommitteeReport{
     * @param dateFor DateFormatter object used to format any dates required.
     * @return the boolean value whether the TXT Report is saved or not.
     */
-    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor, boolean activateAlphabetical) throws IOException{
+    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor) throws IOException{
         try{
-            ReportTXTDAO genReport = new ReportTXTDAO(writer, activateAlphabetical);
+            ReportTXTDAO genReport = new ReportTXTDAO(writer);
         
         genReport.reportBeginnerHeader();
         writer.write("COMMITTEE REPORT FOR CAMP COMMITTEE "+cookie.getUserID()+" \n");
@@ -131,8 +127,8 @@ public class CampCommitteeReport{
     * @param filename String object where csv information will be saved into.
     * @return the boolean value whether the CSV Report is saved or not.
     */
-    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename, boolean activateAlphabetical) throws IOException{
-        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename, activateAlphabetical);
+    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename) throws IOException{
+        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename, false, false);
         genReport.writeCampCommitteeInfo();
         return true;
     }

@@ -44,14 +44,10 @@ public class Suggestions {
         nextid++;
     }
 
-
-
-
     public Suggestions(User student, Scanner scanner) {
-        //System.out.print("Enter CampID: ");
-        //student. ???    //scanner.nextLine(); //will need to change to cookie.getcamp or something
+        System.out.print("Enter CampID: ");
         Student cookStud = (Student) student;
-        this.CampID = cookStud.getCommitteeName();
+        this.CampID = cookStud.getCampCommitteeName();    //scanner.nextLine(); //will need to change to cookie.getcamp or something
         this.SuggestionID = nextid;
         System.out.print("Enter Description: ");
         this.description = scanner.nextLine();

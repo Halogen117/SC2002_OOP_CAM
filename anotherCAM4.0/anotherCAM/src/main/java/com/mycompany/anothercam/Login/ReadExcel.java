@@ -55,8 +55,8 @@ public class ReadExcel {
                 //For each row, iterate through all the columns
                 Iterator<Cell> cellIterator = row.cellIterator();
                 int inner_int = 0;
-                String userName_exc = "";
                 String userID_exc = "";
+                String email_exc = "";
                 String facul_exc = "";
                 while (cellIterator.hasNext()) 
                 {
@@ -71,9 +71,9 @@ public class ReadExcel {
                         case Cell.CELL_TYPE_STRING:
                             if(iterator != 0){
                                 if(inner_int == 0){
-                                    userName_exc = cell.getStringCellValue();
-                                }else if(inner_int == 1){
                                     userID_exc = cell.getStringCellValue();
+                                }else if(inner_int == 1){
+                                    email_exc = cell.getStringCellValue();
                                 }else if(inner_int == 2){
                                     facul_exc = cell.getStringCellValue();
                                 }
@@ -83,11 +83,11 @@ public class ReadExcel {
                     inner_int += 1;
                 }
                 if(iterator != 0){
-                    if(initalizer == "Student"){
-                        studentListInt.addStudentToList(new Student(userID_exc.split("@")[0].trim(),userName_exc , userID_exc.trim(), facul_exc.trim()));
+                    if(initalizer == "Student"){ 
+                        studentListInt.addStudentToList(new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
                         //user_list[iterator-1] = new Student(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
                     }else if(initalizer == "Staff"){ 
-                        staffListInt.addStaffToList(new Staff(userID_exc.trim().split("@")[0].trim(), userName_exc, userID_exc.trim(), facul_exc.trim()));
+                        staffListInt.addStaffToList(new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim()));
                         //user_list[iterator-1] = new Staff(userID_exc.trim(), email_exc.trim(), facul_exc.trim());
                     }
                     

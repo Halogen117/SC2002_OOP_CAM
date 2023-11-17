@@ -22,15 +22,16 @@ import java.io.FileReader;
 public class AnotherCAM {
 
     public static void main(String[] args) throws FileNotFoundException, IOException{
+        System.out.println("Hello World!");
         // Retrieve xlsx  file
         // Function to take in xlsx file and return the list array
 
         ReadExcel re_ex = new ReadExcel();
         Verification verifier = new Verification();
-        String studentFileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2002 - Object Oriented Des & Prog\\anotherCAM\\src\\main\\resources\\student_list.xlsx";
+        String studentFileLocation = "C:\\Users\\k4oong\\Documents\\UwU\\student_list.xlsx";
         re_ex.return_list("Student", studentFileLocation);
 
-        String staffFileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2002 - Object Oriented Des & Prog\\anotherCAM\\src\\main\\resources\\staff_list.xlsx";
+        String staffFileLocation = "C:\\Users\\k4oong\\Documents\\UwU\\staff_list.xlsx";
         re_ex.return_list("Staff", staffFileLocation);
 
         /*
@@ -52,7 +53,6 @@ public class AnotherCAM {
             System.out.println("0. Exit the program!");
             System.out.println("1. Login as a Student");
             System.out.println("2. Login as a Staff");
-            System.out.print("Enter your choice: ");
             
             int takeInput = verifier.verifyScannerNumber(scanObj);
             switch(takeInput){

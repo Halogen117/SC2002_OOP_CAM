@@ -19,8 +19,8 @@ public class Staff extends User{
     * @param email The email of the Staff.
     * @param facultyInfo The faculty of the Staff is in.
     */
-    public Staff(String userID, String userName,String email, String facultyInfo){
-        super(userID, userName, email, facultyInfo);
+    public Staff(String userID, String email, String facultyInfo){
+        super(userID, email, facultyInfo);
     }
     
 }

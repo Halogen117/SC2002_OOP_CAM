@@ -76,7 +76,7 @@ public class StudentCampUnregister {
                 
                 if(choiceUnAttend == 1){
                     campArray.get(chooseChoice-1).removeStudentToList((Student) cookie);
-                    System.out.println("Removal of Student "+cookie.getUserName()+" from Camp "+campArray.get(chooseChoice-1)+" successful!");
+                    System.out.println("Removal of Student "+cookie.getUserID()+" from Camp "+campArray.get(chooseChoice-1)+" successful!");
                 }else if(choiceUnAttend == 2){
                     if(!checkCommitteeMember((Student) cookie)){
                         System.out.println("You are not a committee member of any camp!");

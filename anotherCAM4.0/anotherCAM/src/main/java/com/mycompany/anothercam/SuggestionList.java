@@ -101,7 +101,7 @@ public class SuggestionList {
                 if (suggestion.getStatus() == Status.REJECTED || suggestion.getStatus() == Status.APPROVED) {
                     System.out.println("Suggestions cannot be edited because it has been approved / rejected");
                     return;
-                } else {
+                }else {
                     if (suggestion.getNameofStudent().equals(Nameofstudent)) {
                         String description;
                         Scanner scanner = new Scanner(System.in);
@@ -109,8 +109,10 @@ public class SuggestionList {
                         description = scanner.nextLine();
                         suggestion.setDescription(description);
                         return;
+                    }else{
+                        System.out.println("Cannot edit the description you are not the one that created the suggestion");
+                        return;
                     }
-                    return;
                 }
             }
             return;

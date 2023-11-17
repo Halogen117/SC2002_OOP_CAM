@@ -11,9 +11,26 @@ import java.util.Scanner;
 public class SuggestionStudentMenuOptions implements ViewEditDelete {
     private SuggestionList suggestionList;
 
+
+
+
+    /**
+     * Contructor to constructor for the Student menu
+     */
+
+
+
     public SuggestionStudentMenuOptions(SuggestionList suggestionList) {
         this.suggestionList = suggestionList;
     }
+
+
+
+    /**
+     * Add the suggestions to the suggestion list
+     @param cookie the User Object
+     @param camp_array the User Object
+     */
 
     public void Addsuggestions(ArrayList<Camp> camp_array, User cookie) {
         Scanner scanner = new Scanner(System.in);
@@ -22,21 +39,51 @@ public class SuggestionStudentMenuOptions implements ViewEditDelete {
         suggestionList.addSuggestion(suggestion);
     }
 
+    /**
+     Show the suggestions that the student created
+     @param student the User Object
+     */
+
+
     private void showSuggestionsForStudent(User student) {
         System.out.println("You selected Show Suggestions:");
         suggestionList.viewSuggestionsStudent(student);
     }
+
+    /**
+     Show the suggestions that the student created with less detail
+     @param student the User Object
+     */
+
 
     public void showsuggestionsmini(User student) {
         System.out.println("You selected Show Suggestions:");
         suggestionList.viewSuggestionsStudentmini(student);
     }
 
+
+    /**
+     Show the suggestions that the student created with less detail
+     * @param camp_array the CampArray which the camp object is stored at
+     * @param cookie the User Object (A Student) and their details
+     * @param scanObj takes in the scanner Object for automated testing.
+     */
+
     @Override
     public boolean runView(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {
         showSuggestionsForStudent(cookie);
         return false;
     }
+
+
+
+    /**
+     Edit the Suggestions menu
+     * @param camp_array the CampArray which the camp object is stored at
+     * @param cookie the User Object (A Student) and their details
+     * @param scanObj takes in the scanner Object for automated testing.
+     */
+
 
     public boolean runEdit(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {
         Scanner scanner = new Scanner(System.in);
@@ -62,6 +109,7 @@ public class SuggestionStudentMenuOptions implements ViewEditDelete {
 
             switch (choice) {
                 case 1:
+                    exitRequested = false;
                     int suggestionID;
                     showsuggestionsmini(cookie);
                     System.out.println("=====================================");
@@ -70,7 +118,6 @@ public class SuggestionStudentMenuOptions implements ViewEditDelete {
                     suggestionID = scanner.nextInt();
                     scanner.nextLine();  // Consume the newline character
                     suggestionList.editSuggestionsDescription(suggestionID, cookie.getUserID());
-                    exitRequested = true;  // Set the flag to exit the loop
                     break;
                 case 8:
                     exitRequested = true;  // Set the flag to exit the loop
@@ -83,7 +130,12 @@ public class SuggestionStudentMenuOptions implements ViewEditDelete {
         return false;
     }
 
-
+    /**
+     Delete the suggestions
+     * @param camp_array the CampArray which the camp object is stored at
+     * @param cookie the User Object (A Student) and their details
+     * @param scanObj takes in the scanner Object for automated testing.
+     */
 
     @Override
     public boolean runDelete(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {

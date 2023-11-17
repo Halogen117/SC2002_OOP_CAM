@@ -19,11 +19,9 @@ public class Authenticate {
     */
     public boolean return_authenticate(ArrayList<User> user_list, Scanner scanObj){
         //Scanner scanObj = new Scanner(System.in);
-        System.out.println("What is your Username?");
-        System.out.print("Enter your choice: ");
+        System.out.println("What is your Username? ");
         String username = scanObj.next();
-        System.out.println("What is your Password?");
-        System.out.print("Enter your choice: ");
+        System.out.println("What is your Password? ");
         String password = scanObj.next();
         for(User user : user_list){
             if((user.getUserID()).equals(username)){

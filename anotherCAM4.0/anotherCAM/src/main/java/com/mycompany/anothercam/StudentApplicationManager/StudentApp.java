@@ -36,19 +36,18 @@ public class StudentApp{
                 loopCont = false;
                 break;
             }
-            System.out.println("WELCOME STUDENT "+cookie.getUserID()+":");
+            System.out.println("WELCOME STUDENT "+cookie.getUserName()+":");
+            System.out.println("0. Log out!");
             System.out.println("1. Camp Subsection");
             // Enquiry
             System.out.println("2. Enquiry Subsection");
             // Suggestion
             System.out.println("3. Suggestion Subsection");
-
             System.out.println("4. Access Status Subsection");
-            
             System.out.println("5. Access Student Committee Menu Sublist");
-            
             System.out.println("6. Change Password");
-            System.out.println("0. Log out!");
+            
+            System.out.print("Enter your choice: ");
             int what_to_do = verifier.verifyScannerNumber(scanObj);
             switch(what_to_do){
                 case 1:
@@ -85,7 +84,7 @@ public class StudentApp{
                     break;
 
                 case 6:
-                    System.out.println("Please change your password!");
+                    System.out.println("Please type in your new password!");
                     String change_password = scanObj.next();
                     cookie.setPassword(change_password);
                     System.out.println("Password has been changed!");

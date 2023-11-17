@@ -47,18 +47,30 @@ public class StaffReport{
         System.out.println("What filters would you like to apply to the report?");
         System.out.println("0. Quit filter selection");
         System.out.println("1. No Filter");
-        System.out.println("2. Filter by Alphabetical order");
+        System.out.println("2. Filter to print Camp Committee Members only");
+        System.out.println("3. Filter to print Attendee Members only");
+        System.out.println("4. Filter to print no members or attendee.");
 
         int filter = verifier.verifyScannerNumber(scanObj);
-        boolean activateAlphabetical = false;
+        boolean printAttendee = true;
+        boolean printCommittee  =true;
         switch(filter){
             case 0:
                 return true;
             case 1:
                 break;
             case 2:
-                activateAlphabetical = true;
-                System.out.println("Which faculty would");
+                printAttendee = false;
+                break;
+                
+            case 3:
+                printCommittee = false;
+                break;
+            
+            case 4:
+                printCommittee = false;
+                printAttendee = false;
+                break;
         }
         //choose format
         System.out.println("What format would you like the report to be?");
@@ -75,10 +87,10 @@ public class StaffReport{
         try{
             if(format == 1){
                 writer = new FileWriter(filename+".txt");
-                writeInText(campArray, cookie, writer, dateFor, activateAlphabetical);
+                writeInText(campArray, cookie, writer, dateFor, printCommittee, printAttendee);
             }else if(format == 2){
                 streamOut = new FileOutputStream(new File(filename+".csv"));
-                writeInCSV(campArray, cookie, streamOut, dateFor, filename+".csv", activateAlphabetical); 
+                writeInCSV(campArray, cookie, streamOut, dateFor, filename+".csv", printCommittee, printAttendee); 
             }else if(format == 0){
                 return false;
             }else{
@@ -102,16 +114,20 @@ public class StaffReport{
     * @param dateFor DateFormatter object used to format any dates required.
     * @return the boolean value whether the TXT Report is saved or not.
     */
-    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor, boolean activateAlphabetical) throws IOException{
+    public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor, boolean printCommittee, boolean printAttendee) throws IOException{
         try{
-            ReportTXTDAO genReport = new ReportTXTDAO(writer, activateAlphabetical);
+            ReportTXTDAO genReport = new ReportTXTDAO(writer);
             genReport.reportBeginnerHeader();
             writer.write("\nREPORT GENERATED FOR STAFF "+cookie.getUserID()+" \n");
             genReport.reportGenerateTodayDateHeader(dateFor);
             for(int i=1; i< tempCampArray.size()+1; i++){
                 genReport.reportPrintCampDetails(tempCampArray.get(i-1), i-1);
-                genReport.reportPrintCommitteeDetails(tempCampArray.get(i-1), i);
-                genReport.reportPrintAttendeeDetails(tempCampArray.get(i-1), i);
+                if(printCommittee == true){
+                    genReport.reportPrintCommitteeDetails(tempCampArray.get(i-1), i);
+                }
+                if(printAttendee == true){
+                    genReport.reportPrintAttendeeDetails(tempCampArray.get(i-1), i);
+                }
                 }
 
             genReport.reportEndingHeader();
@@ -133,8 +149,8 @@ public class StaffReport{
     * @param filename String object where csv information will be saved into.
     * @return the boolean value whether the CSV Report is saved or not.
     */
-    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename, boolean activateAlphabetical) throws IOException{
-        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename, activateAlphabetical);
+    public boolean writeInCSV(ArrayList<Camp> tempCampArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename, boolean printCommittee, boolean printAttendee) throws IOException{
+        ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, filename, printCommittee, printAttendee);
         genReport.writeStaffReportInfo();
         return true;
     }

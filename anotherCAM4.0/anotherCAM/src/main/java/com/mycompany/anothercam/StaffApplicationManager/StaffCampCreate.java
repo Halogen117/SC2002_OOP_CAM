@@ -58,7 +58,7 @@ public class StaffCampCreate{
                 return false;
             }
 
-            System.out.println("Date of Camp Initalization");
+            System.out.println("Date of Camp Initialization");
             date = this.dateFormat.generate_date(scanObj);
             if(date == null){
                 System.out.println("Date of Camp Time Inputs were invalid!");
@@ -67,14 +67,14 @@ public class StaffCampCreate{
                 System.out.println("The date of the camp cannot be earlier than the predefined timing of today!");
                 return false;
             }
-            System.out.println("Closing registration of Camp Initalization");
+            System.out.println("Input Closing Registration Date of Camp");
             reg_closing_date = this.dateFormat.generate_date(scanObj);
 
             if(reg_closing_date == null){
                 System.out.println("Date of Camp Time Inputs were invalid!");
                 return false;
             }else if(this.dateFormat.compareDateAndTime(date, reg_closing_date) == 1){
-                System.out.println("The date of the camp cannot be later than the registration closing date!");
+                System.out.println("The date of the camp cannot be earlier than the registration closing date!");
                 return false;
             }
 
@@ -84,18 +84,19 @@ public class StaffCampCreate{
                 location = "NO LOCATION SPECIFIED";
             }
 
-            question_to_ask = "How many students are to participate in the camp? ";
-            total_slot = this.verify.verifyTotalStudents(total_slot, question_to_ask, scanObj);
-            if(total_slot == -1){
-                return false;
-            }
-
+            
             question_to_ask = "How many camp committee members are participating in the camp? ";
             CampCommitteeSlots = this.verify.verifyCampCommittee(CampCommitteeSlots, question_to_ask, scanObj);
             if(CampCommitteeSlots==-1){
                 return false;
             }else{
                 campCommitteeList = new ArrayList<Student>();
+            }
+            
+            question_to_ask = "How many students are to participate in the camp? ";
+            total_slot = this.verify.verifyTotalStudents(total_slot, CampCommitteeSlots,question_to_ask, scanObj);
+            if(total_slot == -1){
+                return false;
             }
 
             question_to_ask = "Please type the description of the camp ";
@@ -106,8 +107,8 @@ public class StaffCampCreate{
 
             String staff_in_charge = cookie.getUserID();
             question_to_ask = "Do you want this camp to be visible to students?\n"
-                    + "1. Visibile to no one \n"
-                    + "2. Visible only to the staff-in-charge faculty \n"
+                    + "1. Visible to no one \n"
+                    + "2. Visible only to the staff-in-charge's faculty \n"
                     + "3. Visible to the entire school.";
             visibility = this.verify.verifyToggleVisiblity(true_false, question_to_ask, scanObj);
 

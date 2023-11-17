@@ -59,18 +59,19 @@ public class StaffApp{
                     System.out.println("Accessing Suggestion Subsection!");
                     SuggestionStaffApp sugstaff = new SuggestionStaffApp();
                     sugstaff.runSuggestionStaffApp(campArray, cookie, scanObj);
+                    break;
                 case 4:
                     System.out.println("Accessing Staff Status Subsection!");
                     StaffStatusApp statStaff = new StaffStatusApp();
                     statStaff.runStaffStatusApp(campArray, cookie,scanObj);
-                
+                    break;
                 case 5:
                     System.out.println("Accessing Report Subsection!");
                     StaffReportApp repoApp = new StaffReportApp();
                     repoApp.runStaffReportApp(campArray, cookie, scanObj);
                     break;
                 case 6:
-                    System.out.println("Please change your password!");
+                    System.out.println("Please type in your new password!");
                     String change_password = scanObj.next();
                     cookie.setPassword(change_password);
                     System.out.println("Password has been changed!");

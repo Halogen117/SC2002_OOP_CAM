@@ -17,8 +17,8 @@ import java.util.Scanner;
 public class StudentStatusApp{
     /**
     * Runs the Student Status Application to access main menu subsections.
-    * @param campArray the CampArray which the camp object is stored at
-    * @param cookie the User Object (A Student) and their details
+    * @param campArray the CampArray which the new camp object is stored.
+    * @param cookie the User Object (A Student) which the requested user creates the Camp
     * @param scanObj takes in the scanner Object for automated testing.
     * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
     */

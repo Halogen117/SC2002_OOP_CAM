@@ -83,6 +83,7 @@ public class Verification {
             }
         }
         this.loopLooper = 0;
+        System.out.println("You exceeded the number of invalid input entries! Exiting to the Main Menu...");
         return -1;
     }
     
@@ -117,6 +118,7 @@ public class Verification {
             }
         }
         this.loopLooper = 0;
+        System.out.println("You exceeded the number of invalid input entries! Exiting to the Main Menu...");
         return null;
     }
     
@@ -133,14 +135,14 @@ public class Verification {
                 int year = -1;
                 try{
                     scanObj.reset();
-                    year = scanObj.nextInt();
+                    year = verifyScannerNumber(scanObj);
                     if(!verifyNumber(year)){
                         System.out.println("Year value is invalid! Please retype.");
                         break;
                     }
                     timeArray[0] = year;
                     System.out.println("What is the Month? (1 for January - 12 for December)");
-                    int month = scanObj.nextInt();
+                    int month = verifyScannerNumber(scanObj);
                     if(!verifyNumber(month) || (1 > month || month  >13)){
                         System.out.println("Month value is invalid! Please retype.");
                         this.loopLooper += 1;
@@ -149,7 +151,7 @@ public class Verification {
                     timeArray[1] = month;
 
                     System.out.println("What is the Day? (1-31) ");
-                    int day = scanObj.nextInt();
+                    int day = verifyScannerNumber(scanObj);
                     if(!verifyNumber(day) || (1 > day || day > 32)){
                         System.out.println("Day value is invalid! Please retype.");
                         this.loopLooper += 1;
@@ -157,9 +159,9 @@ public class Verification {
                     }
                     timeArray[2] = day;
 
-                    System.out.println("What is the Hour? (1-12)");
-                    int hour = scanObj.nextInt();
-                    if(!verifyNumber(hour) || (0 > hour || hour  > 13)){
+                    System.out.println("What is the Hour? (0-23)");
+                    int hour = verifyScannerNumber(scanObj);
+                    if(!verifyNumber(hour) || (-1 > hour || hour  > 24)){
                         System.out.println("Hour value is invalid! Please retype.");
                         this.loopLooper += 1;
                         break;
@@ -167,7 +169,7 @@ public class Verification {
                     timeArray[3] = hour;
 
                     System.out.println("What is the Minutes? (0-59)");
-                    int minutes = scanObj.nextInt();
+                    int minutes = verifyScannerNumber(scanObj);
                     if(!verifyNumber(minutes) || (-1 > hour || hour > 60)){
                         System.out.println("Minute value is invalid! Please retype.");
                         this.loopLooper += 1;
@@ -193,6 +195,7 @@ public class Verification {
             }
         }
         this.loopLooper = 0;
+        System.out.println("You exceeded the number of invalid input entries! Exiting to the Main Menu...");
         return null;
     }
     /*
@@ -232,6 +235,7 @@ public class Verification {
             }
         }
         this.loopLooper = 0;
+        System.out.println("You exceeded the number of invalid input entries! Exiting to the Main Menu...");
         return null;
         
     }
@@ -239,16 +243,21 @@ public class Verification {
     /**
     * Returns the verification status whether the student attendee count is valid.
     * @param totalStudent takes in the student attendee count of the camp to be added into the application.
+    * @param totalCommittee takes in the camp committee member count
     * @param questionAsked takes in the question to be asked when entering the Camp Name.
     * @param scanObj takes in the scanner Object for automated testing.
     * @return integer of the student attendee count. Return -1 if invalid values.
     */
-    public int verifyTotalStudents(int totalStudent, String questionAsked, Scanner scanObj){
+    public int verifyTotalStudents(int totalStudent, int totalCommittee ,String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);
             try{
-                totalStudent = scanObj.nextInt();
-                if(verifyNumber(totalStudent) == true){
+                totalStudent = verifyScannerNumber(scanObj);
+                if(totalCommittee > totalStudent){
+                    System.out.println("There cannot be more Camp Committee members than Student Attendees!");
+                    this.loopLooper += 1;
+                    
+                }else if(verifyNumber(totalStudent) == true){
                     return totalStudent;
                 }else{
                     this.loopLooper += 1;
@@ -261,6 +270,7 @@ public class Verification {
             }
         }
         this.loopLooper = 0;
+        System.out.println("You exceeded the number of invalid input entries! Exiting to the Main Menu...");
         return -1;
     }
     
@@ -275,9 +285,9 @@ public class Verification {
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);
             try{
-                inputCampCom = scanObj.nextInt();
+                inputCampCom = verifyScannerNumber(scanObj);
                 if(verifyNumber(inputCampCom) == true){
-                    if(0< inputCampCom && inputCampCom <= 10){
+                    if(-1< inputCampCom && inputCampCom <= 10){
                         return inputCampCom;
                     }else{
                         System.out.println("The camp committee slots must be in between 0 to 10!");
@@ -294,6 +304,7 @@ public class Verification {
             }
         }
         this.loopLooper = 0;
+        System.out.println("You exceeded the number of invalid input entries! Exiting to the Main Menu...");
         return -1;
     }
     
@@ -325,6 +336,7 @@ public class Verification {
             }
         }
         this.loopLooper = 0;
+        System.out.println("You exceeded the number of invalid input entries! Exiting to the Main Menu...");
         return null;
     }    
 
@@ -339,7 +351,7 @@ public class Verification {
         while(this.loopTolerance != this.loopLooper){
             System.out.println(questionAsked);
             try{
-                togVisible = scanObj.nextInt();
+                togVisible = verifyScannerNumber(scanObj);
                 if(togVisible == 3){
                     System.out.println("Setting visibility to be viewed for all students!");
                     return visibilityStatus.ENTIRESCHOOL;
@@ -347,7 +359,7 @@ public class Verification {
                     System.out.println("Setting visibility to be viewed only to students in staff-in-charge faculty!");
                     return visibilityStatus.FACULTY;
                 }else if(togVisible == 1){
-                    System.out.println("Setting visibility to be viewed only to no one!!");
+                    System.out.println("Setting visibility to be viewed by only Staff members.");
                     return visibilityStatus.NOVISIBILE;
                 }else{
                     this.loopLooper += 1;

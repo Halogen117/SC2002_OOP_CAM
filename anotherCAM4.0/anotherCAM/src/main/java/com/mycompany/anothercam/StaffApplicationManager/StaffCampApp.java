@@ -29,9 +29,11 @@ public class StaffCampApp{
             System.out.println("Welcome to the camp subsection");
                 System.out.println("0. Exit Camp Interface");
                 System.out.println("1. Modify Camp");
-                System.out.println("2. View Camps");
-                System.out.println("3. Remove Camp");
-                System.out.println("4. Create Camp");
+                System.out.println("2. View All Camps");
+                System.out.println("3. View Camps that you created.");
+                System.out.println("4. Delete Camp");
+                System.out.println("5. Create Camp");
+                System.out.print("Enter your choice: ");
 
             int choose_camp = verifier.verifyScannerNumber(scanObj);
             switch(choose_camp){
@@ -46,19 +48,27 @@ public class StaffCampApp{
 
                 case 2:
                     StaffCampView staffView = new StaffCampView();
-                    staffView.runStaffViewCamp(campArray, cookie, scanObj);
+                    staffView.runStaffViewCamp(campArray, cookie, scanObj, false);
                     break;
 
                 case 3:
+                    StaffCampView staffViewOwnCamp = new StaffCampView();
+                    staffViewOwnCamp.runStaffViewCamp(campArray, cookie, scanObj, true);
+                    break;
+                    
+                case 4:
                     StaffDeleteCamp delCamp = new StaffDeleteCamp();
                     delCamp.runStaffDeleteCamp(campArray, cookie,scanObj);
                     break;
 
-                case 4:
+                case 5:
                     StaffCampCreate staffCreate = new StaffCampCreate();
                     if(staffCreate.runStaffCreateCamp(campArray, cookie, scanObj)== false){
                         System.out.println("Camp was not successfully created!");
                     };
+                    break;
+                default:
+                    System.out.println("Invalid Input!");
                     break;
             }
         }

@@ -28,6 +28,9 @@ public class SuggestionList {
 
     public void viewSuggestionsStaff() {
         System.out.println("=== Suggestions List ===");
+        if(suggestionsList.isEmpty() == true){
+            System.out.println("There is no suggestion available");
+        }
         for (Suggestions suggestion : suggestionsList) {
             System.out.println("================================");
             suggestion.viewSuggestions();
@@ -41,6 +44,10 @@ public class SuggestionList {
 
 
     public void viewSuggestionsStudent(User student) {
+        if(suggestionsList.isEmpty() == true){
+            System.out.println("There is no suggestion available");
+            return;
+        }
         System.out.println("=== Suggestions List ===");
         for (Suggestions suggestion : suggestionsList) {
             if (suggestion.getStatus() == REJECTED || suggestion.getStatus() == APPROVED) {
@@ -57,9 +64,15 @@ public class SuggestionList {
 
     /**
      *  Do the same thing as viewSuggestionsStudent except it print out lesser things  based on different usage.
-     * @param student The User Object which holds the student cookie.
      */
-    public void viewSuggestionsStudentmini(User student) {
+
+
+
+    public Boolean viewSuggestionsStudentmini(User student) {
+        if(suggestionsList.isEmpty() == true){
+            System.out.println("There is no suggestion available");
+            return false;
+        }
         System.out.println("=== Suggestions List IDs ===");
         for (Suggestions suggestion : suggestionsList) {
             if (Objects.equals(suggestion.getNameofStudent(), student.getUserID())) {
@@ -67,10 +80,11 @@ public class SuggestionList {
                     System.out.println("================================");
                     suggestion.viewSuggestionsmini();
                 } else { // suggestion.getStatus() == REJECTED || suggestion.getStatus() == APPROVED
-                    System.out.println("Suggestion: cannot be viewed");
+                    System.out.println("Suggestion" + suggestion.getSuggestionID() + " has already been Approved/Rejected");
                 }
             }
         }
+        return true;
     }
 
 
@@ -79,11 +93,18 @@ public class SuggestionList {
      *  Do the same thing as viewSuggestionsStaff except it print out lesser things  based on different usage.
      */
 
-    public void viewSuggestionsStaffmini() {
+    public Boolean viewSuggestionsStaffmini() {
         System.out.println("=== Suggestions List IDs ===");
-        for (Suggestions suggestion : suggestionsList) {
-            System.out.println("================================");
-            suggestion.viewSuggestionsmini();
+        if (!suggestionsList.isEmpty()) {
+
+            for (Suggestions suggestion : suggestionsList) {
+                System.out.println("================================");
+                suggestion.viewSuggestionsmini();
+            }
+            return true;
+        } else {
+            System.out.println("There is no suggestion available");
+            return false;
         }
     }
 
@@ -91,12 +112,12 @@ public class SuggestionList {
     /**
      *  Allow the student to edit Description of the Suggestion
      *  Valid is checked to see if the suggestion matches the studentID as well as if the suggestion has been approved or rejected
-     * @param suggestionID
-     * @param NameofStudent
      */
 
     public void editSuggestionsDescription(int suggestionID, String Nameofstudent) {
+        System.out.println("Name of student:" + Nameofstudent);
         for (Suggestions suggestion : suggestionsList) {
+            //System.out.println("Inside For Loop Will Loop Twice ");
             if (suggestion.getSuggestionID() == suggestionID) {
                 if (suggestion.getStatus() == Status.REJECTED || suggestion.getStatus() == Status.APPROVED) {
                     System.out.println("Suggestions cannot be edited because it has been approved / rejected");
@@ -113,7 +134,6 @@ public class SuggestionList {
                     return;
                 }
             }
-            return;
         }
         System.out.println("Suggestions not found, please try again");
     }
@@ -163,6 +183,7 @@ public class SuggestionList {
 
 
     public void deleteSuggestionByID(int suggestionID, User nameofstudent) {
+
         Suggestions.deleteSuggestion(suggestionsList, suggestionID, nameofstudent.getUserID());
     }
 }

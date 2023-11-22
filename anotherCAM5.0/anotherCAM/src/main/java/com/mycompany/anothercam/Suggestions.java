@@ -36,6 +36,8 @@ public class Suggestions {
 
 
     public Suggestions(String CampID, int nextid, String description, String nameofStudent) {
+
+
         this.CampID = getCampID();
         this.SuggestionID = nextid;
         this.description = description;
@@ -45,7 +47,7 @@ public class Suggestions {
     }
 
     public Suggestions(User student, Scanner scanner) {
-        System.out.print("Enter CampID: ");
+        //System.out.print("Enter CampID: ");
         Student cookStud = (Student) student;
         this.CampID = cookStud.getCampCommitteeName();    //scanner.nextLine(); //will need to change to cookie.getcamp or something
         this.SuggestionID = nextid;

@@ -9,14 +9,16 @@
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 
 import com.mycompany.anothercam.*;
-import com.mycompany.anothercam.implementActions.ViewEditDelete;
+import com.mycompany.anothercam.Login.Verification;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.mycompany.anothercam.implementActions.Edit;
 
 import static com.mycompany.anothercam.SuggestionList.suggestionsList;
 
-public class EditSuggestionStud{
+public class EditSuggestionStud implements Edit{
     private SuggestionList suggestionList;
+    private Verification veri = new Verification();
 
 
     /**
@@ -38,7 +40,6 @@ public class EditSuggestionStud{
 
 
     public boolean runEdit(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("You selected Edit Suggestions.");
         if(!ViewSuggestionStud.showsuggestionsmini(cookie)){
             return false;
@@ -48,7 +49,8 @@ public class EditSuggestionStud{
         System.out.println("0. Exit");
         System.out.print("Enter your choice: ");
         int choice = 0;
-        choice = scanner.nextInt();
+        choice = veri.verifyScannerNumber(scanObj);
+        String description = null;
         switch (choice) {
             case 1:
                 int suggestionID;
@@ -56,7 +58,7 @@ public class EditSuggestionStud{
                 System.out.println("=====================================");
                 System.out.println("Which Suggestion do you want to edit");
                 System.out.println("=====================================");
-                suggestionID = scanner.nextInt();
+                suggestionID = veri.verifyScannerNumber(scanObj);
                 //suggestionList.editSuggestionsDescription(suggestionID, cookie.getUserID());
                 //System.out.println("Name of student:" + cookie.getUserID());
                 for (Suggestions suggestion : suggestionsList) {
@@ -66,9 +68,8 @@ public class EditSuggestionStud{
                             System.out.println("Suggestions cannot be edited because it has been approved / rejected");
                         } else {
                             if (suggestion.getNameofStudent().equals(cookie.getUserID())) {
-                                String description;
-                                System.out.println("Enter the new description:");
-                                description = scanner.next();
+                                
+                                description = veri.verifyDescription(description, "Enter the new description:", scanObj);
                                 suggestion.setDescription(description);
                                 done = true;
                                 break;
@@ -77,7 +78,7 @@ public class EditSuggestionStud{
                     }
                 }
                 if(done){
-                    System.out.println("description edit successfully");
+                    System.out.println("Description was edited successfully.");
                 }else{
                     System.out.println("Suggestions not found, please try again");
                 }

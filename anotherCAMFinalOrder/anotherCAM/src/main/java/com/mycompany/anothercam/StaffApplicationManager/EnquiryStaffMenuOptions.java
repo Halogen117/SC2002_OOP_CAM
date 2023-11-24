@@ -9,9 +9,10 @@ import java.util.Objects;
 import java.util.Scanner;
 import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.User;
-import com.mycompany.anothercam.implementActions.ViewReply;
+import com.mycompany.anothercam.implementActions.View;
+import com.mycompany.anothercam.implementActions.Reply;
 
-public class EnquiryStaffMenuOptions implements ViewReply {
+public class EnquiryStaffMenuOptions implements View, Reply {
     private Verification veri = new Verification();
     private ArrayList<Enquiry> enquiryList;
     EnquiryList enquirylist = new EnquiryList();

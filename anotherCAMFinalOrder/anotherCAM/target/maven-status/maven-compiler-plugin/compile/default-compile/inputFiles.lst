@@ -8,9 +8,11 @@ C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\a
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\Login\StudentLogin.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentCommitteeApplicationManager\SubmitSuggestionStud.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentCommitteeApplicationManager\SuggestionStudentComApp.java
+C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\implementActions\Delete.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentList.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentCommitteeApplicationManager\EnquiryStudentCommitteeApp.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\DateFormatter.java
+C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\implementActions\View.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\Login\Login.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\implementActions\Register.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\SuggestionList.java
@@ -40,6 +42,7 @@ C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\a
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\Enquiry.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\Student.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StaffList.java
+C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\implementActions\Reply.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\User.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentCommitteeApplicationManager\CampCommitteeReport.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentApplicationManager\EnquiryStudentApp.java
@@ -53,6 +56,7 @@ C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\a
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentApplicationManager\EnquiryStudentMenuOptions.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\implementActions\combineAllActions.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentCommitteeApplicationManager\EnquiryStudentCommitteeMenuOptions.java
+C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\implementActions\Edit.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StudentApplicationManager\StudentCampApp.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StaffApplicationManager\ViewSuggestionStaff.java
 C:\Users\Halogen\Desktop\Year 2\Semester 1\SC2002 - Object Oriented Des & Prog\anotherCAM\src\main\java\com\mycompany\anothercam\StaffApplicationManager\StaffReport.java

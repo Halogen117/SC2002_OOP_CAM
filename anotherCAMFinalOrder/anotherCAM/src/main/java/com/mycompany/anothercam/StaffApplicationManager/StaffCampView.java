@@ -48,7 +48,7 @@ public class StaffCampView{
                     }else{
                         System.out.println("The camp committee members so far are ");
                         for(Student stud: campArray.get(i-1).getCampCommitteeList()){
-                            System.out.println(stud.getUserID());
+                            System.out.println(stud.getUserName());
                         }
                     }
                     System.out.println("The description of the camp is "+campArray.get(i-1).getDescription()+".");
@@ -60,7 +60,7 @@ public class StaffCampView{
                     }else{
                         System.out.println("The students in the camp so far are ");
                         for(Student stud: campArray.get(i-1).getCampStudentList()){
-                            System.out.println(stud.getUserID());
+                            System.out.println(stud.getUserName());
                         }
                     }
                 System.out.println("===========================================");
@@ -97,7 +97,7 @@ public class StaffCampView{
                     }else{
                         System.out.println("The camp committee members so far are ");
                         for(Student stud: campArray.get(arryList.get(i-1)).getCampCommitteeList()){
-                            System.out.println(stud.getUserID());
+                            System.out.println(stud.getUserName());
                         }
                     }
                     System.out.println("The description of the camp is "+campArray.get(arryList.get(i-1)).getDescription()+".");
@@ -109,7 +109,7 @@ public class StaffCampView{
                     }else{
                         System.out.println("The students in the camp so far are ");
                         for(Student stud: campArray.get(arryList.get(i-1)).getCampStudentList()){
-                            System.out.println(stud.getUserID());
+                            System.out.println(stud.getUserName());
                         }
                     }
                 System.out.println("===========================================");

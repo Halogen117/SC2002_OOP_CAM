@@ -9,12 +9,14 @@
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 
 import com.mycompany.anothercam.*;
-
+import com.mycompany.anothercam.Login.Verification;
+import com.mycompany.anothercam.implementActions.Delete;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DeleteSuggestionStud {
+public class DeleteSuggestionStud implements Delete{
     private SuggestionList suggestionList;
+    private Verification veri = new Verification();
 
 
     /**
@@ -32,10 +34,9 @@ public class DeleteSuggestionStud {
         if(ViewSuggestionStud.showsuggestionsmini(cookie) == false){
             return false;
         }
-        Scanner scanner = new Scanner(System.in);
         System.out.println("You selected Delete Suggestions:");
         System.out.println("Which Suggestion do you want to delete");
-        thechosenone = scanner.nextInt();
+        thechosenone = veri.verifyScannerNumber(scanObj);
         suggestionList.deleteSuggestionByID(thechosenone, cookie);
         return false;
     }

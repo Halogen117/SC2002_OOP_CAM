@@ -40,9 +40,10 @@ public class CampCommitteeReport{
 
             // Find camp first
             Student studCook = (Student) cookie;
+            System.out.println("The student name of the cookie is"+studCook.getUserName());
             ArrayList<Camp> tempCampArray = new ArrayList<Camp>();
             for(int i=0; i< campArray.size(); i++){
-                if(campArray.get(i).getCampName().equals(studCook.getCampCommitteeName())){
+                if(studCook.getCampCommitteeName().equals(campArray.get(i).getCampName())){
                     tempCampArray.add(campArray.get(i));
                 } 
             }
@@ -86,7 +87,7 @@ public class CampCommitteeReport{
 
             if(format == 1){
                 writer = new FileWriter(filename+".txt");
-                writeInText(useCampArray, cookie, writer, dateFor);
+                writeInText(tempCampArray, cookie, writer, dateFor);
             }else if(format == 2){
                 streamOut = new FileOutputStream(new File(filename+".csv"));
                 writeInCSV(tempCampArray, campArray, cookie, streamOut, dateFor, filename+".csv", printOnlyCreate); 

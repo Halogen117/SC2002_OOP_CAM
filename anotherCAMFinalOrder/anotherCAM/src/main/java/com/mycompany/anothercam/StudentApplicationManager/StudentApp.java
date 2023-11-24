@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentApp{
-    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
     private DateFormatter date_format = new DateFormatter();
     private final LocalDateTime today  = date_format.convertStringToDatetime(date_format.convertDatetimeToString(LocalDateTime.now()));
     

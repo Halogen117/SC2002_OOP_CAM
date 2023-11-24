@@ -9,6 +9,7 @@ package com.mycompany.anothercam;
 
 
 public class Staff extends User{
+    private boolean createdCamp;
     /**
     * The Staff Constructor.
     * The User interface is extended to this class.

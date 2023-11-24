@@ -10,7 +10,7 @@ package com.mycompany.anothercam;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import com.mycompany.anothercam.Camp;
+import com.mycompany.anothercam.Login.Verification;
 
 public class Suggestions {
     private String CampID; //things to do change this to int
@@ -20,6 +20,7 @@ public class Suggestions {
     private String description;
     private Status status;
     private String nameofStudent;
+    private Verification veri = new Verification();
 
 
     /**
@@ -32,8 +33,6 @@ public class Suggestions {
 
 
     public Suggestions(String CampID, int nextid, String description, String nameofStudent) {
-
-
         this.CampID = getCampID();
         this.SuggestionID = nextId;
         this.description = description;
@@ -42,13 +41,14 @@ public class Suggestions {
         nextId++;
     }
 
-    public Suggestions(User student, Scanner scanner) {
+    public Suggestions(User student, Scanner scanObj, String description) {
         //System.out.print("Enter CampID: ");
         Student cookStud = (Student) student;
         this.CampID = cookStud.getCampCommitteeName();    //scanner.nextLine(); //will need to change to cookie.getcamp or something
         this.SuggestionID = nextId;
-        System.out.print("Enter Description: ");
-        this.description = scanner.nextLine();
+        String blank = null;
+        this.description = description;
+        this.description = scanObj.next();
         this.status = Status.PENDING;
         this.nameofStudent = student.getUserID();
         nextId++;

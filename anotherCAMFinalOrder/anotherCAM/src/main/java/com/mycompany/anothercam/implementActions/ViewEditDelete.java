@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public interface ViewEditDelete{
+public interface ViewEditDelete extends View,Edit,Delete{
     /**
     * Runs runView Interface function
     */

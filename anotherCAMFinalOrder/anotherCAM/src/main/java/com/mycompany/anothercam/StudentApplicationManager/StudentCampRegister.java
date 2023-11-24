@@ -95,7 +95,7 @@ public class StudentCampRegister {
                             campArray.get(choice.get(chooseChoice-1)).addStudentToList(cookie);
                         }
                             cookie.setCampCommittee(true);
-                            cookie.setCampCommitteeName(campArray.get(chooseChoice -1).getCampName());
+                            cookie.setCampCommitteeName(campArray.get(choice.get(chooseChoice-1)).getCampName());
                             campArray.get(choice.get(chooseChoice-1)).addCampCommitteeMemberToList(cookie); 
                             System.out.println("Successfully registered for Camp "+campArray.get(choice.get(chooseChoice-1)).getCampName()+" as a Camp Committee member!");
                             //for(Student campers : campArray.get(chooseChoice-1).getCampCommitteeList()){

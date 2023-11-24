@@ -43,7 +43,7 @@ public class Verification {
     * @return boolean value of True if the string is successfully verified. False if the string is empty.
     */
     private boolean verifyString(String stringer){
-        if(stringer.isEmpty()){
+        if(stringer == null){
             return false;
         }
         return true;
@@ -74,6 +74,7 @@ public class Verification {
                 try{
                     System.out.print("Enter your choice: ");
                     int number = scanObj.nextInt();
+                    this.loopLooper = 0;
                     return number;
                 }catch(Exception e){
                     scanObj.nextLine();
@@ -324,10 +325,11 @@ public class Verification {
             while(true){
                 System.out.println(questionAsked);
                 try{
+
                     System.out.print("Enter your choice: ");
                     scanObj.nextLine();
                     description = scanObj.nextLine();
-                    if(verifyString(description) == true){
+                    if(verifyString(description)){
                         return description;
                     }else{
                         this.loopLooper += 1;

@@ -15,7 +15,6 @@ import java.util.Scanner;
 
 
 public class StudentCampUnregister {
-    //private Scanner scanObj = new Scanner(System.in);
     
     /**
     * Runs the Student Unregister Application.
@@ -43,15 +42,16 @@ public class StudentCampUnregister {
             StudentCampView studView = new StudentCampView();
             ArrayList<Integer> choice =  null;
             Student cookStud = (Student) cookie;
-            if(cookStud.getCampCommittee()){
+
+            choice  =studView.runViewCampListOutAttendee(campArray, cookie);
+            
+            
+            int chooseChoice = verifier.verifyScannerNumber(scanObj);
+            if(cookStud.getCampCommitteeName().equals(campArray.get(choice.get(chooseChoice-1)).getCampName())){
                 //choice  =studView.runViewCampListOutCampCommittee(campArray, cookie);
                 System.out.println("You are a Camp Committee member of Camp "+cookie.getCampCommitteeName()+"! Unable to quit the camp");
                 return false;
-            }else{
-                choice  =studView.runViewCampListOutAttendee(campArray, cookie);
             }
-            
-            int chooseChoice = verifier.verifyScannerNumber(scanObj);
             if(choice == null){
                 System.out.print("No Camps exist at the moment!");
                 return true;
@@ -68,15 +68,15 @@ public class StudentCampUnregister {
                 if(checkCampEmpty(choice ,campArray, chooseChoice)){
                     System.out.println("Camp is already empty!");
                     return false;
-                }else if(!checkAttendeeList(choice, campArray, (Student) cookie, chooseChoice) && choiceUnAttend == 1){
+                }else if(checkAttendeeList(choice, campArray, (Student) cookie, chooseChoice) && choiceUnAttend == 1){
                     System.out.println("You are not an attendee in the camp!");
                     return false;
                 }
                 if(choiceUnAttend == 1){
-                    campArray.get(chooseChoice-1).removeStudentToList((Student) cookie);
-                    System.out.println("Removal of Student "+cookie.getUserName()+" from Camp "+campArray.get(chooseChoice-1).getCampName()+" successful!");
-                    cookie.addToBlackList(campArray.get(chooseChoice-1).getCampID());
-                    System.out.println(campArray.get(chooseChoice-1).getCampStudentList().size());
+                    campArray.get(choice.get(chooseChoice-1)).removeStudentToList((Student) cookie);
+                    System.out.println("Removal of Student "+cookie.getUserName()+" from Camp "+campArray.get(choice.get(chooseChoice-1)).getCampName()+" successful!");
+                    cookie.addToBlackList(campArray.get(choice.get(chooseChoice-1)).getCampID());
+                    System.out.println(campArray.get(choice.get(chooseChoice-1)).getCampStudentList().size());
                 }else if(choiceUnAttend == 2){
                     if(!checkCommitteeMember((Student) cookie)){
                         System.out.println("You are not a committee member of any camp!");
@@ -149,6 +149,9 @@ public class StudentCampUnregister {
     */
     public boolean checkAttendeeList(ArrayList<Integer> choice, ArrayList<Camp> campArray, Student Stud, int chooseChoice){
         for(int i=1; i<choice.size(); i++){
+            //for(Student studenar: campArray.get(choice.get(chooseChoice-1)).getCampStudentList()){
+                //System.out.println(studenar.getUserName());
+            //}
             if(campArray.get(choice.get(chooseChoice-1)).getCampStudentList().contains(Stud)){
                 return false;
             }

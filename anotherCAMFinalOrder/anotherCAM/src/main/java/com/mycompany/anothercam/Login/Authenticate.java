@@ -22,7 +22,6 @@ public class Authenticate {
     *         Returns false if not authenticated,
     */
     public boolean return_authenticate(ArrayList<User> userList, Scanner scanObj){
-        //Scanner scanObj = new Scanner(System.in);
         System.out.println("What is your Username?");
         System.out.print("Enter your choice: ");
         String username = scanObj.next();

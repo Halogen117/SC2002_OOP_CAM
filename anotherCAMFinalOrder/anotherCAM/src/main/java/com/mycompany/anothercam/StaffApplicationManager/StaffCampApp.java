@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StaffCampApp{
-    //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
     
     /**
     * Runs the Staff Camp Application to access main menu subsections for the different camp functions.

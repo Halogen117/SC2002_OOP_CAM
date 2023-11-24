@@ -77,9 +77,8 @@ public class EnquiryStudentMenuOptions implements ViewEditDelete {      //create
 
     //@Override
     public boolean runEdit(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("You selected Edit Enquiries.");
-
+        String newDescription = null;
 
 
         do {
@@ -87,28 +86,15 @@ public class EnquiryStudentMenuOptions implements ViewEditDelete {      //create
             System.out.println("1. Edit Description");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
-
-
-            try {
-                choice = scanner.nextInt();
-                scanner.nextLine();  // Consume the newline character
-            } catch (java.util.InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number.");
-                scanner.nextLine();  // Consume the invalid input
-                continue;
-            }
-
+            choice = veri.verifyScannerNumber(scanObj);
             switch (choice) {
                 case 1:
                     showEnquirymini(cookie);
                     System.out.println("=====================================");
                     System.out.println("Which Enquiry do you want to edit?");
                     System.out.println("=====================================");
-                    int enquiryID = scanner.nextInt();
-                    scanner.nextLine();  // Consume the newline character
-
-                    System.out.println("Enter the new description:");
-                    String newDescription = scanner.nextLine();
+                    int enquiryID = veri.verifyScannerNumber(scanObj);
+                    newDescription = veri.verifyDescription(newDescription, "Enter the new description:", scanObj);
                     enquiryList.editEnquiryDescription(enquiryID, cookie.getUserID(),newDescription);
                     break;
                 case 0:

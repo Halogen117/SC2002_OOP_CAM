@@ -78,6 +78,7 @@ public class ReportCSVDAO {
                 columnName[8] = "";
             }
             this.csvFile.writeNext(columnName);
+            
             ArrayList<Camp> useCampArray;
             if(this.printOnlyCreate == true){
                 useCampArray = tempCampArray;

@@ -9,7 +9,7 @@
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 
 import com.mycompany.anothercam.*;
-import com.mycompany.anothercam.implementActions.ViewEditDelete;
+import com.mycompany.anothercam.implementActions.View;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -17,7 +17,7 @@ import java.util.Scanner;
 import static com.mycompany.anothercam.Status.*;
 import static com.mycompany.anothercam.SuggestionList.suggestionsList;
 
-public class ViewSuggestionStud{
+public class ViewSuggestionStud implements View{
     private static SuggestionList suggestionList;
     /**
      * Contructor to constructor for the Student menu

@@ -7,7 +7,7 @@
  */
 
 package com.mycompany.anothercam.StaffApplicationManager;
-
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.Camp;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -28,7 +28,7 @@ public class SuggestionStaffApp {
         //SuggestionStaffMenuOptions menu = new SuggestionStaffMenuOptions();
         ViewSuggestionStaff view = new ViewSuggestionStaff();
         SetSuggestionStatusStaff setsuggest = new SetSuggestionStatusStaff();
-
+        Verification veri = new Verification();
         while (true) {
             System.out.println("=== Suggestion UI ===");
             System.out.println("1. View Suggestions");
@@ -36,12 +36,10 @@ public class SuggestionStaffApp {
             //System.out.println("7. Set to Student privilage");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
-            int choice = scanObj.nextInt();
-            scanObj.nextLine();  // Consume the newline character
-
+            int choice = veri.verifyScannerNumber(scanObj);
             switch (choice) {//Staff
                 case 1 -> view.view();
-                case 2 -> setsuggest.setStatus();
+                case 2 -> setsuggest.setStatus(scanObj);
 
                 case 0 -> {
                     System.out.println("Goodbye!");

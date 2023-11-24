@@ -7,7 +7,7 @@
  */
 
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
-
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.Camp;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -38,7 +38,7 @@ public class SuggestionStudentComApp {
         DeleteSuggestionStud delete = new DeleteSuggestionStud(suggestionList);
         ViewSuggestionStud view = new ViewSuggestionStud(suggestionList);
         EditSuggestionStud edit = new EditSuggestionStud(suggestionList);
-
+        Verification veri = new Verification();
 
         while (true) {
             System.out.println("=== Suggestion UI ===");
@@ -46,20 +46,16 @@ public class SuggestionStudentComApp {
             System.out.println("2. View Suggestions");
             System.out.println("3. Delete Suggestions");
             System.out.println("4. Edit Suggestions");
-            //System.out.println("5. ??? Suggestions");
-            //System.out.println("7. Set to teacher privilage");
             System.out.println("0. Exit");
-            System.out.print("Enter your choice: ");
 
-            int choice = scanObj.nextInt();
-            scanObj.nextLine();  // Consume the newline character
-
+            int choice = veri.verifyScannerNumber(scanObj);
+            System.out.println(choice);
             switch (choice) {
                 case 1 -> add.Addsuggestions(campArray,cookie, scanObj);
                 case 2 -> view.runView(campArray,cookie,scanObj);
                 case 3 -> delete.runDelete(campArray,cookie,scanObj);
                 case 4 -> edit.runEdit(campArray,cookie,scanObj);
-                case 0 -> {
+                case 0, -1 -> {
                     System.out.println("Goodbye!");
                     return true;
                 }

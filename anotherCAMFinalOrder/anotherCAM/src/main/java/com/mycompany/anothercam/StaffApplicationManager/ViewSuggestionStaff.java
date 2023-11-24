@@ -12,8 +12,6 @@ package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.SuggestionList;
 import com.mycompany.anothercam.Suggestions;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
 
 import static com.mycompany.anothercam.SuggestionList.suggestionsList;
 

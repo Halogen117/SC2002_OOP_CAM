@@ -38,9 +38,6 @@ public class EnquiryStudentApp {
                 }
                 default -> System.out.println("Invalid choice. Please try again.");
             }
-
-            //System.out.print("Press Enter to continue...");
-            //scanObj.nextLine();
         }
     }
 }

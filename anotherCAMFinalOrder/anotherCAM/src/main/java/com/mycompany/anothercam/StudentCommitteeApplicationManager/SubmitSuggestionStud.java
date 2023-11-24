@@ -7,7 +7,7 @@
  */
 
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
-
+import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.*;
 
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 public class SubmitSuggestionStud {
     private SuggestionList suggestionList;
+    private Verification veri = new Verification();
 
 
     /**
@@ -41,11 +42,13 @@ public class SubmitSuggestionStud {
             System.out.println("Not a Committee Member");
             return;
         }
-        Suggestions suggestion = new Suggestions(cookie, scanObj);
+        String description = null;
+        description = veri.verifyDescription(description, "Enter Description!", scanObj);
+        Suggestions suggestion = new Suggestions(cookie, scanObj,description);
         suggestionList.addSuggestion(suggestion);
         Student student = (Student) cookie;
         student.incrementPoint();
-        System.out.println(student.getUserName() + "has" + student.getPoints() + " points");
+        System.out.println(student.getUserName() + "has " + student.getPoints() + " points");
     }
 }
 

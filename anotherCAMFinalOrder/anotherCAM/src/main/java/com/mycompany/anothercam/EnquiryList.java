@@ -59,7 +59,7 @@ public class EnquiryList {
                     System.out.println("================================");
                     enquiry.viewEnquiryDetailMini();
                 } else { // enquiry.getStatus() == PROCESSED
-                    System.out.println("Enquiry:"+ enquiry.getEnquiryID() + "cannot be edited/viewed");
+                    System.out.println("Enquiry "+ enquiry.getEnquiryID() + " cannot be edited/viewed");
                 }
             }
         }

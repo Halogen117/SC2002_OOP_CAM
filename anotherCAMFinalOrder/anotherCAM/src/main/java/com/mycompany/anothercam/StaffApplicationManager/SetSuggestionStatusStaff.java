@@ -15,6 +15,7 @@ import com.mycompany.anothercam.Suggestions;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import com.mycompany.anothercam.Login.Verification;
 
 import static com.mycompany.anothercam.Status.APPROVED;
 import static com.mycompany.anothercam.Status.REJECTED;
@@ -28,7 +29,7 @@ import static com.mycompany.anothercam.SuggestionList.suggestionsList;
 
 class SetSuggestionStatusStaff {
     private ArrayList<Suggestions> suggestionList;
-
+    private Verification veri = new Verification();
     SuggestionList suggestionlist = new SuggestionList();
     ViewSuggestionStaff uwu = new ViewSuggestionStaff();
 
@@ -44,18 +45,17 @@ class SetSuggestionStatusStaff {
      * choose which suggestion to approve / reject  and also allow the staff to approve and reject
      */
 
-    public String setStatus( ){
+    public String setStatus(Scanner scanObj){
         int thechosenone;
         int choice;
-        Scanner scanner = new Scanner(System.in);
         if (uwu.showsuggestionsmini() == true){
             System.out.println("Which Suggestion do you want to approve/reject");
-            thechosenone = scanner.nextInt();
-            System.out.println("do you want to approve/reject");
+            thechosenone = veri.verifyScannerNumber(scanObj);
+            System.out.println("Do you want to approve/reject");
             System.out.println("Select 1 to approve");
             System.out.println("Select 2 to reject");
 
-            choice = scanner.nextInt();
+            choice = veri.verifyScannerNumber(scanObj);
             if(choice == 1){
                 String studentname;
                 //studentname = suggestionlist.approve(thechosenone);
@@ -65,7 +65,7 @@ class SetSuggestionStatusStaff {
                         Student student = (Student) StudentList.returnStudentCookie(suggestion.getNameofStudent());
                         assert student != null;
                         student.incrementPoint();
-                        System.out.println(student.getUserID()+ "has" + student.getPoints() + "points");
+                        System.out.println(student.getUserName()+ " has " + student.getPoints() + " points");
                     }
                 }
                 System.out.println("Suggestion: Approved");
@@ -78,7 +78,7 @@ class SetSuggestionStatusStaff {
                             Student student = (Student) StudentList.returnStudentCookie(suggestion.getNameofStudent()); // decrease the point if the suggestion was previously approved
                             assert student != null;
                             student.decrementPoint();
-                            System.out.println(student.getUserID()+ "has " + student.getPoints() + "points");
+                            System.out.println(student.getUserName()+ " has " + student.getPoints() + " points");
                         }
                         suggestion.setStatus(REJECTED);
                     }

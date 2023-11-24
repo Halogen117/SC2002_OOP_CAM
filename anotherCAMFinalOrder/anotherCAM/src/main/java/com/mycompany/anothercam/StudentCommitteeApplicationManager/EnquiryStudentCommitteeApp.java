@@ -39,9 +39,6 @@ public class EnquiryStudentCommitteeApp {
                 }
                 default -> System.out.println("Invalid choice. Please try again.");
             }
-
-            //System.out.print("Press Enter to continue...");
-            //scanObj.nextLine();
         }
     }
 }

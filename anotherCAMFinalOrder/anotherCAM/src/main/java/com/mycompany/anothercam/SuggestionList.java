@@ -13,10 +13,6 @@ package com.mycompany.anothercam;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Scanner;
-
-import static com.mycompany.anothercam.Status.*;
-import static com.mycompany.anothercam.StudentList.returnStudentCookie;
 
 public class SuggestionList {
     public static ArrayList<Suggestions> suggestionsList = new ArrayList<>();

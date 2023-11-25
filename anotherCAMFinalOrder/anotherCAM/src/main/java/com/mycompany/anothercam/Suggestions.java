@@ -1,17 +1,15 @@
-/**
- Represents the suggestion Object and the following mutator methods.
- @author Matthias Lim Xing Ran
- @version 5.0
- @since 2023-11-11
- */
-
 package com.mycompany.anothercam;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import com.mycompany.anothercam.Login.Verification;
-
+/**
+ Represents the suggestion Object and the following mutator methods.
+ @author Matthias Lim Xing Ran
+ @version 5.0
+ @since 2023-11-11
+ */
 public class Suggestions {
     private String CampID; //things to do change this to int
     private int SuggestionID; //things to do change this to int , auto increment the Suggestion ID
@@ -41,6 +39,12 @@ public class Suggestions {
         nextId++;
     }
 
+    /**
+     * Suggestion Constructor.
+     * @param student Student Object that is taken in.
+     * @param scanObj Scanner Object used to take in inputs.
+     * @param description Description of the suggestion.
+     */
     public Suggestions(User student, Scanner scanObj, String description) {
         //System.out.print("Enter CampID: ");
         Student cookStud = (Student) student;
@@ -55,7 +59,6 @@ public class Suggestions {
 
     /**
      * Gets the details of the suggestions.
-     * @return the campID ,SuggestionID , Description ,Status , name of student
      *
      */
 
@@ -69,8 +72,7 @@ public class Suggestions {
     }
 
     /**
-     * Gets the smaller details of the suggestions. to make it nicer owo
-     * @return the SuggestionID, Description ,Status
+     * Gets the smaller details of the suggestions.to make it nicer.
      *
      */
 
@@ -166,6 +168,7 @@ public class Suggestions {
      * @param suggestionsList The suggestion list to find out which suggestion to delete from the list
      * @param whichtodelete This to check the suggestion who the camp committee member want to delete matches the student
      * @param nameofstudent This is to check if the student who is deleting the suggestion is the one who created the suggestions
+     * @return boolean to check if the Suggestion was deleted. True for deleted. False for not.
      */
 
 

@@ -1,3 +1,8 @@
+
+package com.mycompany.anothercam;
+
+import java.util.ArrayList;
+
 /**
 Represents the Student Object and the following mutator methods.
 A student can register for multiple camps.
@@ -5,11 +10,6 @@ A student can register for multiple camps.
 @version 1.0
 @since 2023-10-28
 */
-package com.mycompany.anothercam;
-
-import java.util.ArrayList;
-
-
 public class Student extends User{
     private boolean campCommittee = false;
     private String campCommitteeName = null;

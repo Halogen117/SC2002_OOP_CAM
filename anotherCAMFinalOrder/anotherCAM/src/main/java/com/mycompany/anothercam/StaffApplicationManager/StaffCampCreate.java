@@ -1,10 +1,4 @@
-/**
-Represents the StaffCampCreate Object and the following assistance methods.
-A StaffCampCreate can be called multiple times depending on how many camps to be made
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-10-28
-*/
+
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Camp.visibilityStatus;
@@ -16,6 +10,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Represents the StaffCampCreate Object and the following assistance methods.
+A StaffCampCreate can be called multiple times depending on how many camps to be made
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-28
+*/
 public class StaffCampCreate{
     private DateFormatter dateFormat = new DateFormatter();
     private Verification verify = new Verification();

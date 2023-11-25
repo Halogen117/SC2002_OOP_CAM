@@ -1,10 +1,3 @@
-/**
-Represents the StaffDeleteCamp Object and the following assistor methods.
-A StaffDeleteCamp can be called multiple times depending on how many camps to be deleted.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-10-28
-*/
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
@@ -15,7 +8,13 @@ import com.mycompany.anothercam.implementActions.Delete;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+Represents the StaffDeleteCamp Object and the following assistor methods.
+A StaffDeleteCamp can be called multiple times depending on how many camps to be deleted.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-28
+*/
 public class StaffDeleteCamp implements Delete {
     /**
     * Runs the Staff Delete Application.
@@ -68,6 +67,12 @@ public class StaffDeleteCamp implements Delete {
         return false;
     }
     
+    /**
+     * This will print the camp that is deleted.
+     * @param campArray ArrayList of camps that exist in the application
+     * @param cookie Staff Cookie that is used to find the camp he is in charge of deleting.
+     * @return an integer value which is the campID to delete.
+     */
     public ArrayList<Integer> printDeletedCampList(ArrayList<Camp> campArray, Staff cookie){
         ArrayList<Integer> integerThis = new ArrayList<Integer>();
         for(int i=0; i<campArray.size(); i++){

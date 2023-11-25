@@ -8,7 +8,22 @@ import com.mycompany.anothercam.EnquiryList;
 import com.mycompany.anothercam.Student;
 import com.mycompany.anothercam.Login.Verification;
 
+/**
+ View Enquiry Student Application
+ Allow the student to View the enquries.
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-11
+ */
 public class EnquiryStudentApp {
+
+    /**
+     * Runs the Student Enquiry Application.
+     * @param campArray the ArrayList of Camps that exist in the application.
+     * @param cookie stores the Student Object.
+     * @param scanObj stores the Scanner Object to pass inputs into.
+     * @return
+     */
     public boolean runEnquiryStudentApp(ArrayList<Camp> campArray, Student cookie, Scanner scanObj) {
        EnquiryList enquiryList = new EnquiryList();
        EnquiryStudentMenuOptions menu = new EnquiryStudentMenuOptions(enquiryList);

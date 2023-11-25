@@ -1,12 +1,3 @@
-/**
-Represents the ReportCSVDAO Object and the following assistance methods.
-A ReportCSVDAO object can be called multiple times
-The class here creates the report format for CSV based on the information given from the camp Array. 
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-2
-*/
-
 package com.mycompany.anothercam.ReportGenerator;
 import java.io.IOException;
 import java.io.File;
@@ -22,6 +13,14 @@ import com.opencsv.CSVWriter;
 //import java.util.Set;
 //import java.util.TreeMap;
 
+/**
+Represents the ReportCSVDAO Object and the following assistance methods.
+A ReportCSVDAO object can be called multiple times
+The class here creates the report format for CSV based on the information given from the camp Array. 
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-2
+*/
 public class ReportCSVDAO {
     //private XSSFWorkbook workbook;
     //private XSSFSheet spreadsheet;

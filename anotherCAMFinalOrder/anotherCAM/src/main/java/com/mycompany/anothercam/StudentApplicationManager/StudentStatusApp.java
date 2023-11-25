@@ -1,11 +1,3 @@
-/**
-Represents the StudentStatusApp Object and the following assistance methods.
-A StudentStatusApp can be run multiple times depending on the number of reports to be made.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-7
-*/
-
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
@@ -13,7 +5,13 @@ import com.mycompany.anothercam.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+Represents the StudentStatusApp Object and the following assistance methods.
+A StudentStatusApp can be run multiple times depending on the number of reports to be made.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-7
+*/
 public class StudentStatusApp{
     /**
     * Runs the Student Status Application to access main menu subsections.

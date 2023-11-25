@@ -17,5 +17,19 @@ package com.mycompany.anothercam;
  */
 
 public enum Status {
-    APPROVED, PENDING, REJECTED;
+
+    /**
+     * Approved Enumeration for the status.
+     */
+    APPROVED,
+
+    /**
+     * Pending Enumeration for the status.
+     */
+    PENDING,
+
+    /**
+     * Rejected Enumeration for the status.
+     */
+    REJECTED;
 }

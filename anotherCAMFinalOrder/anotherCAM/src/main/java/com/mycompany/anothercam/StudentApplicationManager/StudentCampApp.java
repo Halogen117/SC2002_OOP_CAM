@@ -1,10 +1,3 @@
-/**
-Represents the StudentCampApp Object and the following assistance methods.
-A StudentCampApp is only run once.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-10-27
-*/
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Login.Verification;
@@ -14,9 +7,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author Halogen
- */
+Represents the StudentCampApp Object and the following assistance methods.
+A StudentCampApp is only run once.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-27
+*/
 public class StudentCampApp{
     /**
     * Runs the Student Camp Application to access main menu subsections for the different camp functions.

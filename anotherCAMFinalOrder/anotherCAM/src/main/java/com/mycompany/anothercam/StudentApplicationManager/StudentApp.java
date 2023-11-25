@@ -1,10 +1,3 @@
-/**
-Represents the StudentCampApp Object and the following assistance methods.
-A StudentCampApp is only run once.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-1
-*/
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
@@ -16,6 +9,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Represents the StudentCampApp Object and the following assistance methods.
+A StudentCampApp is only run once.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-1
+*/
 public class StudentApp{
     private DateFormatter date_format = new DateFormatter();
     private final LocalDateTime today  = date_format.convertStringToDatetime(date_format.convertDatetimeToString(LocalDateTime.now()));
@@ -92,6 +92,11 @@ public class StudentApp{
         return true;
     }
     
+    /**
+     * Checks if the Student is a camp Committee
+     * @param stud User object passed into the variable.
+     * @return boolean value if the student is a camp committee member.
+     */
     public boolean checkCommitteeMember(Student stud){
         return stud.getCampCommittee();
     }

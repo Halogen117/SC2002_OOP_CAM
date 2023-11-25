@@ -1,11 +1,3 @@
-/**
-Represents the main method where the entirety of the app will be run by.
-A AnotherCam is ran dependent on how many users are going to start up the application.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-10-15
-*/
-
 package com.mycompany.anothercam;
 import com.mycompany.anothercam.Login.*;
 import com.mycompany.anothercam.StudentApplicationManager.StudentApp;
@@ -16,11 +8,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileReader;
 
+/**
+Represents the main method where the entirety of the app will be run by.
+A AnotherCam is ran dependent on how many users are going to start up the application.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-15
+*/
 public class AnotherCAM {
 
-        /**
+    /**
     * Runs the main method to run the code
     * @param args which are the arguments that are taken into the application.
+     * @throws java.io.FileNotFoundException
+     * @throws java.io.IOException
     */
     public static void main(String[] args) throws FileNotFoundException, IOException{
         // Retrieve xlsx  file

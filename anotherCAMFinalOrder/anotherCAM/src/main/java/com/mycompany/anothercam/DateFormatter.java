@@ -1,10 +1,4 @@
-/**
-Represents the DateFormatter Object and the following assistor methods.
-A DateFormatter can be called multiple times depending on how many dates need to be formatted.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-10-16
-*/
+
 package com.mycompany.anothercam;
 
 import java.time.LocalDateTime;
@@ -12,7 +6,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import com.mycompany.anothercam.Login.Verification;
 
-
+/**
+Represents the DateFormatter Object and the following assistor methods.
+A DateFormatter can be called multiple times depending on how many dates need to be formatted.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-16
+*/
 public class DateFormatter {
     //private Scanner scan_obj = new Scanner(System.in).useDelimiter("\n");
     private static final String date_pattern = "dd-MM-yyyy-HHmm";

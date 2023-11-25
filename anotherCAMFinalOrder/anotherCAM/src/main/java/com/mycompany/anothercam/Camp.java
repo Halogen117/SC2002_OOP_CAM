@@ -1,3 +1,8 @@
+
+package com.mycompany.anothercam;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 /**
 Represents the Camp Object and the following mutator methods.
 A camp can be registered by multiple students.
@@ -5,10 +10,6 @@ A camp can be registered by multiple students.
 @version 1.0
 @since 2023-10-28
 */
-package com.mycompany.anothercam;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 public class Camp {
     /**
     * The public Enumeration of the visibility status of the camp.
@@ -17,7 +18,21 @@ public class Camp {
     * ENTIRESCHOOL: Visible to the entire database of students and staff    
     */
     public enum visibilityStatus{
-        NOVISIBILE, FACULTY, ENTIRESCHOOL
+
+        /**
+         * Visibility for only the staff to see the camp.
+         */
+        NOVISIBILE,
+
+        /**
+         * Visibility for the staff in charge faculty to see.
+         */
+        FACULTY,
+
+        /**
+         * Visibility for the whole of NTU to see.
+         */
+        ENTIRESCHOOL
     }
     private int campID;
     private String campName;

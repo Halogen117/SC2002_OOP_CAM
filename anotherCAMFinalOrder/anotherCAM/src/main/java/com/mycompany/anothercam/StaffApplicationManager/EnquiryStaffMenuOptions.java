@@ -14,31 +14,64 @@ import com.mycompany.anothercam.Student;
 import com.mycompany.anothercam.implementActions.View;
 import com.mycompany.anothercam.implementActions.Reply;
 
+/**
+Represents the Enquiry Staff Menu Option Function and the following assistor methods.
+A Enquiry Staff Menu Option Function can be created depending on how many enquiries to be formatted.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-16
+*/
 public class EnquiryStaffMenuOptions implements View, Reply {
     private Verification veri = new Verification();
     private ArrayList<Enquiry> enquiryList;
     EnquiryList enquirylist = new EnquiryList();
 
+    /**
+     * Runs the enquiry Staff application menu options.
+     * @param enquiryList passes the EnquiryList Object.
+     */
     public EnquiryStaffMenuOptions(EnquiryList enquiryList) {
         this.enquiryList = EnquiryList.enquiryList;
     }
 
     //@Override
-    public boolean runView(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {
+
+    /**
+     * Runs the view application for Enquiry Staff.
+     * @param campArray the ArrayList of Camps that exist in the application.
+     * @param cookie stores the User Object.
+     * @param scanObj Scanner Object to take in inputs.
+     * @return the boolean of the run view application.
+     */
+    public boolean runView(ArrayList<Camp> campArray, User cookie, Scanner scanObj) {
         showEnquiryForStaff();
         return false;
     }
 
+    /**
+     * Runs the show Enquiry for Staff application.
+     */
     public void showEnquiryForStaff() {
         System.out.println("You selected Show Enquiry:");
         enquirylist.viewEnquiryStaff(false);
     }
 
+    /**
+     * Runs the show Enquiry for Staff Mini function.
+     */
     public void showEnquiryForStaffmini (){
         enquirylist.viewEnquiryStaff(true);
         
     }
     //@Override
+
+    /**
+     * Function to run Reply.
+     * @param campArray the ArrayList of Camps that exist in the application.
+     * @param cookie stores the User Object.
+     * @param scanObj Scanner Object to take in inputs.
+     * @return Returns boolean to check if the function ran successfully. True for success. False for unsuccessful.
+     */
     public boolean runReply(Scanner scanObj, User cookie, ArrayList<Camp> campArray){
         String choice;
         System.out.println("Which Enquiry do you want to reply?");

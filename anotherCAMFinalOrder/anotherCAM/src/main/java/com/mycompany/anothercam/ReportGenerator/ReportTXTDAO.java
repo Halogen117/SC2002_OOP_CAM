@@ -1,3 +1,10 @@
+package com.mycompany.anothercam.ReportGenerator;
+import com.mycompany.anothercam.Camp;
+import com.mycompany.anothercam.DateFormatter;
+import java.io.FileWriter; 
+import java.io.IOException;
+import java.time.LocalDateTime;
+
 /**
 Represents the ReportTXTDAO Object and the following assistance methods.
 A ReportTXTDAO object can be called multiple times
@@ -6,14 +13,6 @@ The class here creates the report format for TXT based on the information given 
 @version 1.0
 @since 2023-11-5
 */
-
-package com.mycompany.anothercam.ReportGenerator;
-import com.mycompany.anothercam.Camp;
-import com.mycompany.anothercam.DateFormatter;
-import java.io.FileWriter; 
-import java.io.IOException;
-import java.time.LocalDateTime;
-
 public class ReportTXTDAO {
     private FileWriter writer;
     
@@ -27,6 +26,7 @@ public class ReportTXTDAO {
     
     /**
     * Writes the TXT beginner header into the TXT Report.
+     * @throws java.io.IOException
     */
     public void reportBeginnerHeader() throws IOException{
         this.writer.write("============================================\n");
@@ -36,6 +36,7 @@ public class ReportTXTDAO {
 
     /**
     * Writes the TXT ending header into the TXT Report.
+     * @throws java.io.IOException
     */
     public void reportEndingHeader() throws IOException{
         writer.write("\n============================================\n");
@@ -46,6 +47,7 @@ public class ReportTXTDAO {
     /**
     * Writes the TXT date of report generated header into the TXT Report.
     * @param dateFor The DateFormatter object which is used to call the functions in the variable.
+     * @throws java.io.IOException
     */
     public void reportGenerateTodayDateHeader(DateFormatter dateFor) throws IOException{
         writer.write("DATE OF REPORT GENERATED: "+ dateFor.convertDatetimeToString(LocalDateTime.now())+" \n");
@@ -55,6 +57,7 @@ public class ReportTXTDAO {
     * Writes the Camp Details of the report into the TXT Report.
     * @param campPrint the Camp Object to print the camp variables
     * @param i Integer to to signal the camp number to be printed
+     * @throws java.io.IOException
     * 
     */
     public void reportPrintCampDetails(Camp campPrint, int i) throws IOException{
@@ -73,6 +76,7 @@ public class ReportTXTDAO {
     * Writes the Camp Committee Details of the report into the TXT Report.
     * @param campPrint the Camp Object to print the camp variables
     * @param i Integer to to signal the camp number to be printed
+     * @throws java.io.IOException
     * 
     */
     public void reportPrintCommitteeDetails(Camp campPrint, int i) throws IOException{
@@ -90,6 +94,7 @@ public class ReportTXTDAO {
     * Writes the Student Attendee Details of the report into the TXT Report.
     * @param campPrint the Camp Object to print the camp variables
     * @param i Integer to to signal the camp number to be printed
+     * @throws java.io.IOException
     */
     public void reportPrintAttendeeDetails(Camp campPrint, int i) throws IOException{
         if(campPrint.getCampStudentList().size() <=0){

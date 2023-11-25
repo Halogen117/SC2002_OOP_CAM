@@ -1,3 +1,9 @@
+
+package com.mycompany.anothercam.Login;
+import com.mycompany.anothercam.User;
+import com.mycompany.anothercam.StudentList;
+import java.util.Scanner;
+
 /**
 Represents the StudentLogin Object and the following assistance methods.
 A StudentLogin can be called only once.
@@ -6,11 +12,6 @@ The method is used to login for a student user.
 @version 1.0
 @since 2023-11-1
 */
-package com.mycompany.anothercam.Login;
-import com.mycompany.anothercam.User;
-import com.mycompany.anothercam.StudentList;
-import java.util.Scanner;
-
 public class StudentLogin implements Login{
     private Authenticate auth = new Authenticate();
     

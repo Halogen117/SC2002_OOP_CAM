@@ -1,10 +1,3 @@
-/**
-Represents the StudentCommitteeApp Object and the following assistance methods.
-A StudentCommitteeApp is ran depending on how many times a student committee member would want to access the app.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-6
-*/
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.StudentApplicationManager.StudentCampApp;
@@ -17,7 +10,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
-
+/**
+Represents the StudentCommitteeApp Object and the following assistance methods.
+A StudentCommitteeApp is ran depending on how many times a student committee member would want to access the app.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-6
+*/
 public class StudentCommitteeApp {
 
     private DateFormatter date_format = new DateFormatter();
@@ -29,6 +28,7 @@ public class StudentCommitteeApp {
     * @param cookie the User Object (A Student) which the requested user to access the application.
     * @param scanObj takes in the scanner Object for automated testing.
     * @return boolean value once the application has completed running. True for successful run. False for unknown exit.
+     * @throws java.io.IOException
     */    
     public boolean runStudentCommitteeApp(ArrayList<Camp> campArray, User cookie, Scanner scanObj) throws IOException{
         boolean loopCont = true;

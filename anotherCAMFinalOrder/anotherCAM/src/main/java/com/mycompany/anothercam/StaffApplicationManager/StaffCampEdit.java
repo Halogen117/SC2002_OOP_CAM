@@ -1,10 +1,4 @@
-/**
-Represents the StaffCampEdit Object and the following assistor methods.
-A StaffCampEdit can be called multiple times depending on how many camps to be edited.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-10-28
-*/
+
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
@@ -17,6 +11,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 //import com.mycompany.anothercam.implementActions.Edit;
 //implements Edit
+
+/**
+Represents the StaffCampEdit Object and the following assistor methods.
+A StaffCampEdit can be called multiple times depending on how many camps to be edited.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-28
+*/
 public class StaffCampEdit implements Edit {
     private ArrayList<Integer> countKeep = new ArrayList<Integer>();
     private DateFormatter dateFormat = new DateFormatter();

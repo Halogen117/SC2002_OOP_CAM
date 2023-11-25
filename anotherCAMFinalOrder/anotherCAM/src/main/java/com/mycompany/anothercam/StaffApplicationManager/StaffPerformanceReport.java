@@ -1,10 +1,3 @@
-/**
-Represents the StaffPerformanceReportApp Object and the following assistance methods.
-A StaffPerformanceReportApp can be run multiple times depending on the number of reports to be made.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-3
-*/
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
@@ -20,7 +13,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+Represents the StaffPerformanceReportApp Object and the following assistance methods.
+A StaffPerformanceReportApp can be run multiple times depending on the number of reports to be made.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-3
+*/
 public class StaffPerformanceReport {
     
     /**
@@ -29,6 +28,7 @@ public class StaffPerformanceReport {
     * @param cookie the User Object (A Staff) which the requested user creates the Camp
     * @param scanObj takes in the scanner Object for automated testing.
     * @return the boolean value whether the Staff Performance Report of camp object was successful.
+     * @throws java.io.IOException
     */
     public boolean runStaffPerformanceReport(ArrayList<Camp> campArray, User cookie, Scanner scanObj) throws IOException{
         DateFormatter dateFor = new DateFormatter();

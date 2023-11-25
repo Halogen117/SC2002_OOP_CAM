@@ -1,11 +1,3 @@
-/**
- View suggestions and the following assistance methods.
- Allow the student to View the suggestions
- @author Matthias Lim Xing Ran
- @version 1.0
- @since 2023-11-10
- */
-
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 
 import com.mycompany.anothercam.*;
@@ -17,10 +9,18 @@ import java.util.Scanner;
 import static com.mycompany.anothercam.Status.*;
 import static com.mycompany.anothercam.SuggestionList.suggestionsList;
 
+/**
+ View suggestions and the following assistance methods.
+ Allow the student to View the suggestions
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-10
+ */
 public class ViewSuggestionStud implements View{
     private static SuggestionList suggestionList;
     /**
      * Contructor to constructor for the Student menu
+     * @param suggestionList takes in the SuggestionList Object.
      */
     public ViewSuggestionStud(SuggestionList suggestionList) {
         this.suggestionList = suggestionList;
@@ -54,6 +54,7 @@ public class ViewSuggestionStud implements View{
      * Show the suggestions that the student created with less detail
      *
      * @param student the User Object
+     * @return boolean value on whether the function ran successfully. True for success. False for unsuccessful.
      */
     public static Boolean showsuggestionsmini(User student) {
 
@@ -81,6 +82,7 @@ public class ViewSuggestionStud implements View{
      * @param camp_array the CampArray which the camp object is stored at
      * @param cookie     the User Object (A Student) and their details
      * @param scanObj    takes in the scanner Object for automated testing.
+     * @return  boolean to show that the run view has run successfully.
      */
     public boolean runView(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {
         showSuggestionsForStudent(cookie);

@@ -1,3 +1,9 @@
+
+package com.mycompany.anothercam.Login;
+import com.mycompany.anothercam.User;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
 Represents the Authentication Object and the following mutator methods.
 An Authentication method can be called once.
@@ -5,13 +11,6 @@ An Authentication method can be called once.
 @version 1.0
 @since 2023-10-31
 */
-package com.mycompany.anothercam.Login;
-import com.mycompany.anothercam.User;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
-
 public class Authenticate {
     private User userCookie;
     /**

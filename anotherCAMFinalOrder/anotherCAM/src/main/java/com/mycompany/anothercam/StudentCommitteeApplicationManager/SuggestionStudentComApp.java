@@ -1,11 +1,3 @@
-/**
- Represents the SuggestionStudentApp and the following assistance methods.
- A SuggestionStudentApp can be run multiple times depending on User
- @author Matthias Lim Xing Ran
- @version 1.0
- @since 2023-11-10
- */
-
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.Camp;
@@ -15,10 +7,13 @@ import java.util.Scanner;
 import com.mycompany.anothercam.SuggestionList;
 import com.mycompany.anothercam.User;
 
-
-
-
-
+/**
+ Represents the SuggestionStudentApp and the following assistance methods.
+ A SuggestionStudentApp can be run multiple times depending on User
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-10
+ */
 public class SuggestionStudentComApp {
 
 

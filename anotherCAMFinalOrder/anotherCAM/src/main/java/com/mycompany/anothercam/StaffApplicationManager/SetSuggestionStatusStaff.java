@@ -1,11 +1,3 @@
-/**
- Represents the Menu that the Staff can use
- @author Matthias Lim Xing Ran
- @version 1.0
- @since 2023-11-11
- */
-
-
 package com.mycompany.anothercam.StaffApplicationManager;
 
 import com.mycompany.anothercam.Student;
@@ -20,13 +12,13 @@ import com.mycompany.anothercam.Login.Verification;
 import static com.mycompany.anothercam.Status.APPROVED;
 import static com.mycompany.anothercam.Status.REJECTED;
 import static com.mycompany.anothercam.SuggestionList.suggestionsList;
-
 /**
- * Runs the Staff Menu Application which allow the staff to view ,set the status of the suggestion
+ Represents the Menu that the Staff can use.
+ Runs the Staff Menu Application which allow the staff to view ,set the status of the suggestion.
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-11
  */
-
-
-
 class SetSuggestionStatusStaff {
     private ArrayList<Suggestions> suggestionList;
     private Verification veri = new Verification();

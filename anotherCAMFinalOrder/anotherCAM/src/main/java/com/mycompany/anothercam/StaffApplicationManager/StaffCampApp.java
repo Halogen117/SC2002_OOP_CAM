@@ -1,10 +1,4 @@
-/**
-Represents the StaffCampApp Object and the following assistance methods.
-A StaffCampApp is only run once.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-2
-*/
+
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Login.Verification;
@@ -12,6 +6,13 @@ import com.mycompany.anothercam.Staff;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Represents the StaffCampApp Object and the following assistance methods.
+A StaffCampApp is only run once.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-2
+*/
 public class StaffCampApp{
     
     /**

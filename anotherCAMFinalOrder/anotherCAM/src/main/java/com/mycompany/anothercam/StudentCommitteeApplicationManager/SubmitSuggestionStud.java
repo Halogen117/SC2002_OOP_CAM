@@ -1,11 +1,3 @@
-/**
- Add suggestions and the following assistance methods.
- Allow the user to Add the suggestions
- @author Matthias Lim Xing Ran
- @version 1.0
- @since 2023-11-10
- */
-
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.*;
@@ -13,16 +5,22 @@ import com.mycompany.anothercam.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ Add suggestions and the following assistance methods.
+ Allow the user to Add the suggestions
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-10
+ */
 public class SubmitSuggestionStud {
     private SuggestionList suggestionList;
     private Verification veri = new Verification();
 
 
     /**
-     * Contructor to constructor for the Student menu
+     * Constructor to submit the Student Suggestion.
+     * @param suggestionList SuggestionList to take in the SuggestionList Object.
      */
-
-
     public SubmitSuggestionStud(SuggestionList suggestionList) {
         this.suggestionList = suggestionList;
     }
@@ -32,7 +30,8 @@ public class SubmitSuggestionStud {
      * Add the suggestions to the suggestion list
      *
      * @param cookie     the User Object
-     * @param camp_array the User Object
+     * @param camp_array the ArrayList of Camps that exist in the application.
+     * @param scanObj takes in the scanObj to take in inputs.
      */
 
     public void Addsuggestions(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {

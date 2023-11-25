@@ -1,3 +1,7 @@
+
+package com.mycompany.anothercam;
+import java.util.ArrayList;
+
 /**
 Represents the StudentList Object and the following mutator methods.
 A studentList has multiple staff members in it.
@@ -5,11 +9,11 @@ A studentList has multiple staff members in it.
 @version 1.0
 @since 2023-10-28
 */
-package com.mycompany.anothercam;
-import java.util.ArrayList;
-
-
 public class StudentList {
+
+    /**
+     * Static variable for the student list to be accessed.
+     */
     public static ArrayList<User> studList = new ArrayList<User>();
 
     /**
@@ -43,6 +47,7 @@ public class StudentList {
     * @param userID This value passed is the unique studentID.
     *               If inside, return true.
     *               Or else return false instead.  
+     * @return   boolean to check if the student is in the list. True for student in the list. False for no student in the list.
     */
     public static boolean checkStudentInList(String userID){
         for(int i=0; i< studList.size(); i++){
@@ -58,6 +63,7 @@ public class StudentList {
     * @param userID This value passed is the unique studentID.
     *               If inside, return a student object.
     *               Or else return null.  
+     * @return   User object if the student object can be found. Null if no student found.
     */
     public static User returnStudentCookie(String userID){
         if(checkStudentInList(userID)){

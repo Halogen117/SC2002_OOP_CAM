@@ -1,3 +1,7 @@
+
+package com.mycompany.anothercam;
+import java.util.ArrayList;
+
 /**
 Represents the StaffList Object and the following mutator methods.
 A staffList has multiple staff members in it.
@@ -5,10 +9,11 @@ A staffList has multiple staff members in it.
 @version 1.0
 @since 2023-10-28
 */
-package com.mycompany.anothercam;
-import java.util.ArrayList;
-
 public class StaffList {
+
+    /**
+     * Static ArrayList of the staffList.
+     */
     public static ArrayList<User> staffList = new ArrayList<User>();
 
     /**

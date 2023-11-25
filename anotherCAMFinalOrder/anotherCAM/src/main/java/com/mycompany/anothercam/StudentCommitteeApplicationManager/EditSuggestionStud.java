@@ -1,11 +1,3 @@
-/**
- Edit suggestions and the following assistance methods.
- Allow the user to Edit the suggestions
- @author Matthias Lim Xing Ran
- @version 1.0
- @since 2023-11-10
- */
-
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 
 import com.mycompany.anothercam.*;
@@ -16,6 +8,13 @@ import com.mycompany.anothercam.implementActions.Edit;
 
 import static com.mycompany.anothercam.SuggestionList.suggestionsList;
 
+/**
+ Edit suggestions and the following assistance methods.
+ Allow the user to Edit the suggestions
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-10
+ */
 public class EditSuggestionStud implements Edit{
     private SuggestionList suggestionList;
     private Verification veri = new Verification();
@@ -23,6 +22,7 @@ public class EditSuggestionStud implements Edit{
 
     /**
      * Contructor to constructor for the Student menu
+     * @param suggestionList Takes in the SuggestionList to execute the functionality.
      */
 
 
@@ -36,9 +36,8 @@ public class EditSuggestionStud implements Edit{
      * @param camp_array the CampArray which the camp object is stored at
      * @param cookie     the User Object (A Student) and their details
      * @param scanObj    takes in the scanner Object for automated testing.
+     * @return the boolean value if the application ran successfully. True for running correctly. False for running unsuccessfully.
      */
-
-
     public boolean runEdit(ArrayList<Camp> camp_array, User cookie, Scanner scanObj) {
         System.out.println("You selected Edit Suggestions.");
         if(!ViewSuggestionStud.showsuggestionsmini(cookie)){

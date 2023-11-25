@@ -1,11 +1,3 @@
-/**
- Represents the SuggestionStaffApp and the following assistance methods.
- A StaffReportApp can be run multiple times depending on staff
- @author Matthias Lim Xing Ran
- @version 1.0
- @since 2023-11-10
- */
-
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.Camp;
@@ -13,6 +5,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.mycompany.anothercam.User;
 
+/**
+ Represents the SuggestionStaffApp and the following assistance methods.
+ A StaffReportApp can be run multiple times depending on staff
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-10
+ */
 public class SuggestionStaffApp {
     /**
      * Runs the Staff suggestion Application.

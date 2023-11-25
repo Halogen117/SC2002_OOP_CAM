@@ -1,11 +1,3 @@
-/**
-Represents the CampCommitteeReport Object and the following assistance methods.
-A CampCommitteeReport can be run multiple times depending on the number of reports to be made.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-11
-*/
-
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
@@ -22,6 +14,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Represents the CampCommitteeReport Object and the following assistance methods.
+A CampCommitteeReport can be run multiple times depending on the number of reports to be made.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-11
+*/
 public class CampCommitteeReport{
         /**
         * Runs the Student Committee Report Camp Application..
@@ -29,6 +28,7 @@ public class CampCommitteeReport{
         * @param cookie the User Object (A Student Committee) which the requested user creates the report
         * @param scanObj takes in the scanner Object for automated testing.
         * @return the boolean value whether the Camp Committee Report of camp object was successful.
+     * @throws java.io.IOException
         */
 	public boolean runStudentCommitteeReport(ArrayList<Camp> campArray, User cookie, Scanner scanObj) throws IOException{
             DateFormatter dateFor = new DateFormatter();
@@ -106,6 +106,7 @@ public class CampCommitteeReport{
     * @param writer FileWriter object used to write information into the txt file.
     * @param dateFor DateFormatter object used to format any dates required.
     * @return the boolean value whether the TXT Report is saved or not.
+     * @throws java.io.IOException
     */
     public boolean writeInText(ArrayList<Camp> tempCampArray, User cookie, FileWriter writer, DateFormatter dateFor) throws IOException{
         try{
@@ -138,6 +139,7 @@ public class CampCommitteeReport{
     * @param filename String object where csv information will be saved into.
     * @param printOnlyCreate boolean to check if need to print the camp which the staff in charge created.
     * @return the boolean value whether the CSV Report is saved or not.
+     * @throws java.io.IOException
     */
     public boolean writeInCSV(ArrayList<Camp> tempCampArray, ArrayList<Camp> campArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename, boolean printOnlyCreate) throws IOException{
         ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, campArray, filename, false, false, printOnlyCreate);

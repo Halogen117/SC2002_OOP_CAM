@@ -1,3 +1,6 @@
+
+package com.mycompany.anothercam;
+
 /**
 Represents the User Object and the following mutator methods.
 A user would be associated to the Student and Staff class.
@@ -5,8 +8,6 @@ A user would be associated to the Student and Staff class.
 @version 1.0
 @since 2023-10-23
 */
-package com.mycompany.anothercam;
-
 public abstract class User {
     private String userID;
     private String userName;

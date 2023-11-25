@@ -1,12 +1,3 @@
-/**
- View suggestions and the following assistance methods.
- Allow the staff to View the suggestions
- @author Matthias Lim Xing Ran
- @version 1.0
- @since 2023-11-11
- */
-
-
 package com.mycompany.anothercam.StaffApplicationManager;
 
 import com.mycompany.anothercam.SuggestionList;
@@ -16,10 +7,12 @@ import java.util.ArrayList;
 import static com.mycompany.anothercam.SuggestionList.suggestionsList;
 
 /**
- * Runs the Staff Menu Application which allow the staff to view ,set the status of the suggestion
+ View suggestions and the following assistance methods.
+ Allow the staff to View the suggestions
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-11
  */
-
-
 
 class ViewSuggestionStaff {
     private ArrayList<Suggestions> suggestionList;

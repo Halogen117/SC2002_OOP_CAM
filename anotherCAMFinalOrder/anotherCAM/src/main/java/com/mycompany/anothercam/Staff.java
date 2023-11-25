@@ -1,3 +1,6 @@
+
+package com.mycompany.anothercam;
+
 /**
 Represents the Staff Object and the following mutator methods.
 A staff can create multiple camps.
@@ -5,9 +8,6 @@ A staff can create multiple camps.
 @version 1.0
 @since 2023-10-28
 */
-package com.mycompany.anothercam;
-
-
 public class Staff extends User{
     private boolean createdCamp;
     /**

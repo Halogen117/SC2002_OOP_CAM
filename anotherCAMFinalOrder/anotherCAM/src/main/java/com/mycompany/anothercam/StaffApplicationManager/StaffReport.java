@@ -1,10 +1,3 @@
-/**
-Represents the StaffReport Object and the following assistance methods.
-A StaffReport can be run multiple times depending on the number of reports to be made.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-8
-*/
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.DateFormatter;
@@ -20,6 +13,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Represents the StaffReport Object and the following assistance methods.
+A StaffReport can be run multiple times depending on the number of reports to be made.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-8
+*/
 public class StaffReport{
     /**
     * Runs the Staff Report Camp Application..
@@ -114,6 +114,7 @@ public class StaffReport{
     /**
     * Runs the Staff Report which is to be formatted to TXT.
     * @param tempCampArray the temporary CampArray which the new camp object is stored.
+     * @param campArray the campArray that contains the entire camps in the application.
     * @param cookie the User Object (A Staff) which the requested user creates the Camp
     * @param writer FileWriter object used to write information into the txt file.
     * @param dateFor DateFormatter object used to format any dates required.
@@ -121,6 +122,7 @@ public class StaffReport{
     * @param printAttendee boolean to check if need to print attendees of camp only
     * @param printOnlyCreate boolean to check if need to print the camp which the staff in charge created.
     * @return the boolean value whether the TXT Report is saved or not.
+     * @throws java.io.IOException
     */
     public boolean writeInText(ArrayList<Camp> tempCampArray, ArrayList<Camp> campArray, User cookie, FileWriter writer, DateFormatter dateFor, boolean printCommittee, boolean printAttendee, boolean printOnlyCreate) throws IOException{
         try{
@@ -173,6 +175,7 @@ public class StaffReport{
     * @param printAttendee boolean to check if need to print attendees of camp only
     * @param printOnlyCreate boolean to check if need to print the camp which the staff in charge created.
     * @return the boolean value whether the CSV Report is saved or not.
+     * @throws java.io.IOException
     */
     public boolean writeInCSV(ArrayList<Camp> tempCampArray, ArrayList<Camp> campArray, User cookie, FileOutputStream streamOut, DateFormatter dateFor, String filename, boolean printCommittee, boolean printAttendee, boolean printOnlyCreate) throws IOException{
         ReportCSVDAO genReport = new ReportCSVDAO(tempCampArray, campArray, filename, printCommittee, printAttendee, printOnlyCreate);

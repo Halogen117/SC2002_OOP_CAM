@@ -13,16 +13,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ Allows the student to view the menu of the Enquiries.
+ Allow the student to view the enquiries options.
+ @author Matthias Lim Xing Ran
+ @version 1.0
+ @since 2023-11-17
+ */
 public class EnquiryStudentMenuOptions implements ViewEditDelete {      //create subinterfaces!! enquiry doesnt delete
     private Verification veri = new Verification();
 
     private EnquiryList enquiryList;
     private int choice;
 
+    /**
+     * Sets the Enquiry Student List Object
+     * @param enquiryList contains the EnquiryList to be initialized.
+     */
     public EnquiryStudentMenuOptions(EnquiryList enquiryList) {
         this.enquiryList= enquiryList;
     }
 
+    /**
+     *
+     * @param campArray
+     * @param cookie
+     * @param scanObj
+     */
     public void AddEnquiry(ArrayList<Camp> campArray, Student cookie, Scanner scanObj) {
         System.out.println("You selected Submit enquiry.");
 
@@ -59,11 +76,21 @@ public class EnquiryStudentMenuOptions implements ViewEditDelete {      //create
         System.out.println("Enquiry submitted successfully");
     }
 
+    
+    /**
+     * Shows the Student Enquiries.
+     * @param student The Student Object to pass to.
+     * @param campList The list of camps required to print out.
+    */
     private void showEnquiryForStudent(User student, List<Camp> campList) {
         System.out.println("You selected Show Enquiries:");
         enquiryList.viewEnquiryStudent(student, campList);
     }
 
+    /**
+     * Shows the miniturized Enquiry Application.
+     * @param student The student Object passed into the function.
+     */
     public void showEnquirymini(User student) {
         System.out.println("You selected Show your Enquiries:");
         enquiryList.viewEnquiryStudentmini(student);

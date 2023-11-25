@@ -1,10 +1,4 @@
-/**
-Represents the Read Excel Object and the following methods that assist in the venture.
-A Read Excel Object can only be declared once
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-3
-*/
+
 package com.mycompany.anothercam.Login;
 import com.mycompany.anothercam.StudentList;
 import com.mycompany.anothercam.StaffList;
@@ -19,6 +13,13 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+Represents the Read Excel Object and the following methods that assist in the venture.
+A Read Excel Object can only be declared once
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-3
+*/
 public class ReadExcel {
     /**
     * Sets the ArrayList of the Staff and the Student when acquired from the respective excel sheets.

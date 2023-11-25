@@ -1,11 +1,3 @@
-/**
-* Runs the StudentCampView Object.
-* @param campArray the CampArray which the new camp object is stored.
-* @param cookie the User Object (A Student) which the requested user creates the Camp
-* @param scanObj takes in the scanner Object for automated testing.
-* @return the boolean value whether the deletion of camp object was successful.
-*/
-
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Camp.visibilityStatus;
@@ -15,7 +7,13 @@ import com.mycompany.anothercam.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+Represents the Student Camp View class and the following assistance methods.
+A Student Camp View is ran dependent on how many users are going to unregister for the camp.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-5
+*/
 public class StudentCampView{
      /**
     * Runs the Student View Application..
@@ -80,6 +78,12 @@ public class StudentCampView{
         return true;
     }
     
+    /**
+     * Runs the Camp Attendee List that outputs the camps available to the attendee.
+     * @param campArray the ArrayList of Camps that exist in the application.
+     * @param cookie stores the Student Object.
+     * @return the ArrayList of Integers which contain the camps to see.
+     */
     public ArrayList<Integer> runViewCampListOutAttendee(ArrayList<Camp> campArray, User cookie){
         ArrayList<Integer> countKeep = new ArrayList<Integer>();
         // Filtered array based on faculty info
@@ -100,6 +104,12 @@ public class StudentCampView{
         }
     }
     
+    /**
+     * Runs the Camp Attendee List that outputs the camps available to the camp committee member.
+     * @param campArray the ArrayList of Camps that exist in the application.
+     * @param cookie stores the Student Object.
+     * @return the ArrayList of Integers which contain the camps to see.
+     */
     public ArrayList<Integer> runViewCampListOutCampCommittee(ArrayList<Camp> campArray, User cookie){
         ArrayList<Integer> countKeep = new ArrayList<Integer>();
         // Filtered array based on faculty info
@@ -120,6 +130,12 @@ public class StudentCampView{
         }
     }
     
+    /**
+     * Checks if the camp is valid to be seen by the user.
+     * @param campArray the ArrayList of Camps that exist in the application.
+     * @param cookie stores the Student Object.
+     * @return the ArrayList of Integers which contain the camps to see.
+     */
     public boolean checkCampValid(ArrayList<Camp> campArray, User cookie){
         for(int i=1; i< campArray.size()+1; i++){
 

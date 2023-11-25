@@ -1,3 +1,12 @@
+
+package com.mycompany.anothercam.Login;
+import com.mycompany.anothercam.Camp.visibilityStatus;
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
+
+// To verify all inputs when accessed to be boolean to return true for correct input and false for incorrect input
+
 /**
 Represents the Verification Object and the following assistance methods.
 A verification object can be called multiple times depending on the use cases
@@ -6,13 +15,6 @@ A verification object can be called multiple times depending on the use cases
 @version 1.0
 @since 2023-10-28
 */
-package com.mycompany.anothercam.Login;
-import com.mycompany.anothercam.Camp.visibilityStatus;
-import java.time.LocalDateTime;
-import java.util.Scanner;
-
-
-// To verify all inputs when accessed to be boolean to return true for correct input and false for incorrect input
 public class Verification {
     private int loopTolerance = 5;
     private int loopLooper;

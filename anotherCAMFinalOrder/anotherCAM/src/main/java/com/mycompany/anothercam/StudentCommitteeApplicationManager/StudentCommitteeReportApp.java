@@ -1,10 +1,3 @@
-/**
-Represents the StudentCommitteeReportApp Object and the following assistance methods.
-A StudentCommitteeReportApp is run multiple times depending on how many times the user access the application.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-1
-*/
 package com.mycompany.anothercam.StudentCommitteeApplicationManager;
 import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.Camp;
@@ -12,6 +5,13 @@ import com.mycompany.anothercam.User;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Represents the StudentCommitteeReportApp Object and the following assistance methods.
+A StudentCommitteeReportApp is run multiple times depending on how many times the user access the application.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-1
+*/
 public class StudentCommitteeReportApp {
     /**
     * Runs the Staff Report Application to access main menu subsections.

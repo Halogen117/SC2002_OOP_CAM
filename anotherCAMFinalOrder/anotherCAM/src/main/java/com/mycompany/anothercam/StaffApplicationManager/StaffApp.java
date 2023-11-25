@@ -1,3 +1,10 @@
+package com.mycompany.anothercam.StaffApplicationManager;
+import com.mycompany.anothercam.Camp;
+import com.mycompany.anothercam.Staff;
+import java.util.ArrayList;
+import java.util.Scanner;
+import com.mycompany.anothercam.Login.Verification;
+
 /**
 Represents the StaffApp Object and the following assistance methods.
 A StaffApp is run depending on how many times a student committee member would want to access the app.
@@ -5,17 +12,6 @@ A StaffApp is run depending on how many times a student committee member would w
 @version 1.0
 @since 2023-11-6
 */
-
-package com.mycompany.anothercam.StaffApplicationManager;
-import com.mycompany.anothercam.Camp;
-import com.mycompany.anothercam.DateFormatter;
-import com.mycompany.anothercam.User;
-import com.mycompany.anothercam.Staff;
-import java.util.ArrayList;
-import java.time.LocalDateTime;
-import java.util.Scanner;
-import com.mycompany.anothercam.Login.Verification;
-
 public class StaffApp{
     /**
     * Runs the Staff Application to access main menu subsections.

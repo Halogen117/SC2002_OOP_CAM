@@ -1,10 +1,3 @@
-/**
-Represents the StaffStatusApp Object and the following assistance methods.
-A StaffStatusApp can be run multiple times depending on the number of reports to be made.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-10
-*/
 package com.mycompany.anothercam.StaffApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
@@ -12,6 +5,13 @@ import com.mycompany.anothercam.Staff;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+Represents the StaffStatusApp Object and the following assistance methods.
+A StaffStatusApp can be run multiple times depending on the number of reports to be made.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-10
+*/
 public class StaffStatusApp{
     
     /**

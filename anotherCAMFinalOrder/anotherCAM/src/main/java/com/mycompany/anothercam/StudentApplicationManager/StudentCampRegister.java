@@ -1,10 +1,3 @@
-/**
-Represents the StudentCampRegister Object and the following assistance methods.
-A StudentCampRegister is ran dependent on how many users are going to register for the camp.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-10-27
-*/
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Student;
@@ -14,6 +7,13 @@ import com.mycompany.anothercam.DateFormatter;
 import com.mycompany.anothercam.Login.Verification;
 import java.time.LocalDateTime;
 
+/**
+Represents the StudentCampRegister Object and the following assistance methods.
+A StudentCampRegister is ran dependent on how many users are going to register for the camp.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-10-27
+*/
 public class StudentCampRegister {
     /**
     * Runs the Student Register Application.

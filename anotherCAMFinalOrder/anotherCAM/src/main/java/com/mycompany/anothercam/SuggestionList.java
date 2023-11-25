@@ -1,3 +1,8 @@
+package com.mycompany.anothercam;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  SuggestionsList will store all the suggestion that are created
  contain many functions to allow  edit view delete submit and approve / reject of suggestions
@@ -5,16 +10,11 @@
  @version 5.0
  @since 2023-11-11
  */
-
-
-
-
-package com.mycompany.anothercam;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
 public class SuggestionList {
+
+    /**
+     * Static ArrayList of Suggestions to be accessed for the whole program.
+     */
     public static ArrayList<Suggestions> suggestionsList = new ArrayList<>();
 
     /**

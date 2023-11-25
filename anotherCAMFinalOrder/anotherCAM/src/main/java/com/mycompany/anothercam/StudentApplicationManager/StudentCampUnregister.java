@@ -1,10 +1,4 @@
-/**
-Represents the StudentCampUnregister Object and the following assistance methods.
-A StudentCampUnregister is ran dependent on how many users are going to unregister for the camp.
-@author Russel Tan Jun Hong
-@version 1.0
-@since 2023-11-5
-*/
+
 package com.mycompany.anothercam.StudentApplicationManager;
 import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.Login.Verification;
@@ -12,8 +6,13 @@ import com.mycompany.anothercam.Student;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-
+/**
+Represents the StudentCampUnregister Object and the following assistance methods.
+A StudentCampUnregister is ran dependent on how many users are going to unregister for the camp.
+@author Russel Tan Jun Hong
+@version 1.0
+@since 2023-11-5
+*/
 public class StudentCampUnregister {
     
     /**
@@ -145,6 +144,7 @@ public class StudentCampUnregister {
     * @param Stud takes in the student object to be checked if they are an attendee.
     * @param choice the arraylist integer that contains the specific list of camps needed
     * @param campArray the CampArray which the new camp object is stored.
+     * @param chooseChoice Chooses the choice of the camp.
     * @return boolean value once the application has completed running. True if student not in. False if student in.
     */
     public boolean checkAttendeeList(ArrayList<Integer> choice, ArrayList<Camp> campArray, Student Stud, int chooseChoice){

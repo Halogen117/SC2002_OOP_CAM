@@ -25,7 +25,7 @@ public class EnquiryStaffApp {
             int choice = veri.verifyScannerNumber(scanObj);
             switch (choice) {//Staff
                 case 1 -> menu.runView(campArray,cookie,scanObj);
-                case 2 -> menu.runReply(scanObj);
+                case 2 -> menu.runReply(scanObj, cookie, campArray);
                 case 0 -> {
                     System.out.println("Goodbye!");
                     return true;

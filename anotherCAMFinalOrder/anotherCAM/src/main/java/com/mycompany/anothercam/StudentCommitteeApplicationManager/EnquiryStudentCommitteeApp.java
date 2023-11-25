@@ -27,7 +27,7 @@ public class EnquiryStudentCommitteeApp {
             switch (choice) {
                 case 1 -> menu.runView(campArray,cookie,scanObj);
                 case 2 -> {
-                    menu.runReply(scanObj);
+                    menu.runReply(scanObj, cookie, campArray);
                     cookie.incrementPoint();
 
                 }

@@ -9,5 +9,5 @@ import java.util.Scanner;
 public interface Reply {
 
 
-    boolean runReply(Scanner scanObj);
+    boolean runReply(Scanner scanObj, User Cookie, ArrayList<Camp> campArray);
 }

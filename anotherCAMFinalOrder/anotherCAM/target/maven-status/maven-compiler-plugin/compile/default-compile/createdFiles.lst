@@ -27,7 +27,6 @@ com\mycompany\anothercam\ReportGenerator\ReportTXTDAO.class
 SuggestionStaffMenuOptions.class
 com\mycompany\anothercam\StudentCommitteeApplicationManager\SuggestionStudentComApp.class
 com\mycompany\anothercam\Login\ReadExcel.class
-com\mycompany\anothercam\implementActions\ViewReply.class
 com\mycompany\anothercam\implementActions\Delete.class
 com\mycompany\anothercam\implementActions\View.class
 com\mycompany\anothercam\StudentCommitteeApplicationManager\ViewSuggestionStud.class
@@ -56,8 +55,6 @@ com\mycompany\anothercam\DateFormatter.class
 com\mycompany\anothercam\SuggestionList.class
 com\mycompany\anothercam\implementActions\ViewEditDelete.class
 com\mycompany\anothercam\StaffApplicationManager\EnquiryStaffApp.class
-com\mycompany\anothercam\StaffApplicationManager\StaffCampApp.class
-com\mycompany\anothercam\StaffApplicationManager\StaffDeleteCamp.class
 com\mycompany\anothercam\implementActions\GenerateReportAndReply.class
 com\mycompany\anothercam\StudentApplicationManager\StudentApp.class
 com\mycompany\anothercam\Suggestions.class
@@ -65,4 +62,3 @@ com\mycompany\anothercam\AnotherCAM.class
 com\mycompany\anothercam\StudentCommitteeApplicationManager\SubmitSuggestionStud.class
 com\mycompany\anothercam\implementActions\Edit.class
 com\mycompany\anothercam\implementActions\Reply.class
-com\mycompany\anothercam\StaffApplicationManager\StaffCampEdit.class

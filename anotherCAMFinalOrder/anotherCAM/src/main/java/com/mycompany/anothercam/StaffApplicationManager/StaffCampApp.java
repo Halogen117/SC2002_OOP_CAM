@@ -41,7 +41,7 @@ public class StaffCampApp{
 
                 case 1:
                     StaffCampEdit staffEdit = new StaffCampEdit();
-                    staffEdit.runStaffEditCamp(campArray, cookie, scanObj);
+                    staffEdit.runEdit(campArray, cookie, scanObj);
                     break;
 
                 case 2:
@@ -56,7 +56,7 @@ public class StaffCampApp{
                     
                 case 4:
                     StaffDeleteCamp delCamp = new StaffDeleteCamp();
-                    delCamp.runStaffDeleteCamp(campArray, cookie,scanObj);
+                    delCamp.runDelete(campArray, cookie,scanObj);
                     break;
 
                 case 5:

@@ -10,11 +10,13 @@ import com.mycompany.anothercam.Camp;
 import com.mycompany.anothercam.User;
 import com.mycompany.anothercam.Staff;
 import com.mycompany.anothercam.Login.Verification;
+import com.mycompany.anothercam.implementActions.Delete;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class StaffDeleteCamp {
+public class StaffDeleteCamp implements Delete {
     /**
     * Runs the Staff Delete Application.
     * @param campArray the CampArray which the new camp object is stored.
@@ -22,14 +24,16 @@ public class StaffDeleteCamp {
     * @param scanObj takes in the scanner Object for automated testing.
     * @return the boolean value whether the deletion of camp object was successful.
     */
-    public boolean runStaffDeleteCamp(ArrayList<Camp> campArray, Staff cookie, Scanner scanObj){
+    @Override
+    public boolean runDelete(ArrayList<Camp> campArray, User cookie, Scanner scanObj){
         // Print all camps
         Verification veri = new Verification();
+
         if(campArray.isEmpty()){
             System.out.println("No camps exist at the moment!");
         }else{
             System.out.println("These are the camps that exist that you are authorized to delete!");
-            ArrayList<Integer> authorizedDelete = printDeletedCampList(campArray, cookie);
+            ArrayList<Integer> authorizedDelete = printDeletedCampList(campArray, (Staff)cookie);
             System.out.println("0. Exit decision to remove camp!");
             System.out.println("Which camp do you want to remove? ");
             int decision = veri.verifyScannerNumber(scanObj);
@@ -74,6 +78,5 @@ public class StaffDeleteCamp {
             }
         return integerThis;
         }
-        
-    }
+}
 

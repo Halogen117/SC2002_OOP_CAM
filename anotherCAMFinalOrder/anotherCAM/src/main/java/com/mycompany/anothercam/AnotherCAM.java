@@ -40,7 +40,6 @@ public class AnotherCAM {
             System.out.println(stud.get_campCommittee());
         }
         */ 
-        final Scanner scan_obj = new Scanner(System.in);
         final String fileLocation = "C:\\Users\\Halogen\\Desktop\\Year 2\\Semester 1\\SC2002 - Object Oriented Des & Prog\\anotherCAM\\input.txt";
         final Scanner scanObj = new Scanner(new FileReader(fileLocation));
         //final Scanner scanObj = new Scanner(System.in);

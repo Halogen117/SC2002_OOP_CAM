@@ -9,6 +9,8 @@ import java.util.Objects;
 import java.util.Scanner;
 import com.mycompany.anothercam.Login.Verification;
 import com.mycompany.anothercam.User;
+import com.mycompany.anothercam.Staff;
+import com.mycompany.anothercam.Student;
 import com.mycompany.anothercam.implementActions.View;
 import com.mycompany.anothercam.implementActions.Reply;
 
@@ -37,8 +39,7 @@ public class EnquiryStaffMenuOptions implements View, Reply {
         
     }
     //@Override
-    public boolean runReply(Scanner scanObj){
-        
+    public boolean runReply(Scanner scanObj, User cookie, ArrayList<Camp> campArray){
         String choice;
         System.out.println("Which Enquiry do you want to reply?");
         showEnquiryForStaffmini();
@@ -53,8 +54,39 @@ public class EnquiryStaffMenuOptions implements View, Reply {
         if(Objects.equals(choice, "yes")){
             System.out.println("Enter your reply:");
             String reply = scanObj.nextLine();
+            int campID = -1;
             Enquiry enquiry = enquirylist.getEnquirybyID(thechosenone);   //accessing the specific enquiry object that staff member wants to reply to
-            
+            if(cookie instanceof Staff){
+                Staff cookStaff = (Staff) cookie;
+                for(int i=0; i< campArray.size(); i++){
+                    if(campArray.get(i).getStaffInCharge().equals(cookStaff.getUserID())){
+                        campID = campArray.get(i).getCampID();
+                    }
+                }
+                if(!(enquiry.getCampID() == campID)){
+                    System.out.println("As you are not the staff in charge of the camp, you cannot edit the enquiry");
+                    return false;
+                }
+            }else{
+                Student cookStud = (Student) cookie;
+                int campIDTry = -1;
+                for(int i=0; i< campArray.size(); i++){
+                    for(int j=0; j< campArray.get(i).getCampCommitteeList().size(); j++){
+                        if(campArray.get(i).getCampCommitteeList().get(j).getUserID().equals(cookStud.getUserID())){
+                            campIDTry = campArray.get(i).getCampID();
+                        }
+                    }
+
+                }
+                if(!(enquiry.getCampID() == campIDTry)){
+                    System.out.println("As you are not the camp committee member of the camp, you cannot edit the enquiry");
+                    return false;
+                }
+            }
+            //if(enquiry.getCampID() == cookie.){
+                //System.out.println("You cannot reply to this enquiry as you are not the staff in charge");
+                //return false;
+            //}
             if (enquiry != null) {
                 enquiry.replyToEnquiry(reply);
                 enquirylist.process(thechosenone);

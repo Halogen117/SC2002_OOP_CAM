@@ -196,7 +196,7 @@ public class StudentCampRegister {
         DateFormatter formaDat  =new DateFormatter();
         // Check Locatimenow
         if(formaDat.compareDateAndTime(campArray.get(choice.get(chooseChoice-1)).getDate() , LocalDateTime.now())==1){
-            System.out.println("The day of the camp has already been initiated!");
+            System.out.println("The camp's deadline has already passed!");
             return false;
         // Check registration date closed 
         }else if(formaDat.compareDateAndTime(LocalDateTime.now(), campArray.get(choice.get(chooseChoice-1)).getRegClosingDate())==0){

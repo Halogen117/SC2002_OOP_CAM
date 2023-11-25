@@ -48,7 +48,6 @@ public class Suggestions {
         this.SuggestionID = nextId;
         String blank = null;
         this.description = description;
-        this.description = scanObj.next();
         this.status = Status.PENDING;
         this.nameofStudent = student.getUserID();
         nextId++;

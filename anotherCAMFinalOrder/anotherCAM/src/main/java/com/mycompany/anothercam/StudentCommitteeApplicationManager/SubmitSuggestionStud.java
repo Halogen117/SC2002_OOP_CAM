@@ -43,12 +43,13 @@ public class SubmitSuggestionStud {
             return;
         }
         String description = null;
-        description = veri.verifyDescription(description, "Enter Description!", scanObj);
+        description = veri.verifyDescription(description, "Enter Description.", scanObj);
+        System.out.println("Check Description:"+description);
         Suggestions suggestion = new Suggestions(cookie, scanObj,description);
         suggestionList.addSuggestion(suggestion);
         Student student = (Student) cookie;
         student.incrementPoint();
-        System.out.println(student.getUserName() + "has " + student.getPoints() + " points");
+        System.out.println(student.getUserName() + " has " + student.getPoints() + " points");
     }
 }
 

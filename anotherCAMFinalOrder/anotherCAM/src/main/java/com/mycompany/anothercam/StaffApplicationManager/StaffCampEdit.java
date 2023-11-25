@@ -13,8 +13,9 @@ import com.mycompany.anothercam.Login.Verification;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-public class StaffCampEdit{
+//import com.mycompany.anothercam.implementActions.Edit;
+//implements Edit
+public class StaffCampEdit {
     private ArrayList<Integer> countKeep = new ArrayList<Integer>();
     private DateFormatter dateFormat = new DateFormatter();
     private LocalDateTime today = this.dateFormat.convertStringToDatetime(this.dateFormat.convertDatetimeToString(LocalDateTime.now()));

@@ -21,10 +21,8 @@ public class EnquiryStudentCommitteeApp {
             System.out.println("0. Exit");
             System.out.println("1. View Enquiry");
             System.out.println("2. Reply Enquiry");
-            //System.out.print("Enter your choice: ");
 
             int choice = veri.verifyScannerNumber(scanObj);
-            scanObj.nextLine();  // Consume the newline character
 
             switch (choice) {
                 case 1 -> menu.runView(campArray,cookie,scanObj);

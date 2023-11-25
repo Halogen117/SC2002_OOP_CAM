@@ -25,7 +25,6 @@ public class EnquiryStudentApp {
             //System.out.print("Enter your choice: ");
 
             int choice = veri.verifyScannerNumber(scanObj);
-            scanObj.nextLine();  // Consume the newline character
 
             switch (choice) {
                 case 1 -> menu.AddEnquiry(campArray,cookie, scanObj);

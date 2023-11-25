@@ -100,9 +100,10 @@ public class Verification {
     public String verifyCampName(String campName, String questionAsked, Scanner scanObj){
         while(this.loopTolerance != this.loopLooper){
             while(true){
-                System.out.print("Enter your choice: ");
+                
                 System.out.println(questionAsked);
                 try{
+                    System.out.print("Enter your choice: ");
                     scanObj.nextLine();
                     campName = scanObj.nextLine();
                     if(verifyString(campName) == true){
@@ -325,7 +326,6 @@ public class Verification {
             while(true){
                 System.out.println(questionAsked);
                 try{
-
                     System.out.print("Enter your choice: ");
                     scanObj.nextLine();
                     description = scanObj.nextLine();

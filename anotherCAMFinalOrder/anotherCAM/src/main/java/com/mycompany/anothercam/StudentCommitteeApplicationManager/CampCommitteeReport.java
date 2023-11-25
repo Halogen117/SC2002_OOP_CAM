@@ -40,7 +40,6 @@ public class CampCommitteeReport{
 
             // Find camp first
             Student studCook = (Student) cookie;
-            System.out.println("The student name of the cookie is"+studCook.getUserName());
             ArrayList<Camp> tempCampArray = new ArrayList<Camp>();
             for(int i=0; i< campArray.size(); i++){
                 if(studCook.getCampCommitteeName().equals(campArray.get(i).getCampName())){

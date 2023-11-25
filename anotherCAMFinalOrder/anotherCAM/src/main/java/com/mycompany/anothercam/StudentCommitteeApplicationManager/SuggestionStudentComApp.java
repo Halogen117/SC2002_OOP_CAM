@@ -49,7 +49,6 @@ public class SuggestionStudentComApp {
             System.out.println("0. Exit");
 
             int choice = veri.verifyScannerNumber(scanObj);
-            System.out.println(choice);
             switch (choice) {
                 case 1 -> add.Addsuggestions(campArray,cookie, scanObj);
                 case 2 -> view.runView(campArray,cookie,scanObj);

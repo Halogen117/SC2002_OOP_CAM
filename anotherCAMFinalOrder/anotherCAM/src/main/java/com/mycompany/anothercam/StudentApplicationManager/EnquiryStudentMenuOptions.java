@@ -94,7 +94,7 @@ public class EnquiryStudentMenuOptions implements ViewEditDelete {      //create
                     System.out.println("Which Enquiry do you want to edit?");
                     System.out.println("=====================================");
                     int enquiryID = veri.verifyScannerNumber(scanObj);
-                    newDescription = veri.verifyDescription(newDescription, "Enter the new description:", scanObj);
+                    newDescription = veri.verifyDescription(newDescription, "Enter the new description.", scanObj);
                     enquiryList.editEnquiryDescription(enquiryID, cookie.getUserID(),newDescription);
                     break;
                 case 0:
